@@ -2,3 +2,10 @@ data/
 timeseries.csv
 timeseries.parquet
 timeseries_wide.parquet
+
+!build/
+*.doctree
+*.ipynb
+*.txt
+*.pickle
+.buildinfo

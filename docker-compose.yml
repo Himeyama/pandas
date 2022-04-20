@@ -1,0 +1,7 @@
+version: '3'
+services:
+  pandas:
+    image: pandas
+    working_dir: /home/pandas
+    volumes: 
+      - ./:/home/pandas

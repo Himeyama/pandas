@@ -3,34 +3,32 @@
 {{ header }}
 
 ********************
-10 minutes to pandas
+10 分 pandas
 ********************
 
-This is a short introduction to pandas, geared mainly for new users.
-You can see more complex recipes in the :ref:`Cookbook<cookbook>`.
+これは pandas の初心者向けの短いイントロダクション。
+:ref:`Cookbook<cookbook>` のより複雑なレシピを見ることが可能。
 
-Customarily, we import as follows:
+通常、以下のように import する。
 
 .. ipython:: python
 
    import numpy as np
    import pandas as pd
 
-Object creation
+オブジェクトの作成
 ---------------
 
-See the :ref:`Intro to data structures section <dsintro>`.
+:ref:`Intro to data structures section <dsintro>` を参照。
 
-Creating a :class:`Series` by passing a list of values, letting pandas create
-a default integer index:
+値のリストを渡すことによって :class:`Series` を生成し、pandas にデフォルトの整数インデックスを作成させる。
 
 .. ipython:: python
 
    s = pd.Series([1, 3, 5, np.nan, 6, 8])
    s
 
-Creating a :class:`DataFrame` by passing a NumPy array, with a datetime index
-and labeled columns:
+ラベルの列、日付インデックスを含む Numpy 配列を渡すことによって :class:`DataFrame` を作成。
 
 .. ipython:: python
 
@@ -39,8 +37,7 @@ and labeled columns:
    df = pd.DataFrame(np.random.randn(6, 4), index=dates, columns=list("ABCD"))
    df
 
-Creating a :class:`DataFrame` by passing a dictionary of objects that can be
-converted into a series-like structure:
+series ライクの構造体の中へ変換可能なオブジェクトの辞書 (連想配列) を渡すことによって :class:`DataFrame` を生成。
 
 .. ipython:: python
 
@@ -56,16 +53,14 @@ converted into a series-like structure:
    )
    df2
 
-The columns of the resulting :class:`DataFrame` have different
-:ref:`dtypes <basics.dtypes>`:
+得られた :class:`DataFrame` の列は異なる :ref:`dtypes <basics.dtypes>`: を持つ。
 
 .. ipython:: python
 
    df2.dtypes
 
-If you're using IPython, tab completion for column names (as well as public
-attributes) is automatically enabled. Here's a subset of the attributes that
-will be completed:
+もし IPython を使用しているなら、列名のタブ補完 (及びパブリック属性) は自動的に有効にされる。
+補完されるだろう属性は次の通り。
 
 .. ipython::
 
@@ -84,47 +79,45 @@ will be completed:
    df2.applymap           df2.diff
    df2.B                  df2.duplicated
 
-As you can see, the columns ``A``, ``B``, ``C``, and ``D`` are automatically
-tab completed. ``E`` and ``F`` are there as well; the rest of the attributes have been
-truncated for brevity.
+このように、``A``、``B``、``C`` 及び ``D`` の列は自動的にタブ補完される。
+``E`` と ``F`` もある。
+残りの属性は簡潔にするために切り捨てられている。
 
-Viewing data
-------------
+データの表示
+---------------
 
-See the :ref:`Basics section <basics>`.
+:ref:`Basics section <basics>` を参照。
 
-Here is how to view the top and bottom rows of the frame:
+ここにフレームの先頭と末尾を見る方法を示す。
 
 .. ipython:: python
 
    df.head()
    df.tail(3)
 
-Display the index, columns:
+インデックスと列の表示
 
 .. ipython:: python
 
    df.index
    df.columns
 
-:meth:`DataFrame.to_numpy` gives a NumPy representation of the underlying data.
-Note that this can be an expensive operation when your :class:`DataFrame` has
-columns with different data types, which comes down to a fundamental difference
-between pandas and NumPy: **NumPy arrays have one dtype for the entire array,
-while pandas DataFrames have one dtype per column**. When you call
-:meth:`DataFrame.to_numpy`, pandas will find the NumPy dtype that can hold *all*
-of the dtypes in the DataFrame. This may end up being ``object``, which requires
-casting every value to a Python object.
+:meth:`DataFrame.to_numpy` は基礎となるデータの Numpy 表現を与える。
+:class:`DataFrame` が異なるデータ型の列を持つとき高度な操作が必要になるかもしれないことに注意する。
+これは pandas と NumPy 間の基本的な違いのためである。
+**Numpy の配列は配列全体に一つの dtype を持ち、一方 pandas の DataFrame は列ごとに一つの dtype を持つ**
+:meth:`DataFrame.to_numpy` を呼ぶとき、pandas は DataFrame にある dtype の *すべて* に当てはまる NumPy の dtype を見つける。
+これは最終的に ``object`` になる可能性があり、すべての値を Python オブジェクトにキャストする必要がある。
 
-For ``df``, our :class:`DataFrame` of all floating-point values,
-:meth:`DataFrame.to_numpy` is fast and doesn't require copying data:
+``df`` の場合、すべての浮動小数点数値の :class:`DataFrame` において、
+:meth:`DataFrame.to_numpy` は高速でありデータのコピーを必要としない。
 
 .. ipython:: python
 
    df.to_numpy()
 
-For ``df2``, the :class:`DataFrame` with multiple dtypes,
-:meth:`DataFrame.to_numpy` is relatively expensive:
+``df2`` の場合、複数の dtype を持つ :class:`DataFrame` であり、
+:meth:`DataFrame.to_numpy` は比較的高度。
 
 .. ipython:: python
 
@@ -132,166 +125,163 @@ For ``df2``, the :class:`DataFrame` with multiple dtypes,
 
 .. note::
 
-   :meth:`DataFrame.to_numpy` does *not* include the index or column
-   labels in the output.
+   :meth:`DataFrame.to_numpy` は出力にインデックスまたは列のラベルを含まない。
 
-:func:`~DataFrame.describe` shows a quick statistic summary of your data:
+:func:`~DataFrame.describe` はデータの簡単な統計の概要を表示する。
 
 .. ipython:: python
 
    df.describe()
 
-Transposing your data:
+データの転置:
 
 .. ipython:: python
 
    df.T
 
-Sorting by an axis:
+軸によるソート:
 
 .. ipython:: python
 
    df.sort_index(axis=1, ascending=False)
 
-Sorting by values:
+値によるソート:
 
 .. ipython:: python
 
    df.sort_values(by="B")
 
-Selection
----------
+選択
+---------------
 
 .. note::
 
-   While standard Python / NumPy expressions for selecting and setting are
-   intuitive and come in handy for interactive work, for production code, we
-   recommend the optimized pandas data access methods, ``.at``, ``.iat``,
-   ``.loc`` and ``.iloc``.
+   標準的な Python / Numpy 選択や設定は直観的でインタラクティブな作業に役立ち、
+   プロダクションコードでは最適化された pandas データのアクセスメソッドである ``.at``、``.iat``、``.loc`` 及び ``.iloc`` を推奨する。
 
-See the indexing documentation :ref:`Indexing and Selecting Data <indexing>` and :ref:`MultiIndex / Advanced Indexing <advanced>`.
+インデックス作成に関するドキュメントは :ref:`Indexing and Selecting Data <indexing>` および :ref:`MultiIndex / Advanced Indexing <advanced>` を参照。
 
-Getting
+
+取得
 ~~~~~~~
 
-Selecting a single column, which yields a :class:`Series`,
-equivalent to ``df.A``:
+一つの列を選択すると、``df.A`` と同じ :class:`Series` を生成する。
 
 .. ipython:: python
 
    df["A"]
 
-Selecting via ``[]``, which slices the rows:
+行をスライスする ``[]`` で選択。
 
 .. ipython:: python
 
    df[0:3]
    df["20130102":"20130104"]
 
-Selection by label
+ラベルによる選択
 ~~~~~~~~~~~~~~~~~~
 
-See more in :ref:`Selection by Label <indexing.label>`.
+詳しくは :ref:`Selection by Label <indexing.label>` を参照。
 
-For getting a cross section using a label:
+ラベルを使用し断面を取得する場合
 
 .. ipython:: python
 
    df.loc[dates[0]]
 
-Selecting on a multi-axis by label:
+ラベルによる複数軸での選択
 
 .. ipython:: python
 
    df.loc[:, ["A", "B"]]
 
-Showing label slicing, both endpoints are *included*:
+ラベルのスライスを表示すると、両端が *含まれる*
 
 .. ipython:: python
 
    df.loc["20130102":"20130104", ["A", "B"]]
 
-Reduction in the dimensions of the returned object:
+返されるオブジェクトの次元を小さくする。
 
 .. ipython:: python
 
    df.loc["20130102", ["A", "B"]]
 
-For getting a scalar value:
+スカラー値を得る場合
 
 .. ipython:: python
 
    df.loc[dates[0], "A"]
 
-For getting fast access to a scalar (equivalent to the prior method):
+スカラーを高速に取得する場合 (前のメソッドと同様)
 
 .. ipython:: python
 
    df.at[dates[0], "A"]
 
-Selection by position
+位置による選択
 ~~~~~~~~~~~~~~~~~~~~~
 
-See more in :ref:`Selection by Position <indexing.integer>`.
+詳細は :ref:`Selection by Position <indexing.integer>` を参照
 
-Select via the position of the passed integers:
+渡される整数の位置による選択
 
 .. ipython:: python
 
    df.iloc[3]
 
-By integer slices, acting similar to NumPy/Python:
+NumPy/Python と同じようにスライスによる選択
 
 .. ipython:: python
 
    df.iloc[3:5, 0:2]
 
-By lists of integer position locations, similar to the NumPy/Python style:
+NumPy/Python スタイルと同様に、位置のリストによる選択
 
 .. ipython:: python
 
    df.iloc[[1, 2, 4], [0, 2]]
 
-For slicing rows explicitly:
+明示的に行をスライスする場合
 
 .. ipython:: python
 
    df.iloc[1:3, :]
 
-For slicing columns explicitly:
+明示的に列をスライスする場合
 
 .. ipython:: python
 
    df.iloc[:, 1:3]
 
-For getting a value explicitly:
+明示的に値を取得する場合
 
 .. ipython:: python
 
    df.iloc[1, 1]
 
-For getting fast access to a scalar (equivalent to the prior method):
+スカラーに高速アクセスし取得する場合
 
 .. ipython:: python
 
    df.iat[1, 1]
 
-Boolean indexing
+真偽値インデックス
 ~~~~~~~~~~~~~~~~
 
-Using a single column's values to select data:
+データを選択するため一つの列の値を使用
 
 .. ipython:: python
 
    df[df["A"] > 0]
 
-Selecting values from a DataFrame where a boolean condition is met:
+条件の合うデータフレームの値を選択
 
 .. ipython:: python
 
    df[df > 0]
 
-Using the :func:`~Series.isin` method for filtering:
+フィルタリングするために :func:`~Series.isin` メソッドを使用
 
 .. ipython:: python
 
@@ -300,11 +290,10 @@ Using the :func:`~Series.isin` method for filtering:
    df2
    df2[df2["E"].isin(["two", "four"])]
 
-Setting
+設定
 ~~~~~~~
 
-Setting a new column automatically aligns the data
-by the indexes:
+新しい列の設定は自動的にインデックスによってデータを整列する。
 
 .. ipython:: python
 
@@ -312,31 +301,31 @@ by the indexes:
    s1
    df["F"] = s1
 
-Setting values by label:
+ラベルによって値の設定
 
 .. ipython:: python
 
    df.at[dates[0], "A"] = 0
 
-Setting values by position:
+位置によって値を設定
 
 .. ipython:: python
 
    df.iat[0, 1] = 0
 
-Setting by assigning with a NumPy array:
+NumPy 配列の割り当てによって設定
 
 .. ipython:: python
 
    df.loc[:, "D"] = np.array([5] * len(df))
 
-The result of the prior setting operations:
+事前の設定操作の結果
 
 .. ipython:: python
 
    df
 
-A ``where`` operation with setting:
+``where`` 操作により設定
 
 .. ipython:: python
 
@@ -345,15 +334,15 @@ A ``where`` operation with setting:
    df2
 
 
-Missing data
+欠損データ
 ------------
 
-pandas primarily uses the value ``np.nan`` to represent missing data. It is by
-default not included in computations. See the :ref:`Missing Data section
-<missing_data>`.
+pandas は優先的に欠損データを代表するための値 ``np.nan`` を使用する。
+これはデフォルトで計算に含まれない。
+:ref:`Missing Data section<missing_data>` を参照
 
-Reindexing allows you to change/add/delete the index on a specified axis. This
-returns a copy of the data:
+再インデックスは指定された軸において変更 / 追加 / 削除 ができる。
+これはデータのコピーを返す。
 
 .. ipython:: python
 
@@ -361,49 +350,49 @@ returns a copy of the data:
    df1.loc[dates[0] : dates[1], "E"] = 1
    df1
 
-To drop any rows that have missing data:
+欠損データを持ついくつかの行を削除するには
 
 .. ipython:: python
 
    df1.dropna(how="any")
 
-Filling missing data:
+欠損データを埋めるには
 
 .. ipython:: python
 
    df1.fillna(value=5)
 
-To get the boolean mask where values are ``nan``:
+値が ``nan`` である場所を真偽値でマスクして取得
 
 .. ipython:: python
 
    pd.isna(df1)
 
 
-Operations
+操作
 ----------
 
-See the :ref:`Basic section on Binary Ops <basics.binop>`.
+:ref:`Basic section on Binary Ops <basics.binop>` を参照.
 
-Stats
+統計
 ~~~~~
 
-Operations in general *exclude* missing data.
+一般的な操作では欠損データを除外する。
 
-Performing a descriptive statistic:
+記述統計の実行
 
 .. ipython:: python
 
    df.mean()
 
-Same operation on the other axis:
+もう一方の軸でも同様に操作
 
 .. ipython:: python
 
    df.mean(1)
 
-Operating with objects that have different dimensionality and need alignment.
-In addition, pandas automatically broadcasts along the specified dimension:
+異なる次元を持ち順序を必要とするオブジェクトの操作。
+また、pandas は自動的に指定された次元に沿ってブロードキャストを行う。
 
 .. ipython:: python
 
@@ -412,20 +401,20 @@ In addition, pandas automatically broadcasts along the specified dimension:
    df.sub(s, axis="index")
 
 
-Apply
+適用
 ~~~~~
 
-Applying functions to the data:
+データに関数を適用
 
 .. ipython:: python
 
    df.apply(np.cumsum)
    df.apply(lambda x: x.max() - x.min())
 
-Histogramming
+ヒストグラムの作成
 ~~~~~~~~~~~~~
 
-See more at :ref:`Histogramming and Discretization <basics.discretization>`.
+:ref:`Histogramming and Discretization <basics.discretization>` を参照。
 
 .. ipython:: python
 
@@ -433,35 +422,31 @@ See more at :ref:`Histogramming and Discretization <basics.discretization>`.
    s
    s.value_counts()
 
-String Methods
+文字列メソッド
 ~~~~~~~~~~~~~~
 
-Series is equipped with a set of string processing methods in the ``str``
-attribute that make it easy to operate on each element of the array, as in the
-code snippet below. Note that pattern-matching in ``str`` generally uses `regular
-expressions <https://docs.python.org/3/library/re.html>`__ by default (and in
-some cases always uses them). See more at :ref:`Vectorized String Methods
-<text.string_methods>`.
+Series は以下のコードスニペットのように ``str`` 属性において配列の各要素に対し簡単な文字列処理を行うメソッドが備わっている。
+``str`` におけるパターンマッチングは一般的に通常 (場合によっては常に使用) では `regular expressions <https://docs.python.org/3/library/re.html>`__ を使用することに注意。
+詳しくは :ref:`Vectorized String Methods<text.string_methods>` を参照。
 
 .. ipython:: python
 
    s = pd.Series(["A", "B", "C", "Aaba", "Baca", np.nan, "CABA", "dog", "cat"])
    s.str.lower()
 
-Merge
+マージ
 -----
 
-Concat
+結合
 ~~~~~~
 
-pandas provides various facilities for easily combining together Series and
-DataFrame objects with various kinds of set logic for the indexes
-and relational algebra functionality in the case of join / merge-type
-operations.
+pandas は、Series や DataFrame オブジェクトを簡単に組み合わせるための様々な機能を提供し、
+インデックスのための様々な種類のセットロジックや、
+join / merge タイプの操作の場合の関係代数的な機能を備える。
 
-See the :ref:`Merging section <merging>`.
+:ref:`Merging section <merging>` を参照。
 
-Concatenating pandas objects together with :func:`concat`:
+:func:`concat`: で pandas オブジェクトを連結。
 
 .. ipython:: python
 
@@ -473,16 +458,17 @@ Concatenating pandas objects together with :func:`concat`:
 
    pd.concat(pieces)
 
-.. note::
-   Adding a column to a :class:`DataFrame` is relatively fast. However, adding
-   a row requires a copy, and may be expensive. We recommend passing a
-   pre-built list of records to the :class:`DataFrame` constructor instead
-   of building a :class:`DataFrame` by iteratively appending records to it.
+.. 備考::
+   :class:`DataFrame` への列の追加は比較的速い。
+   しかし、行の追加はコピーを必要とし高度である可能性がある。
+
+   レコードを繰り返し追加することによる :class:`DataFrame` の作成の代わりに
+   予め生成されたレコードのリストを :class:`DataFrame` コンストラクターに渡すことを推奨する。
 
 Join
 ~~~~
 
-SQL style merges. See the :ref:`Database style joining <merging.join>` section.
+SQL スタイルのマージ。:ref:`Database style joining <merging.join>` セクションを参照。
 
 .. ipython:: python
 
@@ -492,7 +478,7 @@ SQL style merges. See the :ref:`Database style joining <merging.join>` section.
    right
    pd.merge(left, right, on="key")
 
-Another example that can be given is:
+もう一つ例を挙げると、
 
 .. ipython:: python
 
@@ -502,17 +488,16 @@ Another example that can be given is:
    right
    pd.merge(left, right, on="key")
 
-Grouping
+グループ化
 --------
 
-By "group by" we are referring to a process involving one or more of the
-following steps:
+"group by" によって次の一つ以上ステップに関与するプロセスを参照している。
 
- - **Splitting** the data into groups based on some criteria
- - **Applying** a function to each group independently
- - **Combining** the results into a data structure
+ - **Splitting** はいくつかの基準に基づきデータをグループにまとめる
+ - **Applying** は各グループに個別に機能
+ - **Combining** は結果をデータ構造へ格納
 
-See the :ref:`Grouping section <groupby>`.
+:ref:`Grouping section <groupby>` を参照。
 
 .. ipython:: python
 
@@ -526,27 +511,24 @@ See the :ref:`Grouping section <groupby>`.
    )
    df
 
-Grouping and then applying the :meth:`~pandas.core.groupby.GroupBy.sum` function to the resulting
-groups:
+グループ化し、生成されたグループに対して :meth:`~pandas.core.groupby.GroupBy.sum` 関数を適用。
 
 .. ipython:: python
 
    df.groupby("A").sum()
 
-Grouping by multiple columns forms a hierarchical index, and again we can
-apply the :meth:`~pandas.core.groupby.GroupBy.sum` function:
+複数の列でグループ化すると、階層的なインデックスができ、この場合も :meth:`~pandas.core.groupby.GroupBy.sum` 関数を適用することが可能。
 
 .. ipython:: python
 
    df.groupby(["A", "B"]).sum()
 
-Reshaping
+リシェイプ
 ---------
 
-See the sections on :ref:`Hierarchical Indexing <advanced.hierarchical>` and
-:ref:`Reshaping <reshaping.stacking>`.
+セクション :ref:`Hierarchical Indexing <advanced.hierarchical>` 及び :ref:`Reshaping <reshaping.stacking>` を参照。
 
-Stack
+スタック
 ~~~~~
 
 .. ipython:: python
@@ -564,17 +546,15 @@ Stack
    df2 = df[:4]
    df2
 
-The :meth:`~DataFrame.stack` method "compresses" a level in the DataFrame's
-columns:
+DataFrame の列において :meth:`~DataFrame.stack` メソッドは「圧縮」
 
 .. ipython:: python
 
    stacked = df2.stack()
    stacked
 
-With a "stacked" DataFrame or Series (having a ``MultiIndex`` as the
-``index``), the inverse operation of :meth:`~DataFrame.stack` is
-:meth:`~DataFrame.unstack`, which by default unstacks the **last level**:
+「スタックされた」DataFrame または Series と同様に (``index`` として ``MultiIndex`` を持つ)、
+逆の操作である :meth:`~DataFrame.stack` はデフォルトで **最後のレベル** をアンスタックする。
 
 .. ipython:: python
 
@@ -582,9 +562,9 @@ With a "stacked" DataFrame or Series (having a ``MultiIndex`` as the
    stacked.unstack(1)
    stacked.unstack(0)
 
-Pivot tables
+ピボットテーブル
 ~~~~~~~~~~~~
-See the section on :ref:`Pivot Tables <reshaping.pivot>`.
+:ref:`Pivot Tables <reshaping.pivot>` セクションを参照。
 
 .. ipython:: python
 
@@ -599,20 +579,20 @@ See the section on :ref:`Pivot Tables <reshaping.pivot>`.
    )
    df
 
-We can produce pivot tables from this data very easily:
+このデータから非常に簡単にピボットテーブルの作成をすることができる。
 
 .. ipython:: python
 
    pd.pivot_table(df, values="D", index=["A", "B"], columns=["C"])
 
 
-Time series
+時系列
 -----------
 
-pandas has simple, powerful, and efficient functionality for performing
-resampling operations during frequency conversion (e.g., converting secondly
-data into 5-minutely data). This is extremely common in, but not limited to,
-financial applications. See the :ref:`Time Series section <timeseries>`.
+pandas はシンプルで、強力で周波数変換を行う上でリサンプリング操作を行うための効率的な機能性を持つ。
+(例、秒単位のデータを 5 分単位に変換)
+これは金融系のアプリケーションに限らず、非常に一般的である。
+:ref:`Time Series section <timeseries>` を参照。
 
 .. ipython:: python
 
@@ -620,7 +600,7 @@ financial applications. See the :ref:`Time Series section <timeseries>`.
    ts = pd.Series(np.random.randint(0, 500, len(rng)), index=rng)
    ts.resample("5Min").sum()
 
-Time zone representation:
+タイムゾーン表現
 
 .. ipython:: python
 
@@ -630,13 +610,13 @@ Time zone representation:
    ts_utc = ts.tz_localize("UTC")
    ts_utc
 
-Converting to another time zone:
+ほかのタイムゾーンへの変換
 
 .. ipython:: python
 
    ts_utc.tz_convert("US/Eastern")
 
-Converting between time span representations:
+タイムスパン表現間の変換
 
 .. ipython:: python
 
@@ -647,10 +627,8 @@ Converting between time span representations:
    ps
    ps.to_timestamp()
 
-Converting between period and timestamp enables some convenient arithmetic
-functions to be used. In the following example, we convert a quarterly
-frequency with year ending in November to 9am of the end of the month following
-the quarter end:
+期間とタイムスタンプを変換することで、いくつかの便利な算術関数を使用することができる。
+次の例では、11 月決算の四半期頻度を、四半期決算の翌月末の午前 9 時に変換しています。
 
 .. ipython:: python
 
@@ -659,11 +637,11 @@ the quarter end:
    ts.index = (prng.asfreq("M", "e") + 1).asfreq("H", "s") + 9
    ts.head()
 
-Categoricals
+カテゴリー別
 ------------
 
-pandas can include categorical data in a :class:`DataFrame`. For full docs, see the
-:ref:`categorical introduction <categorical>` and the :ref:`API documentation <api.arrays.categorical>`.
+pandas は :class:`DataFrame` にカテゴリーデータを含めることが可能。
+完全ドキュメントは、:ref:`categorical introduction <categorical>` 及び :ref:`API documentation <api.arrays.categorical>` を参照。
 
 .. ipython:: python
 
@@ -671,23 +649,20 @@ pandas can include categorical data in a :class:`DataFrame`. For full docs, see 
         {"id": [1, 2, 3, 4, 5, 6], "raw_grade": ["a", "b", "b", "a", "a", "e"]}
     )
 
-
-
-Converting the raw grades to a categorical data type:
+生の成績をカテゴリー型に変換
 
 .. ipython:: python
 
     df["grade"] = df["raw_grade"].astype("category")
     df["grade"]
 
-Rename the categories to more meaningful names (assigning to
-:meth:`Series.cat.categories` is in place!):
+カテゴリーの名前をより意味のある名前に変更 (:meth:`Series.cat.categories` への代入は実施済み！)。
 
 .. ipython:: python
 
     df["grade"].cat.categories = ["very good", "good", "very bad"]
 
-Reorder the categories and simultaneously add the missing categories (methods under :meth:`Series.cat` return a new :class:`Series` by default):
+カテゴリーを並び変えると同時に、足りないカテゴリーを追加 (:meth:`Series.cat` 以下のメソッドはデフォルトで新しい :class:`Series` を返す)。
 
 .. ipython:: python
 
@@ -696,25 +671,24 @@ Reorder the categories and simultaneously add the missing categories (methods un
     )
     df["grade"]
 
-Sorting is per order in the categories, not lexical order:
+並び替えは語彙順ではなく、カテゴリー順
 
 .. ipython:: python
 
     df.sort_values(by="grade")
 
-Grouping by a categorical column also shows empty categories:
+カテゴリー列でのグループ化は空のカテゴリーも表示する。
 
 .. ipython:: python
 
     df.groupby("grade").size()
 
-
-Plotting
+プロット
 --------
 
-See the :ref:`Plotting <visualization>` docs.
+:ref:`Plotting <visualization>` ドキュメントを参照。
 
-We use the standard convention for referencing the matplotlib API:
+matplotlib API を参照するための標準的な規則を使用
 
 .. ipython:: python
 

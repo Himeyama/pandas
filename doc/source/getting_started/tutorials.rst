@@ -6,7 +6,7 @@
 Community tutorials
 *******************
 
-This is a guide to many pandas tutorials by the community, geared mainly for new users.
+これは pandas チュートリアルのガイドで、初心者向けです。
 
 pandas cookbook by Julia Evans
 ------------------------------

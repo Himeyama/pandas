@@ -234,8 +234,8 @@ elif "rc" in version:
 
 html_theme_options = {
     "external_links": [],
-    "github_url": "https://github.com/pandas-dev/pandas",
-    "twitter_url": "https://twitter.com/pandas_dev",
+    "github_url": "https://github.com/himeyama/pandas",
+    "twitter_url": "",
     "google_analytics_id": "UA-27880019-2",
     "navbar_end": ["version-switcher", "navbar-icon-links"],
     "switcher": {
