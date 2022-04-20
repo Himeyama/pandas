@@ -1,6 +1,0 @@
-pandas.io.formats.style.Styler.applymap\_index
-==============================================
-
-.. currentmodule:: pandas.io.formats.style
-
-.. automethod:: Styler.applymap_index

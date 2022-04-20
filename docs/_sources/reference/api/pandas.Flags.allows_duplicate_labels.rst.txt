@@ -1,6 +1,0 @@
-pandas.Flags.allows\_duplicate\_labels
-======================================
-
-.. currentmodule:: pandas
-
-.. autoproperty:: Flags.allows_duplicate_labels
