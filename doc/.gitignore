@@ -9,3 +9,4 @@ timeseries_wide.parquet
 *.txt
 *.pickle
 .buildinfo
+!index.html

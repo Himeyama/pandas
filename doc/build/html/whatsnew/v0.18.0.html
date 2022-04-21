@@ -37,6 +37,7 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -989,6 +990,8 @@ and <a class="reference internal" href="#whatsnew-0180-enhancements-strcat"><spa
 <span class="go">7  7 -0.636524</span>
 <span class="go">8  8  0.015696</span>
 <span class="go">9  9 -2.242685</span>
+
+<span class="go">[10 rows x 2 columns]</span>
 </pre></div>
 </div>
 <p>Previous behavior:</p>
@@ -1038,6 +1041,8 @@ and <a class="reference internal" href="#whatsnew-0180-enhancements-strcat"><spa
 <span class="go">7  6.0  0.370076</span>
 <span class="go">8  7.0  0.079587</span>
 <span class="go">9  8.0 -0.954504</span>
+
+<span class="go">[10 rows x 2 columns]</span>
 </pre></div>
 </div>
 <p>They provide getitem accessors</p>
@@ -1053,7 +1058,7 @@ and <a class="reference internal" href="#whatsnew-0180-enhancements-strcat"><spa
 <span class="go">7    6.0</span>
 <span class="go">8    7.0</span>
 <span class="go">9    8.0</span>
-<span class="go">Name: A, dtype: float64</span>
+<span class="go">Name: A, Length: 10, dtype: float64</span>
 </pre></div>
 </div>
 <p>And multiple aggregations</p>
@@ -1073,6 +1078,8 @@ and <a class="reference internal" href="#whatsnew-0180-enhancements-strcat"><spa
 <span class="go">7  6.0  1.0  0.370076  0.871850</span>
 <span class="go">8  7.0  1.0  0.079587  0.750099</span>
 <span class="go">9  8.0  1.0 -0.954504  1.162285</span>
+
+<span class="go">[10 rows x 4 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -1089,7 +1096,7 @@ argument for altering the Series or axis <em>name</em>, in addition to their old
 <span class="go">2    0.953324</span>
 <span class="go">3   -2.021255</span>
 <span class="go">4   -0.334077</span>
-<span class="go">Name: newname, dtype: float64</span>
+<span class="go">Name: newname, Length: 5, dtype: float64</span>
 </pre></div>
 </div>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
@@ -1105,6 +1112,8 @@ argument for altering the Series or axis <em>name</em>, in addition to their old
 <span class="go">2            -1.546906 -0.202646</span>
 <span class="go">3            -0.655969  0.193421</span>
 <span class="go">4             0.553439  1.318152</span>
+
+<span class="go">[5 rows x 2 columns]</span>
 </pre></div>
 </div>
 <p>The new functionality works well in method chains. Previously these methods only accepted functions or dicts mapping a <em>label</em> to a new label.
@@ -1169,7 +1178,7 @@ string, and returns the contents of the capture groups
 <span class="go">0      1</span>
 <span class="go">1      2</span>
 <span class="go">2    NaN</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 3, dtype: object</span>
 </pre></div>
 </div>
 <p>It returns a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> with one column if <code class="docutils literal notranslate"><span class="pre">expand=True</span></code>.</p>
@@ -1179,6 +1188,8 @@ string, and returns the contents of the capture groups
 <span class="go">0    1</span>
 <span class="go">1    2</span>
 <span class="go">2  NaN</span>
+
+<span class="go">[3 rows x 1 columns]</span>
 </pre></div>
 </div>
 <p>Calling on an <code class="docutils literal notranslate"><span class="pre">Index</span></code> with a regex with exactly one capture group
@@ -1199,6 +1210,8 @@ returns an <code class="docutils literal notranslate"><span class="pre">Index</s
 <span class="go">0      A</span>
 <span class="go">1      B</span>
 <span class="go">2      C</span>
+
+<span class="go">[3 rows x 1 columns]</span>
 </pre></div>
 </div>
 <p>Calling on an <code class="docutils literal notranslate"><span class="pre">Index</span></code> with a regex with more than one capture group
@@ -1214,6 +1227,8 @@ raises <code class="docutils literal notranslate"><span class="pre">ValueError</
 <span class="go">0      A  11</span>
 <span class="go">1      B  22</span>
 <span class="go">2      C  33</span>
+
+<span class="go">[3 rows x 2 columns]</span>
 </pre></div>
 </div>
 <p>In summary, <code class="docutils literal notranslate"><span class="pre">extract(expand=True)</span></code> always returns a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>
@@ -1232,7 +1247,7 @@ match.</p>
 <span class="go">A    a1a2</span>
 <span class="go">B      b1</span>
 <span class="go">C      c1</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 3, dtype: object</span>
 
 <span class="gp">In [25]: </span><span class="n">s</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(?P&lt;letter&gt;[ab])(?P&lt;digit&gt;\d)&quot;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="gh">Out[25]: </span><span class="go"></span>
@@ -1240,6 +1255,8 @@ match.</p>
 <span class="go">A      a     1</span>
 <span class="go">B      b     1</span>
 <span class="go">C    NaN   NaN</span>
+
+<span class="go">[3 rows x 2 columns]</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">extractall</span></code> method returns all matches.</p>
@@ -1250,6 +1267,8 @@ match.</p>
 <span class="go">A 0          a     1</span>
 <span class="go">  1          a     2</span>
 <span class="go">B 0          b     1</span>
+
+<span class="go">[3 rows x 2 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -1340,14 +1359,14 @@ match.</p>
 <span class="go">0   2013-01-01 09:12:56.123400-05:00</span>
 <span class="go">1   2013-01-02 09:12:56.123400-05:00</span>
 <span class="go">2   2013-01-03 09:12:56.123400-05:00</span>
-<span class="go">dtype: datetime64[ns, US/Eastern]</span>
+<span class="go">Length: 3, dtype: datetime64[ns, US/Eastern]</span>
 
 <span class="gp">In [44]: </span><span class="n">s</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
 <span class="gh">Out[44]: </span><span class="go"></span>
 <span class="go">0   2013-01-01 00:00:00-05:00</span>
 <span class="go">1   2013-01-02 00:00:00-05:00</span>
 <span class="go">2   2013-01-03 00:00:00-05:00</span>
-<span class="go">dtype: datetime64[ns, US/Eastern]</span>
+<span class="go">Length: 3, dtype: datetime64[ns, US/Eastern]</span>
 </pre></div>
 </div>
 </section>
@@ -1382,7 +1401,7 @@ This change not only affects the display to the console, but also the output of 
 <span class="go">0.0    1</span>
 <span class="go">1.0    2</span>
 <span class="go">2.0    3</span>
-<span class="go">dtype: int64</span>
+<span class="go">Length: 3, dtype: int64</span>
 
 <span class="gp">In [47]: </span><span class="n">s</span><span class="o">.</span><span class="n">index</span>
 <span class="gh">Out[47]: </span><span class="go">Float64Index([0.0, 1.0, 2.0], dtype=&#39;float64&#39;)</span>
@@ -1427,7 +1446,7 @@ This change not only affects the display to the console, but also the output of 
 <span class="gh">Out[50]: </span><span class="go"></span>
 <span class="go">a     int64</span>
 <span class="go">b    uint32</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 2, dtype: object</span>
 
 <span class="gp">In [51]: </span><span class="n">ix</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
 
@@ -1437,7 +1456,7 @@ This change not only affects the display to the console, but also the output of 
 <span class="gh">Out[53]: </span><span class="go"></span>
 <span class="go">a     int64</span>
 <span class="go">b    uint32</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 2, dtype: object</span>
 </pre></div>
 </div>
 <p>When a DataFrame’s integer slice is partially updated with a new slice of floats that could potentially be down-casted to integer without losing precision, the dtype of the slice will be set to float instead of integer.</p>
@@ -1476,6 +1495,8 @@ This change not only affects the display to the console, but also the output of 
 <span class="go">  10  4  5  6</span>
 <span class="go">8 12  7  8  9</span>
 
+<span class="go">[3 rows x 3 columns]</span>
+
 <span class="gp">In [56]: </span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">])</span>
 
 <span class="gp">In [57]: </span><span class="n">df</span>
@@ -1484,6 +1505,8 @@ This change not only affects the display to the console, but also the output of 
 <span class="go">4 8   1  2  0</span>
 <span class="go">  10  4  5  1</span>
 <span class="go">8 12  7  8  9</span>
+
+<span class="go">[3 rows x 3 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -1613,7 +1636,7 @@ the <code class="docutils literal notranslate"><span class="pre">dtype</span></c
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [66]: </span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">NaT</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;&lt;m8[ns]&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">NaT</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;&lt;m8[ns]&#39;</span><span class="p">)</span>
 <span class="gh">Out[66]: </span><span class="go"></span>
 <span class="go">0   NaT</span>
-<span class="go">dtype: timedelta64[ns]</span>
+<span class="go">Length: 1, dtype: timedelta64[ns]</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Timedelta</span></code> division by <code class="docutils literal notranslate"><span class="pre">floats</span></code> now works.</p>
@@ -1629,14 +1652,14 @@ the <code class="docutils literal notranslate"><span class="pre">dtype</span></c
 <span class="go">0   1 days</span>
 <span class="go">1   2 days</span>
 <span class="go">2   3 days</span>
-<span class="go">dtype: timedelta64[ns]</span>
+<span class="go">Length: 3, dtype: timedelta64[ns]</span>
 
 <span class="gp">In [70]: </span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2012-01-01&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="n">ser</span>
 <span class="gh">Out[70]: </span><span class="go"></span>
 <span class="go">0   2011-12-31</span>
 <span class="go">1   2011-12-30</span>
 <span class="go">2   2011-12-29</span>
-<span class="go">dtype: datetime64[ns]</span>
+<span class="go">Length: 3, dtype: datetime64[ns]</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">NaT.isoformat()</span></code> now returns <code class="docutils literal notranslate"><span class="pre">'NaT'</span></code>. This change allows
@@ -1711,7 +1734,7 @@ the <code class="docutils literal notranslate"><span class="pre">dtype</span></c
 <span class="gh">Out[71]: </span><span class="go"></span>
 <span class="go">0    1.0</span>
 <span class="go">1    2.0</span>
-<span class="go">dtype: float64</span>
+<span class="go">Length: 2, dtype: float64</span>
 
 <span class="gp">In [72]: </span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;average&#39;</span><span class="p">,</span> <span class="n">numeric_only</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="gp">   ....: </span>                         <span class="n">na_option</span><span class="o">=</span><span class="s1">&#39;keep&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">pct</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -1720,6 +1743,8 @@ the <code class="docutils literal notranslate"><span class="pre">dtype</span></c
 <span class="go">     0</span>
 <span class="go">0  1.0</span>
 <span class="go">1  2.0</span>
+
+<span class="go">[2 rows x 1 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -1783,6 +1808,8 @@ other anchored offsets like <code class="docutils literal notranslate"><span cla
 <span class="go">2010-01-01 09:00:07  0.316836  0.568099  0.869127  0.436173</span>
 <span class="go">2010-01-01 09:00:08  0.802148  0.143767  0.704261  0.704581</span>
 <span class="go">2010-01-01 09:00:09  0.218792  0.924868  0.442141  0.909316</span>
+
+<span class="go">[10 rows x 4 columns]</span>
 </pre></div>
 </div>
 <p><strong>Previous API</strong>:</p>
@@ -1815,7 +1842,7 @@ yields a <code class="docutils literal notranslate"><span class="pre">Resampler<
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [82]: </span><span class="n">r</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;2s&#39;</span><span class="p">)</span>
 
 <span class="gp">In [83]: </span><span class="n">r</span>
-<span class="gh">Out[83]: </span><span class="go">&lt;pandas.core.resample.DatetimeIndexResampler object at 0x7f8696a306a0&gt;</span>
+<span class="gh">Out[83]: </span><span class="go">&lt;pandas.core.resample.DatetimeIndexResampler object at 0x7ff507c339a0&gt;</span>
 </pre></div>
 </div>
 <section id="downsampling">
@@ -1830,6 +1857,8 @@ These are downsampling operations (going from a higher frequency to a lower one)
 <span class="go">2010-01-01 09:00:04  0.433985  0.314582  0.424104  0.625733</span>
 <span class="go">2010-01-01 09:00:06  0.624988  0.609738  0.633165  0.612452</span>
 <span class="go">2010-01-01 09:00:08  0.510470  0.534317  0.573201  0.806949</span>
+
+<span class="go">[5 rows x 4 columns]</span>
 </pre></div>
 </div>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [85]: </span><span class="n">r</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -1840,6 +1869,8 @@ These are downsampling operations (going from a higher frequency to a lower one)
 <span class="go">2010-01-01 09:00:04  0.867969  0.629165  0.848208  1.251465</span>
 <span class="go">2010-01-01 09:00:06  1.249976  1.219477  1.266330  1.224904</span>
 <span class="go">2010-01-01 09:00:08  1.020940  1.068634  1.146402  1.613897</span>
+
+<span class="go">[5 rows x 4 columns]</span>
 </pre></div>
 </div>
 <p>Furthermore, resample now supports <code class="docutils literal notranslate"><span class="pre">getitem</span></code> operations to perform the resample on specific columns.</p>
@@ -1851,6 +1882,8 @@ These are downsampling operations (going from a higher frequency to a lower one)
 <span class="go">2010-01-01 09:00:04  0.433985  0.424104</span>
 <span class="go">2010-01-01 09:00:06  0.624988  0.633165</span>
 <span class="go">2010-01-01 09:00:08  0.510470  0.573201</span>
+
+<span class="go">[5 rows x 2 columns]</span>
 </pre></div>
 </div>
 <p>and <code class="docutils literal notranslate"><span class="pre">.aggregate</span></code> type operations.</p>
@@ -1862,6 +1895,8 @@ These are downsampling operations (going from a higher frequency to a lower one)
 <span class="go">2010-01-01 09:00:04  0.433985  0.629165</span>
 <span class="go">2010-01-01 09:00:06  0.624988  1.219477</span>
 <span class="go">2010-01-01 09:00:08  0.510470  1.068634</span>
+
+<span class="go">[5 rows x 2 columns]</span>
 </pre></div>
 </div>
 <p>These accessors can of course, be combined</p>
@@ -1874,6 +1909,8 @@ These are downsampling operations (going from a higher frequency to a lower one)
 <span class="go">2010-01-01 09:00:04  0.433985  0.867969  0.314582  0.629165</span>
 <span class="go">2010-01-01 09:00:06  0.624988  1.249976  0.609738  1.219477</span>
 <span class="go">2010-01-01 09:00:08  0.510470  1.020940  0.534317  1.068634</span>
+
+<span class="go">[5 rows x 4 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -1893,7 +1930,7 @@ performed with the <code class="docutils literal notranslate"><span class="pre">
 <span class="go">2010-09-30    2</span>
 <span class="go">2010-12-31    3</span>
 <span class="go">2011-03-31    4</span>
-<span class="go">Freq: Q-DEC, dtype: int64</span>
+<span class="go">Freq: Q-DEC, Length: 5, dtype: int64</span>
 </pre></div>
 </div>
 <p>Previously</p>
@@ -1931,7 +1968,7 @@ performed with the <code class="docutils literal notranslate"><span class="pre">
 <span class="go">2011-01-31    3</span>
 <span class="go">2011-02-28    3</span>
 <span class="go">2011-03-31    4</span>
-<span class="go">Freq: M, dtype: int64</span>
+<span class="go">Freq: M, Length: 13, dtype: int64</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -1985,6 +2022,8 @@ This code is intending to resample every 2s, take the <code class="docutils lite
 <span class="go">2010-01-01 09:00:04  0.364886  0.013768  0.075381  0.368824</span>
 <span class="go">2010-01-01 09:00:06  0.316836  0.568099  0.397203  0.436173</span>
 <span class="go">2010-01-01 09:00:08  0.218792  0.143767  0.442141  0.704581</span>
+
+<span class="go">[5 rows x 4 columns]</span>
 </pre></div>
 </div>
 <p>The good news is the return dimensions will differ between the new API and the old API, so this should loudly raise
@@ -1996,7 +2035,7 @@ an exception.</p>
 <span class="go">B    0.314582</span>
 <span class="go">C    0.357096</span>
 <span class="go">D    0.531096</span>
-<span class="go">dtype: float64</span>
+<span class="go">Length: 4, dtype: float64</span>
 </pre></div>
 </div>
 </div>
@@ -2016,6 +2055,8 @@ in an inplace change to the <code class="docutils literal notranslate"><span cla
 <span class="go">2   5.0  2</span>
 <span class="go">3   7.5  3</span>
 <span class="go">4  10.0  4</span>
+
+<span class="go">[5 rows x 2 columns]</span>
 </pre></div>
 </div>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [12]: </span><span class="n">df</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;c = a + b&#39;</span><span class="p">)</span>
@@ -2043,6 +2084,8 @@ assignment should be done inplace or return a copy.</p>
 <span class="go">3   7.5  3  10.5</span>
 <span class="go">4  10.0  4  14.0</span>
 
+<span class="go">[5 rows x 3 columns]</span>
+
 <span class="gp">In [97]: </span><span class="n">df</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;d = c - b&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="gh">Out[97]: </span><span class="go"></span>
 <span class="go">      a  b     c     d</span>
@@ -2052,6 +2095,8 @@ assignment should be done inplace or return a copy.</p>
 <span class="go">3   7.5  3  10.5   7.5</span>
 <span class="go">4  10.0  4  14.0  10.0</span>
 
+<span class="go">[5 rows x 4 columns]</span>
+
 <span class="gp">In [98]: </span><span class="n">df</span>
 <span class="gh">Out[98]: </span><span class="go"></span>
 <span class="go">      a  b     c</span>
@@ -2060,6 +2105,8 @@ assignment should be done inplace or return a copy.</p>
 <span class="go">2   5.0  2   7.0</span>
 <span class="go">3   7.5  3  10.5</span>
 <span class="go">4  10.0  4  14.0</span>
+
+<span class="go">[5 rows x 3 columns]</span>
 
 <span class="gp">In [99]: </span><span class="n">df</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;d = c - b&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -2071,6 +2118,8 @@ assignment should be done inplace or return a copy.</p>
 <span class="go">2   5.0  2   7.0   5.0</span>
 <span class="go">3   7.5  3  10.5   7.5</span>
 <span class="go">4  10.0  4  14.0  10.0</span>
+
+<span class="go">[5 rows x 4 columns]</span>
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -2086,6 +2135,8 @@ inplace assignment you should update to explicitly set <code class="docutils lit
 <span class="go">3   7.5  3  10.5   7.5</span>
 <span class="go">4  10.0  4  14.0  10.0</span>
 
+<span class="go">[2 rows x 4 columns]</span>
+
 <span class="gp">In [102]: </span><span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;a &gt; 5&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="gp">In [103]: </span><span class="n">df</span>
@@ -2093,6 +2144,8 @@ inplace assignment you should update to explicitly set <code class="docutils lit
 <span class="go">      a  b     c     d</span>
 <span class="go">3   7.5  3  10.5   7.5</span>
 <span class="go">4  10.0  4  14.0  10.0</span>
+
+<span class="go">[2 rows x 4 columns]</span>
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -2109,6 +2162,8 @@ assignments are valid for multi-line expressions.</p>
 <span class="go">3   7.5  3  10.5   7.5</span>
 <span class="go">4  10.0  4  14.0  10.0</span>
 
+<span class="go">[2 rows x 4 columns]</span>
+
 <span class="gp">In [105]: </span><span class="n">df</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="gp">   .....: </span><span class="s2">e = d + a</span>
 <span class="gp">   .....: </span><span class="s2">f = e - 22</span>
@@ -2120,6 +2175,8 @@ assignments are valid for multi-line expressions.</p>
 <span class="go">      a  b     c     d     e    f    g</span>
 <span class="go">3   7.5  3  10.5   7.5  15.0 -7.0 -3.5</span>
 <span class="go">4  10.0  4  14.0  10.0  20.0 -2.0 -1.0</span>
+
+<span class="go">[2 rows x 7 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -2134,7 +2191,7 @@ assignments are valid for multi-line expressions.</p>
 <span class="go">2015-01-01 07:00:00    7</span>
 <span class="go">2015-01-01 08:00:00    8</span>
 <span class="go">2015-01-01 09:00:00    9</span>
-<span class="go">Freq: H, dtype: int64</span>
+<span class="go">Freq: H, Length: 3, dtype: int64</span>
 </pre></div>
 </div>
 <p>This will now raise.</p>
@@ -2208,7 +2265,7 @@ In 0.18.0, this deprecation warning is removed and these will now raise a <code 
 <span class="go">4    1</span>
 <span class="go">5    2</span>
 <span class="go">6    3</span>
-<span class="go">dtype: int64</span>
+<span class="go">Length: 3, dtype: int64</span>
 
 <span class="gp">In [111]: </span><span class="n">s2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">))</span>
 
@@ -2217,7 +2274,7 @@ In 0.18.0, this deprecation warning is removed and these will now raise a <code 
 <span class="go">a    1</span>
 <span class="go">b    2</span>
 <span class="go">c    3</span>
-<span class="go">dtype: int64</span>
+<span class="go">Length: 3, dtype: int64</span>
 </pre></div>
 </div>
 <p>Previous behavior:</p>
@@ -2272,7 +2329,7 @@ In 0.18.0, this deprecation warning is removed and these will now raise a <code 
 <span class="go">4     1</span>
 <span class="go">5    10</span>
 <span class="go">6     3</span>
-<span class="go">dtype: int64</span>
+<span class="go">Length: 3, dtype: int64</span>
 
 <span class="gp">In [118]: </span><span class="n">s_copy</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
@@ -2283,7 +2340,7 @@ In 0.18.0, this deprecation warning is removed and these will now raise a <code 
 <span class="go">4     1</span>
 <span class="go">5    10</span>
 <span class="go">6     3</span>
-<span class="go">dtype: int64</span>
+<span class="go">Length: 3, dtype: int64</span>
 </pre></div>
 </div>
 <p>Positional setting with <code class="docutils literal notranslate"><span class="pre">.ix</span></code> and a float indexer will ADD this value to the index, rather than previously setting the value by position.</p>
@@ -2302,14 +2359,14 @@ In 0.18.0, this deprecation warning is removed and these will now raise a <code 
 <span class="gh">Out[121]: </span><span class="go"></span>
 <span class="go">5    2</span>
 <span class="go">6    3</span>
-<span class="go">dtype: int64</span>
+<span class="go">Length: 2, dtype: int64</span>
 </pre></div>
 </div>
 <p>Note that for floats that are NOT coercible to ints, the label based bounds will be excluded</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [122]: </span><span class="n">s</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mf">5.1</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
 <span class="gh">Out[122]: </span><span class="go"></span>
 <span class="go">6    3</span>
-<span class="go">dtype: int64</span>
+<span class="go">Length: 1, dtype: int64</span>
 </pre></div>
 </div>
 <p>Float indexing on a <code class="docutils literal notranslate"><span class="pre">Float64Index</span></code> is unchanged.</p>
@@ -2322,7 +2379,7 @@ In 0.18.0, this deprecation warning is removed and these will now raise a <code 
 <span class="gh">Out[125]: </span><span class="go"></span>
 <span class="go">1.0    2</span>
 <span class="go">2.0    3</span>
-<span class="go">dtype: int64</span>
+<span class="go">Length: 2, dtype: int64</span>
 </pre></div>
 </div>
 </section>

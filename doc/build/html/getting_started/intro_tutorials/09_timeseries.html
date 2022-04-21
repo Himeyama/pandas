@@ -37,6 +37,7 @@
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
@@ -452,14 +453,12 @@ Westminster</em> in respectively Paris, Antwerp and London.</p>
 
 <span class="gp">In [5]: </span><span class="n">air_quality</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[5]: </span><span class="go"></span>
-<span class="go">    city country                   datetime  ... parameter value   unit</span>
-<span class="go">0  Paris      FR  2019-06-21 00:00:00+00:00  ...       no2  20.0  µg/m³</span>
-<span class="go">1  Paris      FR  2019-06-20 23:00:00+00:00  ...       no2  21.8  µg/m³</span>
-<span class="go">2  Paris      FR  2019-06-20 22:00:00+00:00  ...       no2  26.5  µg/m³</span>
-<span class="go">3  Paris      FR  2019-06-20 21:00:00+00:00  ...       no2  24.9  µg/m³</span>
-<span class="go">4  Paris      FR  2019-06-20 20:00:00+00:00  ...       no2  21.4  µg/m³</span>
-
-<span class="go">[5 rows x 7 columns]</span>
+<span class="go">    city country                   datetime location parameter  value   unit</span>
+<span class="go">0  Paris      FR  2019-06-21 00:00:00+00:00  FR04014       no2   20.0  µg/m³</span>
+<span class="go">1  Paris      FR  2019-06-20 23:00:00+00:00  FR04014       no2   21.8  µg/m³</span>
+<span class="go">2  Paris      FR  2019-06-20 22:00:00+00:00  FR04014       no2   26.5  µg/m³</span>
+<span class="go">3  Paris      FR  2019-06-20 21:00:00+00:00  FR04014       no2   24.9  µg/m³</span>
+<span class="go">4  Paris      FR  2019-06-20 20:00:00+00:00  FR04014       no2   21.4  µg/m³</span>
 </pre></div>
 </div>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">air_quality</span><span class="o">.</span><span class="n">city</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
@@ -539,14 +538,12 @@ from the standard Python library and defining a time duration.</p>
 
 <span class="gp">In [12]: </span><span class="n">air_quality</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[12]: </span><span class="go"></span>
-<span class="go">    city country                  datetime  ... value   unit  month</span>
-<span class="go">0  Paris      FR 2019-06-21 00:00:00+00:00  ...  20.0  µg/m³      6</span>
-<span class="go">1  Paris      FR 2019-06-20 23:00:00+00:00  ...  21.8  µg/m³      6</span>
-<span class="go">2  Paris      FR 2019-06-20 22:00:00+00:00  ...  26.5  µg/m³      6</span>
-<span class="go">3  Paris      FR 2019-06-20 21:00:00+00:00  ...  24.9  µg/m³      6</span>
-<span class="go">4  Paris      FR 2019-06-20 20:00:00+00:00  ...  21.4  µg/m³      6</span>
-
-<span class="go">[5 rows x 8 columns]</span>
+<span class="go">    city country                  datetime location parameter  value   unit  month</span>
+<span class="go">0  Paris      FR 2019-06-21 00:00:00+00:00  FR04014       no2   20.0  µg/m³      6</span>
+<span class="go">1  Paris      FR 2019-06-20 23:00:00+00:00  FR04014       no2   21.8  µg/m³      6</span>
+<span class="go">2  Paris      FR 2019-06-20 22:00:00+00:00  FR04014       no2   26.5  µg/m³      6</span>
+<span class="go">3  Paris      FR 2019-06-20 21:00:00+00:00  FR04014       no2   24.9  µg/m³      6</span>
+<span class="go">4  Paris      FR 2019-06-20 20:00:00+00:00  FR04014       no2   21.4  µg/m³      6</span>
 </pre></div>
 </div>
 <p>By using <code class="docutils literal notranslate"><span class="pre">Timestamp</span></code> objects for dates, a lot of time-related

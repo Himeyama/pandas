@@ -37,6 +37,7 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1198,8 +1199,8 @@ StringArray to be backed by a PyArrow array instead of a NumPy array of Python o
 and parts of the API may change without warning.</p>
 </div>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;def&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">StringDtype</span><span class="p">(</span><span class="n">storage</span><span class="o">=</span><span class="s2">&quot;pyarrow&quot;</span><span class="p">))</span>
-<span class="gh">Out[8]: </span><span class="go">------------------------------------------------------------------------</span>
-<span class="go">ImportError                            Traceback (most recent call last)</span>
+<span class="gh">Out[8]: </span><span class="go">---------------------------------------------------------------------------</span>
+<span class="go">ImportError                               Traceback (most recent call last)</span>
 <span class="go">File /opt/conda/lib/python3.8/site-packages/IPython/core/formatters.py:707, in PlainTextFormatter.__call__(self, obj)</span>
 <span class="go">    700 stream = StringIO()</span>
 <span class="go">    701 printer = pretty.RepresentationPrinter(stream, self.verbose,</span>
@@ -1335,8 +1336,8 @@ and parts of the API may change without warning.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;def&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;string[pyarrow]&quot;</span><span class="p">)</span>
 
 <span class="gp">In [10]: </span><span class="n">s</span>
-<span class="gh">Out[10]: </span><span class="go">------------------------------------------------------------------------</span>
-<span class="go">ImportError                            Traceback (most recent call last)</span>
+<span class="gh">Out[10]: </span><span class="go">---------------------------------------------------------------------------</span>
+<span class="go">ImportError                               Traceback (most recent call last)</span>
 <span class="go">File /opt/conda/lib/python3.8/site-packages/IPython/core/formatters.py:707, in PlainTextFormatter.__call__(self, obj)</span>
 <span class="go">    700 stream = StringIO()</span>
 <span class="go">    701 printer = pretty.RepresentationPrinter(stream, self.verbose,</span>
@@ -1474,8 +1475,8 @@ and parts of the API may change without warning.</p>
 <span class="gp">   ....: </span>
 
 <span class="gp">In [12]: </span><span class="n">s</span>
-<span class="gh">Out[12]: </span><span class="go">------------------------------------------------------------------------</span>
-<span class="go">ImportError                            Traceback (most recent call last)</span>
+<span class="gh">Out[12]: </span><span class="go">---------------------------------------------------------------------------</span>
+<span class="go">ImportError                               Traceback (most recent call last)</span>
 <span class="go">File /opt/conda/lib/python3.8/site-packages/IPython/core/formatters.py:707, in PlainTextFormatter.__call__(self, obj)</span>
 <span class="go">    700 stream = StringIO()</span>
 <span class="go">    701 printer = pretty.RepresentationPrinter(stream, self.verbose,</span>
@@ -1610,8 +1611,8 @@ and parts of the API may change without warning.</p>
 <p>The usual string accessor methods work. Where appropriate, the return type of the Series
 or columns of a DataFrame will also have string dtype.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [13]: </span><span class="n">s</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
-<span class="gh">Out[13]: </span><span class="go">------------------------------------------------------------------------</span>
-<span class="go">ImportError                            Traceback (most recent call last)</span>
+<span class="gh">Out[13]: </span><span class="go">---------------------------------------------------------------------------</span>
+<span class="go">ImportError                               Traceback (most recent call last)</span>
 <span class="go">File /opt/conda/lib/python3.8/site-packages/IPython/core/formatters.py:707, in PlainTextFormatter.__call__(self, obj)</span>
 <span class="go">    700 stream = StringIO()</span>
 <span class="go">    701 printer = pretty.RepresentationPrinter(stream, self.verbose,</span>
@@ -1743,8 +1744,8 @@ or columns of a DataFrame will also have string dtype.</p>
 <span class="go">ImportError: pyarrow requires pandas 0.23.0 or above, pandas 0+unknown is installed</span>
 
 <span class="gp">In [14]: </span><span class="n">s</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">dtypes</span>
-<span class="gt">------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
 <span class="nn">Input In [14],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">s</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">dtypes</span>
 
@@ -1829,8 +1830,8 @@ or columns of a DataFrame will also have string dtype.</p>
 </div>
 <p>String accessor methods returning integers will return a value with <a class="reference internal" href="../reference/api/pandas.Int64Dtype.html#pandas.Int64Dtype" title="pandas.Int64Dtype"><code class="xref py py-class docutils literal notranslate"><span class="pre">Int64Dtype</span></code></a></p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [15]: </span><span class="n">s</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
-<span class="gt">------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
 <span class="nn">Input In [15],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">s</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
 

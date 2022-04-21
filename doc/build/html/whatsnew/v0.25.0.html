@@ -37,6 +37,7 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1088,6 +1089,8 @@ output columns when applying multiple aggregation functions to specific columns 
 <span class="go">2  cat     9.5     9.9</span>
 <span class="go">3  dog    34.0   198.0</span>
 
+<span class="go">[4 rows x 3 columns]</span>
+
 <span class="gp">In [3]: </span><span class="n">animals</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;kind&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
 <span class="gp">   ...: </span>    <span class="n">min_height</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">NamedAgg</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">),</span>
 <span class="gp">   ...: </span>    <span class="n">max_height</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">NamedAgg</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">),</span>
@@ -1099,6 +1102,8 @@ output columns when applying multiple aggregation functions to specific columns 
 <span class="go">kind                                        </span>
 <span class="go">cat          9.1         9.5            8.90</span>
 <span class="go">dog          6.0        34.0          102.75</span>
+
+<span class="go">[2 rows x 3 columns]</span>
 </pre></div>
 </div>
 <p>Pass the desired columns names as the <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> to <code class="docutils literal notranslate"><span class="pre">.agg</span></code>. The values of <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code>
@@ -1116,6 +1121,8 @@ what the arguments to the function are, but plain tuples are accepted as well.</
 <span class="go">kind                                        </span>
 <span class="go">cat          9.1         9.5            8.90</span>
 <span class="go">dog          6.0        34.0          102.75</span>
+
+<span class="go">[2 rows x 3 columns]</span>
 </pre></div>
 </div>
 <p>Named aggregation is the recommended replacement for the deprecated “dict-of-dicts”
@@ -1132,6 +1139,8 @@ column selection, the values can just be the functions to apply</p>
 <span class="go">kind                        </span>
 <span class="go">cat          9.1         9.5</span>
 <span class="go">dog          6.0        34.0</span>
+
+<span class="go">[2 rows x 2 columns]</span>
 </pre></div>
 </div>
 <p>This type of aggregation is the recommended alternative to the deprecated behavior when passing
@@ -1152,6 +1161,8 @@ a dict to a Series groupby aggregation (<a class="reference internal" href="v0.2
 <span class="go">cat          9.1         9.5</span>
 <span class="go">dog          6.0        34.0</span>
 
+<span class="go">[2 rows x 2 columns]</span>
+
 <span class="gp">In [7]: </span><span class="n">animals</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;kind&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span>
 <span class="gp">   ...: </span>    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
 <span class="gp">   ...: </span>    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -1163,6 +1174,8 @@ a dict to a Series groupby aggregation (<a class="reference internal" href="v0.2
 <span class="go">kind                                            </span>
 <span class="go">cat        -0.4       18.6       -2.0       17.8</span>
 <span class="go">dog       -28.0       40.0     -190.5      205.5</span>
+
+<span class="go">[2 rows x 4 columns]</span>
 </pre></div>
 </div>
 <p>Previously, these raised a <code class="docutils literal notranslate"><span class="pre">SpecificationError</span></code>.</p>
@@ -1263,6 +1276,8 @@ which level to end normalization (<a class="reference external" href="https://gi
 <span class="go">    var1  var2</span>
 <span class="go">0  a,b,c     1</span>
 <span class="go">1  d,e,f     2</span>
+
+<span class="go">[2 rows x 2 columns]</span>
 </pre></div>
 </div>
 <p>Creating a long form <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is now straightforward using chained operations</p>
@@ -1275,6 +1290,8 @@ which level to end normalization (<a class="reference external" href="https://gi
 <span class="go">1    d     2</span>
 <span class="go">1    e     2</span>
 <span class="go">1    f     2</span>
+
+<span class="go">[6 rows x 2 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -1324,6 +1341,8 @@ is respected in indexing. (<a class="reference external" href="https://github.co
 <span class="gh">Out[13]: </span><span class="go"></span>
 <span class="go">                           0</span>
 <span class="go">2019-01-01 00:00:00-08:00  0</span>
+
+<span class="go">[1 rows x 1 columns]</span>
 </pre></div>
 </div>
 <p><em>Previous behavior</em>:</p>
@@ -1338,6 +1357,8 @@ is respected in indexing. (<a class="reference external" href="https://github.co
 <span class="gh">Out[14]: </span><span class="go"></span>
 <span class="go">                           0</span>
 <span class="go">2019-01-01 00:00:00-08:00  0</span>
+
+<span class="go">[1 rows x 1 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -1372,8 +1393,8 @@ would be reassigned as -1. (<a class="reference external" href="https://github.c
 <span class="go">           )</span>
 
 <span class="gp">In [16]: </span><span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="p">(</span><span class="n">levels</span><span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span> <span class="n">codes</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
-<span class="gt">------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
 <span class="nn">Input In [16],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="p">(</span><span class="n">levels</span><span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span> <span class="n">codes</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
 
@@ -1416,6 +1437,8 @@ side effects, this was an undesired behavior and may have led to surprises. (<a 
 <span class="go">0  x  1</span>
 <span class="go">1  y  2</span>
 
+<span class="go">[2 rows x 2 columns]</span>
+
 <span class="gp">In [19]: </span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
 <span class="gp">   ....: </span>    <span class="nb">print</span><span class="p">(</span><span class="n">group</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 <span class="gp">   ....: </span>    <span class="k">return</span> <span class="n">group</span>
@@ -1441,6 +1464,8 @@ side effects, this was an undesired behavior and may have led to surprises. (<a 
 <span class="go">   a  b</span>
 <span class="go">0  x  1</span>
 <span class="go">1  y  2</span>
+
+<span class="go">[2 rows x 2 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -1502,11 +1527,11 @@ of <code class="docutils literal notranslate"><span class="pre">object</span></c
 <span class="go">0      b&#39;a&#39;</span>
 <span class="go">1     b&#39;ba&#39;</span>
 <span class="go">2    b&#39;cba&#39;</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 3, dtype: object</span>
 
 <span class="gp">In [25]: </span><span class="n">s</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
-<span class="gt">------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
 <span class="nn">Input In [25],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">s</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
 
@@ -1538,11 +1563,13 @@ of <code class="docutils literal notranslate"><span class="pre">object</span></c
 <span class="go">2       -1  bar</span>
 <span class="go">3       -2  qux</span>
 
+<span class="go">[4 rows x 2 columns]</span>
+
 <span class="gp">In [29]: </span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
 <span class="gh">Out[29]: </span><span class="go"></span>
 <span class="go">payload       int64</span>
 <span class="go">col        category</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 2, dtype: object</span>
 </pre></div>
 </div>
 <p><em>Previous Behavior</em>:</p>
@@ -1598,6 +1625,8 @@ are returned. (<a class="reference external" href="https://github.com/pandas-dev
 <span class="go">   a  b</span>
 <span class="go">0  x  1</span>
 <span class="go">1  y  2</span>
+
+<span class="go">[2 rows x 2 columns]</span>
 </pre></div>
 </div>
 <p><em>Previous behavior</em>:</p>
@@ -1614,6 +1643,8 @@ are returned. (<a class="reference external" href="https://github.com/pandas-dev
 <span class="go">   b</span>
 <span class="go">0  1</span>
 <span class="go">1  2</span>
+
+<span class="go">[2 rows x 1 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -1630,6 +1661,8 @@ with <code class="xref py py-attr docutils literal notranslate"><span class="pre
 <span class="go">Empty DataFrame</span>
 <span class="go">Columns: [empty_col]</span>
 <span class="go">Index: []</span>
+
+<span class="go">[0 rows x 1 columns]</span>
 </pre></div>
 </div>
 <p><em>Previous behavior</em>:</p>
@@ -1648,6 +1681,8 @@ with <code class="xref py py-attr docutils literal notranslate"><span class="pre
 <span class="go">unique         0</span>
 <span class="go">top          NaN</span>
 <span class="go">freq         NaN</span>
+
+<span class="go">[4 rows x 1 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -1721,7 +1756,7 @@ to <code class="docutils literal notranslate"><span class="pre">Interval</span><
 <span class="go">(0, 4]    a</span>
 <span class="go">(1, 5]    b</span>
 <span class="go">(5, 8]    c</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 3, dtype: object</span>
 </pre></div>
 </div>
 <p>Selecting from a <code class="docutils literal notranslate"><span class="pre">Series</span></code> or <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> using <code class="docutils literal notranslate"><span class="pre">[]</span></code> (<code class="docutils literal notranslate"><span class="pre">__getitem__</span></code>) or <code class="docutils literal notranslate"><span class="pre">loc</span></code> now only returns exact matches for <code class="docutils literal notranslate"><span class="pre">Interval</span></code> queries.</p>
@@ -1784,13 +1819,13 @@ previous behavior of returning overlapping matches.</p>
 <span class="gh">Out[47]: </span><span class="go"></span>
 <span class="go">(0, 4]    a</span>
 <span class="go">(1, 5]    b</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 2, dtype: object</span>
 
 <span class="gp">In [48]: </span><span class="n">s</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idxr</span><span class="p">]</span>
 <span class="gh">Out[48]: </span><span class="go"></span>
 <span class="go">(0, 4]    a</span>
 <span class="go">(1, 5]    b</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 2, dtype: object</span>
 </pre></div>
 </div>
 </section>
@@ -1807,14 +1842,14 @@ when both are <a class="reference internal" href="../reference/api/pandas.Series
 <span class="go">a    1</span>
 <span class="go">b    2</span>
 <span class="go">c    3</span>
-<span class="go">dtype: int64</span>
+<span class="go">Length: 3, dtype: int64</span>
 
 <span class="gp">In [52]: </span><span class="n">s2</span>
 <span class="gh">Out[52]: </span><span class="go"></span>
 <span class="go">d    3</span>
 <span class="go">c    4</span>
 <span class="go">b    5</span>
-<span class="go">dtype: int64</span>
+<span class="go">Length: 3, dtype: int64</span>
 </pre></div>
 </div>
 <p><em>Previous behavior</em></p>
@@ -1833,7 +1868,7 @@ when both are <a class="reference internal" href="../reference/api/pandas.Series
 <span class="go">b    32.0</span>
 <span class="go">c    81.0</span>
 <span class="go">d     NaN</span>
-<span class="go">dtype: float64</span>
+<span class="go">Length: 4, dtype: float64</span>
 </pre></div>
 </div>
 <p>This matches the behavior of other binary operations in pandas, like <a class="reference internal" href="../reference/api/pandas.Series.add.html#pandas.Series.add" title="pandas.Series.add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Series.add()</span></code></a>.
@@ -1844,7 +1879,7 @@ applying the ufunc.</p>
 <span class="go">a      1</span>
 <span class="go">b     16</span>
 <span class="go">c    243</span>
-<span class="go">dtype: int64</span>
+<span class="go">Length: 3, dtype: int64</span>
 </pre></div>
 </div>
 </section>
@@ -1912,6 +1947,8 @@ order of the resulting DataFrame has changed compared to previous pandas version
 <span class="go">0   Joe    NY   18        NaN      NaN</span>
 <span class="go">1  Jane    KY   19  Minecraft      NaN</span>
 <span class="go">2  Jean    OK   20        NaN     good</span>
+
+<span class="go">[3 rows x 5 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -2060,7 +2097,7 @@ by a <code class="docutils literal notranslate"><span class="pre">Series</span><
 <span class="gp">In [61]: </span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
 <span class="gh">Out[61]: </span><span class="go"></span>
 <span class="go">A    Sparse[int64, 0]</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 1, dtype: object</span>
 </pre></div>
 </div>
 <p>The memory usage of the two approaches is identical. See <a class="reference internal" href="../user_guide/sparse.html#sparse-migration"><span class="std std-ref">Migrating</span></a> for more (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/19239">GH19239</a>).</p>

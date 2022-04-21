@@ -37,6 +37,7 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1239,6 +1240,8 @@ except that we match on nearest key rather than equal keys.</p>
 <span class="go">1   5        b</span>
 <span class="go">2  10        c</span>
 
+<span class="go">[3 rows x 2 columns]</span>
+
 <span class="gp">In [4]: </span><span class="n">right</span>
 <span class="gh">Out[4]: </span><span class="go"></span>
 <span class="go">   a  right_val</span>
@@ -1247,6 +1250,8 @@ except that we match on nearest key rather than equal keys.</p>
 <span class="go">2  3          3</span>
 <span class="go">3  6          6</span>
 <span class="go">4  7          7</span>
+
+<span class="go">[5 rows x 2 columns]</span>
 </pre></div>
 </div>
 <p>We typically want to match exactly when possible, and use the most
@@ -1257,6 +1262,8 @@ recent value otherwise.</p>
 <span class="go">0   1        a          1</span>
 <span class="go">1   5        b          3</span>
 <span class="go">2  10        c          7</span>
+
+<span class="go">[3 rows x 3 columns]</span>
 </pre></div>
 </div>
 <p>We can also match rows ONLY with prior data, and not an exact match.</p>
@@ -1266,6 +1273,8 @@ recent value otherwise.</p>
 <span class="go">0   1        a        NaN</span>
 <span class="go">1   5        b        3.0</span>
 <span class="go">2  10        c        7.0</span>
+
+<span class="go">[3 rows x 3 columns]</span>
 </pre></div>
 </div>
 <p>In a typical time-series example, we have <code class="docutils literal notranslate"><span class="pre">trades</span></code> and <code class="docutils literal notranslate"><span class="pre">quotes</span></code> and we want to <code class="docutils literal notranslate"><span class="pre">asof-join</span></code> them.
@@ -1321,6 +1330,8 @@ This also illustrates using the <code class="docutils literal notranslate"><span
 <span class="go">3 2016-05-25 13:30:00.048   GOOG  720.92       100</span>
 <span class="go">4 2016-05-25 13:30:00.048   AAPL   98.00       100</span>
 
+<span class="go">[5 rows x 4 columns]</span>
+
 <span class="gp">In [10]: </span><span class="n">quotes</span>
 <span class="gh">Out[10]: </span><span class="go"></span>
 <span class="go">                     time ticker     bid     ask</span>
@@ -1332,6 +1343,8 @@ This also illustrates using the <code class="docutils literal notranslate"><span
 <span class="go">5 2016-05-25 13:30:00.049   AAPL   97.99   98.01</span>
 <span class="go">6 2016-05-25 13:30:00.072   GOOG  720.50  720.88</span>
 <span class="go">7 2016-05-25 13:30:00.075   MSFT   52.01   52.03</span>
+
+<span class="go">[8 rows x 4 columns]</span>
 </pre></div>
 </div>
 <p>An asof merge joins on the <code class="docutils literal notranslate"><span class="pre">on</span></code>, typically a datetimelike field, which is ordered, and
@@ -1345,6 +1358,8 @@ that forward filling happens automatically taking the most recent non-NaN value.
 <span class="go">2 2016-05-25 13:30:00.048   GOOG  720.77       100  720.50  720.93</span>
 <span class="go">3 2016-05-25 13:30:00.048   GOOG  720.92       100  720.50  720.93</span>
 <span class="go">4 2016-05-25 13:30:00.048   AAPL   98.00       100     NaN     NaN</span>
+
+<span class="go">[5 rows x 6 columns]</span>
 </pre></div>
 </div>
 <p>This returns a merged DataFrame with the entries in the same order as the original left
@@ -1368,6 +1383,8 @@ See the full documentation <a class="reference internal" href="../user_guide/win
 <span class="go">2013-01-01 09:00:02  2.0</span>
 <span class="go">2013-01-01 09:00:03  NaN</span>
 <span class="go">2013-01-01 09:00:04  4.0</span>
+
+<span class="go">[5 rows x 1 columns]</span>
 </pre></div>
 </div>
 <p>This is a regular frequency index. Using an integer window parameter works to roll along the window frequency.</p>
@@ -1380,6 +1397,8 @@ See the full documentation <a class="reference internal" href="../user_guide/win
 <span class="go">2013-01-01 09:00:03  NaN</span>
 <span class="go">2013-01-01 09:00:04  NaN</span>
 
+<span class="go">[5 rows x 1 columns]</span>
+
 <span class="gp">In [15]: </span><span class="n">dft</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">min_periods</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="gh">Out[15]: </span><span class="go"></span>
 <span class="go">                       B</span>
@@ -1388,6 +1407,8 @@ See the full documentation <a class="reference internal" href="../user_guide/win
 <span class="go">2013-01-01 09:00:02  3.0</span>
 <span class="go">2013-01-01 09:00:03  2.0</span>
 <span class="go">2013-01-01 09:00:04  4.0</span>
+
+<span class="go">[5 rows x 1 columns]</span>
 </pre></div>
 </div>
 <p>Specifying an offset allows a more intuitive specification of the rolling frequency.</p>
@@ -1399,6 +1420,8 @@ See the full documentation <a class="reference internal" href="../user_guide/win
 <span class="go">2013-01-01 09:00:02  3.0</span>
 <span class="go">2013-01-01 09:00:03  2.0</span>
 <span class="go">2013-01-01 09:00:04  4.0</span>
+
+<span class="go">[5 rows x 1 columns]</span>
 </pre></div>
 </div>
 <p>Using a non-regular, but still monotonic index, rolling with an integer window does not impart any special calculation.</p>
@@ -1427,6 +1450,8 @@ See the full documentation <a class="reference internal" href="../user_guide/win
 <span class="go">2013-01-01 09:00:05  NaN</span>
 <span class="go">2013-01-01 09:00:06  4.0</span>
 
+<span class="go">[5 rows x 1 columns]</span>
+
 <span class="gp">In [19]: </span><span class="n">dft</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="gh">Out[19]: </span><span class="go"></span>
 <span class="go">                       B</span>
@@ -1436,6 +1461,8 @@ See the full documentation <a class="reference internal" href="../user_guide/win
 <span class="go">2013-01-01 09:00:03  3.0</span>
 <span class="go">2013-01-01 09:00:05  NaN</span>
 <span class="go">2013-01-01 09:00:06  NaN</span>
+
+<span class="go">[5 rows x 1 columns]</span>
 </pre></div>
 </div>
 <p>Using the time-specification generates variable windows for this sparse data.</p>
@@ -1448,6 +1475,8 @@ See the full documentation <a class="reference internal" href="../user_guide/win
 <span class="go">2013-01-01 09:00:03  3.0</span>
 <span class="go">2013-01-01 09:00:05  NaN</span>
 <span class="go">2013-01-01 09:00:06  4.0</span>
+
+<span class="go">[5 rows x 1 columns]</span>
 </pre></div>
 </div>
 <p>Furthermore, we now allow an optional <code class="docutils literal notranslate"><span class="pre">on</span></code> parameter to specify a column (rather than the
@@ -1463,6 +1492,8 @@ default of the index) in a DataFrame.</p>
 <span class="go">3 2013-01-01 09:00:05  NaN</span>
 <span class="go">4 2013-01-01 09:00:06  4.0</span>
 
+<span class="go">[5 rows x 2 columns]</span>
+
 <span class="gp">In [23]: </span><span class="n">dft</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="s2">&quot;2s&quot;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;foo&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="gh">Out[23]: </span><span class="go"></span>
 <span class="go">                  foo    B</span>
@@ -1471,6 +1502,8 @@ default of the index) in a DataFrame.</p>
 <span class="go">2 2013-01-01 09:00:03  3.0</span>
 <span class="go">3 2013-01-01 09:00:05  NaN</span>
 <span class="go">4 2013-01-01 09:00:06  4.0</span>
+
+<span class="go">[5 rows x 2 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -1495,8 +1528,8 @@ they are in the file or passed in as the <code class="docutils literal notransla
 contained the values <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">3]</span></code>.</p>
 <p><strong>New behavior</strong>:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [26]: </span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">names</span><span class="o">=</span><span class="n">names</span><span class="p">)</span>
-<span class="gt">------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
 <span class="nn">Input In [26],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">names</span><span class="o">=</span><span class="n">names</span><span class="p">)</span>
 
@@ -1560,19 +1593,21 @@ converting to <code class="docutils literal notranslate"><span class="pre">Categ
 <span class="go">1    a    b     2</span>
 <span class="go">2    c    d     3</span>
 
+<span class="go">[3 rows x 3 columns]</span>
+
 <span class="gp">In [29]: </span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">))</span><span class="o">.</span><span class="n">dtypes</span>
 <span class="gh">Out[29]: </span><span class="go"></span>
 <span class="go">col1    object</span>
 <span class="go">col2    object</span>
 <span class="go">col3     int64</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 3, dtype: object</span>
 
 <span class="gp">In [30]: </span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;category&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dtypes</span>
 <span class="gh">Out[30]: </span><span class="go"></span>
 <span class="go">col1    category</span>
 <span class="go">col2    category</span>
 <span class="go">col3    category</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 3, dtype: object</span>
 </pre></div>
 </div>
 <p>Individual columns can be parsed as a <code class="docutils literal notranslate"><span class="pre">Categorical</span></code> using a dict specification</p>
@@ -1581,7 +1616,7 @@ converting to <code class="docutils literal notranslate"><span class="pre">Categ
 <span class="go">col1    category</span>
 <span class="go">col2      object</span>
 <span class="go">col3       int64</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 3, dtype: object</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -1597,14 +1632,14 @@ such as <a class="reference internal" href="../reference/api/pandas.to_datetime.
 <span class="go">col1    category</span>
 <span class="go">col2    category</span>
 <span class="go">col3    category</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 3, dtype: object</span>
 
 <span class="gp">In [34]: </span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;col3&quot;</span><span class="p">]</span>
 <span class="gh">Out[34]: </span><span class="go"></span>
 <span class="go">0    1</span>
 <span class="go">1    2</span>
 <span class="go">2    3</span>
-<span class="go">Name: col3, dtype: category</span>
+<span class="go">Name: col3, Length: 3, dtype: category</span>
 <span class="go">Categories (3, object): [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;]</span>
 
 <span class="gp">In [35]: </span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;col3&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;col3&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span><span class="p">)</span>
@@ -1614,7 +1649,7 @@ such as <a class="reference internal" href="../reference/api/pandas.to_datetime.
 <span class="go">0    1</span>
 <span class="go">1    2</span>
 <span class="go">2    3</span>
-<span class="go">Name: col3, dtype: category</span>
+<span class="go">Name: col3, Length: 3, dtype: category</span>
 <span class="go">Categories (3, int64): [1, 2, 3]</span>
 </pre></div>
 </div>
@@ -1657,7 +1692,7 @@ such as <a class="reference internal" href="../reference/api/pandas.to_datetime.
 <span class="go">1    b</span>
 <span class="go">0    b</span>
 <span class="go">1    c</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 4, dtype: object</span>
 </pre></div>
 </div>
 </section>
@@ -1747,6 +1782,8 @@ These provide date offsets anchored (by default) to the 15th and end of month, a
 <span class="go">0 0         1</span>
 <span class="go">  1         2</span>
 <span class="go">1 0         1</span>
+
+<span class="go">[3 rows x 1 columns]</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Index.astype()</span></code> now accepts an optional boolean argument <code class="docutils literal notranslate"><span class="pre">copy</span></code>, which allows optional copying if the requirements on dtype are satisfied (<a class="reference external" href="https://github.com/pandas-dev/pandas/issues/13209">GH13209</a>)</p>
@@ -1782,7 +1819,7 @@ These provide date offsets anchored (by default) to the 15th and end of month, a
 <span class="go">a    uint8</span>
 <span class="go">b    uint8</span>
 <span class="go">c    uint8</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 3, dtype: object</span>
 </pre></div>
 </div>
 </section>
@@ -1899,6 +1936,8 @@ will be published in future versions of pandas (<a class="reference external" hr
 <span class="go">4 2015-01-25 2015-01-25  3</span>
 <span class="go">5 2015-02-01 2015-02-01  4</span>
 
+<span class="go">[5 rows x 2 columns]</span>
+
 <span class="gp">In [73]: </span><span class="n">df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;date&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="gh">Out[73]: </span><span class="go"></span>
 <span class="go">            a</span>
@@ -1906,12 +1945,16 @@ will be published in future versions of pandas (<a class="reference external" hr
 <span class="go">2015-01-31  6</span>
 <span class="go">2015-02-28  4</span>
 
+<span class="go">[2 rows x 1 columns]</span>
+
 <span class="gp">In [74]: </span><span class="n">df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="gh">Out[74]: </span><span class="go"></span>
 <span class="go">            a</span>
 <span class="go">d            </span>
 <span class="go">2015-01-31  6</span>
 <span class="go">2015-02-28  4</span>
+
+<span class="go">[2 rows x 1 columns]</span>
 </pre></div>
 </div>
 </li>
@@ -1944,11 +1987,15 @@ in a row using <code class="docutils literal notranslate"><span class="pre">df.s
 <span class="go">row1  2  3  4</span>
 <span class="go">row2  7  5  8</span>
 
+<span class="go">[2 rows x 3 columns]</span>
+
 <span class="gp">In [77]: </span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;row2&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gh">Out[77]: </span><span class="go"></span>
 <span class="go">      B  A  C</span>
 <span class="go">row1  3  2  4</span>
 <span class="go">row2  5  7  8</span>
+
+<span class="go">[2 rows x 3 columns]</span>
 </pre></div>
 </div>
 </li>
@@ -2017,7 +2064,7 @@ the <code class="docutils literal notranslate"><span class="pre">.index</span></
 <span class="go">B    4.0</span>
 <span class="go">C    NaN</span>
 <span class="go">D    NaN</span>
-<span class="go">dtype: float64</span>
+<span class="go">Length: 4, dtype: float64</span>
 
 <span class="gp">In [83]: </span><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s2">&quot;ABC&quot;</span><span class="p">))</span>
 
@@ -2030,6 +2077,8 @@ the <code class="docutils literal notranslate"><span class="pre">.index</span></
 <span class="go">B  4.0</span>
 <span class="go">C  NaN</span>
 <span class="go">D  NaN</span>
+
+<span class="go">[4 rows x 1 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -2066,7 +2115,7 @@ the <code class="docutils literal notranslate"><span class="pre">.index</span></
 <span class="go">B     True</span>
 <span class="go">C    False</span>
 <span class="go">D    False</span>
-<span class="go">dtype: bool</span>
+<span class="go">Length: 4, dtype: bool</span>
 </pre></div>
 </div>
 </div>
@@ -2102,7 +2151,7 @@ the <code class="docutils literal notranslate"><span class="pre">.index</span></
 <span class="go">B    False</span>
 <span class="go">C    False</span>
 <span class="go">D    False</span>
-<span class="go">dtype: bool</span>
+<span class="go">Length: 4, dtype: bool</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -2117,7 +2166,7 @@ the <code class="docutils literal notranslate"><span class="pre">.index</span></
 <span class="go">A     True</span>
 <span class="go">B    False</span>
 <span class="go">C    False</span>
-<span class="go">dtype: bool</span>
+<span class="go">Length: 3, dtype: bool</span>
 </pre></div>
 </div>
 </div>
@@ -2133,6 +2182,8 @@ the <code class="docutils literal notranslate"><span class="pre">.index</span></
 <span class="go">B  False</span>
 <span class="go">C  False</span>
 <span class="go">D  False</span>
+
+<span class="go">[4 rows x 1 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -2150,7 +2201,7 @@ which has the different <code class="docutils literal notranslate"><span class="
 <span class="go">b     True</span>
 <span class="go">c    False</span>
 <span class="go">d    False</span>
-<span class="go">dtype: bool</span>
+<span class="go">Length: 4, dtype: bool</span>
 
 <span class="gp">In [98]: </span><span class="n">s1</span><span class="o">.</span><span class="n">ge</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span>
 <span class="gh">Out[98]: </span><span class="go"></span>
@@ -2158,7 +2209,7 @@ which has the different <code class="docutils literal notranslate"><span class="
 <span class="go">b     True</span>
 <span class="go">c     True</span>
 <span class="go">d    False</span>
-<span class="go">dtype: bool</span>
+<span class="go">Length: 4, dtype: bool</span>
 </pre></div>
 </div>
 <p>Previously, this worked the same as comparison operators (see above).</p>
@@ -2186,7 +2237,7 @@ which has the different <code class="docutils literal notranslate"><span class="
 <span class="gh">Out[102]: </span><span class="go"></span>
 <span class="go">a    2016-01-01 00:00:00</span>
 <span class="go">b                    3.0</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 2, dtype: object</span>
 
 <span class="gp">In [103]: </span><span class="n">s</span><span class="o">.</span><span class="n">dtype</span>
 <span class="gh">Out[103]: </span><span class="go">dtype(&#39;O&#39;)</span>
@@ -2226,6 +2277,8 @@ which has the different <code class="docutils literal notranslate"><span class="
 <span class="go">   key  v1</span>
 <span class="go">0    1  10</span>
 
+<span class="go">[1 rows x 2 columns]</span>
+
 <span class="gp">In [107]: </span><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;v1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]})</span>
 
 <span class="gp">In [108]: </span><span class="n">df2</span>
@@ -2233,6 +2286,8 @@ which has the different <code class="docutils literal notranslate"><span class="
 <span class="go">   key  v1</span>
 <span class="go">0    1  20</span>
 <span class="go">1    2  30</span>
+
+<span class="go">[2 rows x 2 columns]</span>
 </pre></div>
 </div>
 <p><strong>Previous behavior</strong>:</p>
@@ -2259,11 +2314,13 @@ which has the different <code class="docutils literal notranslate"><span class="
 <span class="go">1    1  20</span>
 <span class="go">2    2  30</span>
 
+<span class="go">[3 rows x 2 columns]</span>
+
 <span class="gp">In [110]: </span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;outer&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dtypes</span>
 <span class="gh">Out[110]: </span><span class="go"></span>
 <span class="go">key    int64</span>
 <span class="go">v1     int64</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 2, dtype: object</span>
 </pre></div>
 </div>
 <p>Of course if you have missing values that are introduced, then the
@@ -2274,12 +2331,14 @@ resulting dtype will be upcast, which is unchanged from previous.</p>
 <span class="go">0    1  10.0    20</span>
 <span class="go">1    2   NaN    30</span>
 
+<span class="go">[2 rows x 3 columns]</span>
+
 <span class="gp">In [112]: </span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;outer&quot;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;key&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dtypes</span>
 <span class="gh">Out[112]: </span><span class="go"></span>
 <span class="go">key       int64</span>
 <span class="go">v1_x    float64</span>
 <span class="go">v1_y      int64</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 3, dtype: object</span>
 </pre></div>
 </div>
 </section>
@@ -2330,7 +2389,7 @@ resulting dtype will be upcast, which is unchanged from previous.</p>
 <span class="go">99.95%    3.998000</span>
 <span class="go">99.99%    3.999600</span>
 <span class="go">max       4.000000</span>
-<span class="go">dtype: float64</span>
+<span class="go">Length: 12, dtype: float64</span>
 
 <span class="gp">In [116]: </span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">percentiles</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.0005</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.999</span><span class="p">,</span> <span class="mf">0.9995</span><span class="p">,</span> <span class="mf">0.9999</span><span class="p">])</span>
 <span class="gh">Out[116]: </span><span class="go"></span>
@@ -2347,6 +2406,8 @@ resulting dtype will be upcast, which is unchanged from previous.</p>
 <span class="go">99.95%  3.998000</span>
 <span class="go">99.99%  3.999600</span>
 <span class="go">max     4.000000</span>
+
+<span class="go">[12 rows x 1 columns]</span>
 </pre></div>
 </div>
 <p>Furthermore:</p>
@@ -2623,7 +2684,7 @@ As a consequence, <code class="docutils literal notranslate"><span class="pre">g
 <span class="go">A       int64</span>
 <span class="go">C    category</span>
 <span class="go">B     float64</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 3, dtype: object</span>
 
 <span class="gp">In [149]: </span><span class="n">df_set_idx</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">levels</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="gh">Out[149]: </span><span class="go">CategoricalIndex([&#39;b&#39;, &#39;a&#39;, &#39;c&#39;], categories=[&#39;b&#39;, &#39;a&#39;, &#39;c&#39;], ordered=False, dtype=&#39;category&#39;, name=&#39;C&#39;)</span>
@@ -2633,7 +2694,7 @@ As a consequence, <code class="docutils literal notranslate"><span class="pre">g
 <span class="go">A       int64</span>
 <span class="go">C    category</span>
 <span class="go">B       int64</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 3, dtype: object</span>
 </pre></div>
 </div>
 </section>
@@ -2666,6 +2727,8 @@ the result of calling <a class="reference internal" href="../reference/api/panda
 <span class="go">1  2  3</span>
 <span class="go">2  4  5</span>
 <span class="go">3  6  7</span>
+
+<span class="go">[4 rows x 2 columns]</span>
 </pre></div>
 </div>
 </section>

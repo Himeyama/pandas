@@ -37,6 +37,7 @@
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -1041,18 +1042,18 @@ see the <a class="reference internal" href="../../user_guide/timeseries.html#tim
 <span class="gp">   ...: </span><span class="p">]</span>
 <span class="gp">   ...: </span>
 <span class="gh">Out[7]: </span><span class="go"></span>
-<span class="go">         date1      date2  ...  date1_next    months_between</span>
-<span class="go">0   2013-01-15 2015-02-15  ...  2013-02-01  &lt;25 * MonthEnds&gt;</span>
-<span class="go">1   2013-01-15 2015-02-15  ...  2013-02-01  &lt;25 * MonthEnds&gt;</span>
-<span class="go">2   2013-01-15 2015-02-15  ...  2013-02-01  &lt;25 * MonthEnds&gt;</span>
-<span class="go">3   2013-01-15 2015-02-15  ...  2013-02-01  &lt;25 * MonthEnds&gt;</span>
-<span class="go">4   2013-01-15 2015-02-15  ...  2013-02-01  &lt;25 * MonthEnds&gt;</span>
-<span class="go">..         ...        ...  ...         ...               ...</span>
-<span class="go">239 2013-01-15 2015-02-15  ...  2013-02-01  &lt;25 * MonthEnds&gt;</span>
-<span class="go">240 2013-01-15 2015-02-15  ...  2013-02-01  &lt;25 * MonthEnds&gt;</span>
-<span class="go">241 2013-01-15 2015-02-15  ...  2013-02-01  &lt;25 * MonthEnds&gt;</span>
-<span class="go">242 2013-01-15 2015-02-15  ...  2013-02-01  &lt;25 * MonthEnds&gt;</span>
-<span class="go">243 2013-01-15 2015-02-15  ...  2013-02-01  &lt;25 * MonthEnds&gt;</span>
+<span class="go">         date1      date2  date1_year  date2_month date1_next    months_between</span>
+<span class="go">0   2013-01-15 2015-02-15        2013            2 2013-02-01  &lt;25 * MonthEnds&gt;</span>
+<span class="go">1   2013-01-15 2015-02-15        2013            2 2013-02-01  &lt;25 * MonthEnds&gt;</span>
+<span class="go">2   2013-01-15 2015-02-15        2013            2 2013-02-01  &lt;25 * MonthEnds&gt;</span>
+<span class="go">3   2013-01-15 2015-02-15        2013            2 2013-02-01  &lt;25 * MonthEnds&gt;</span>
+<span class="go">4   2013-01-15 2015-02-15        2013            2 2013-02-01  &lt;25 * MonthEnds&gt;</span>
+<span class="go">..         ...        ...         ...          ...        ...               ...</span>
+<span class="go">239 2013-01-15 2015-02-15        2013            2 2013-02-01  &lt;25 * MonthEnds&gt;</span>
+<span class="go">240 2013-01-15 2015-02-15        2013            2 2013-02-01  &lt;25 * MonthEnds&gt;</span>
+<span class="go">241 2013-01-15 2015-02-15        2013            2 2013-02-01  &lt;25 * MonthEnds&gt;</span>
+<span class="go">242 2013-01-15 2015-02-15        2013            2 2013-02-01  &lt;25 * MonthEnds&gt;</span>
+<span class="go">243 2013-01-15 2015-02-15        2013            2 2013-02-01  &lt;25 * MonthEnds&gt;</span>
 
 <span class="go">[244 rows x 6 columns]</span>
 </pre></div>
@@ -1610,18 +1611,18 @@ succinctly expressed in one operation.</p>
 
 <span class="gp">In [3]: </span><span class="n">tips</span>
 <span class="gh">Out[3]: </span><span class="go"></span>
-<span class="go">     total_bill    tip     sex  ...    time size adj_total_bill</span>
-<span class="go">67         1.07   1.00  Female  ...  Dinner    1     -17.686344</span>
-<span class="go">92         3.75   1.00  Female  ...  Dinner    2     -15.006344</span>
-<span class="go">111        5.25   1.00  Female  ...  Dinner    1     -11.938278</span>
-<span class="go">145        6.35   1.50  Female  ...   Lunch    2     -10.838278</span>
-<span class="go">135        6.51   1.25  Female  ...   Lunch    2     -10.678278</span>
-<span class="go">..          ...    ...     ...  ...     ...  ...            ...</span>
-<span class="go">182       43.35   3.50    Male  ...  Dinner    3      24.593656</span>
-<span class="go">156       46.17   5.00    Male  ...  Dinner    6      28.981722</span>
-<span class="go">59        46.27   6.73    Male  ...  Dinner    4      29.081722</span>
-<span class="go">212       46.33   9.00    Male  ...  Dinner    4      29.141722</span>
-<span class="go">170       48.81  10.00    Male  ...  Dinner    3      30.053656</span>
+<span class="go">     total_bill    tip     sex smoker   day    time  size  adj_total_bill</span>
+<span class="go">67         1.07   1.00  Female    Yes   Sat  Dinner     1      -17.686344</span>
+<span class="go">92         3.75   1.00  Female    Yes   Fri  Dinner     2      -15.006344</span>
+<span class="go">111        5.25   1.00  Female     No   Sat  Dinner     1      -11.938278</span>
+<span class="go">145        6.35   1.50  Female     No  Thur   Lunch     2      -10.838278</span>
+<span class="go">135        6.51   1.25  Female     No  Thur   Lunch     2      -10.678278</span>
+<span class="go">..          ...    ...     ...    ...   ...     ...   ...             ...</span>
+<span class="go">182       43.35   3.50    Male    Yes   Sun  Dinner     3       24.593656</span>
+<span class="go">156       46.17   5.00    Male     No   Sun  Dinner     6       28.981722</span>
+<span class="go">59        46.27   6.73    Male     No   Sat  Dinner     4       29.081722</span>
+<span class="go">212       46.33   9.00    Male     No   Sat  Dinner     4       29.141722</span>
+<span class="go">170       48.81  10.00    Male    Yes   Sat  Dinner     3       30.053656</span>
 
 <span class="go">[244 rows x 8 columns]</span>
 </pre></div>

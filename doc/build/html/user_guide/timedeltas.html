@@ -37,6 +37,7 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1023,13 +1024,11 @@ yields another <code class="docutils literal notranslate"><span class="pre">time
 similarly to the <code class="docutils literal notranslate"><span class="pre">Series</span></code>. These are the <em>displayed</em> values of the <code class="docutils literal notranslate"><span class="pre">Timedelta</span></code>.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [95]: </span><span class="n">td</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">components</span>
 <span class="gh">Out[95]: </span><span class="go"></span>
-<span class="go">   days  hours  minutes  ...  milliseconds  microseconds  nanoseconds</span>
-<span class="go">0  31.0    0.0      0.0  ...           0.0           0.0          0.0</span>
-<span class="go">1  31.0    0.0      0.0  ...           0.0           0.0          0.0</span>
-<span class="go">2  31.0    0.0      5.0  ...           0.0           0.0          0.0</span>
-<span class="go">3   NaN    NaN      NaN  ...           NaN           NaN          NaN</span>
-
-<span class="go">[4 rows x 7 columns]</span>
+<span class="go">   days  hours  minutes  seconds  milliseconds  microseconds  nanoseconds</span>
+<span class="go">0  31.0    0.0      0.0      0.0           0.0           0.0          0.0</span>
+<span class="go">1  31.0    0.0      0.0      0.0           0.0           0.0          0.0</span>
+<span class="go">2  31.0    0.0      5.0      3.0           0.0           0.0          0.0</span>
+<span class="go">3   NaN    NaN      NaN      NaN           NaN           NaN          NaN</span>
 
 <span class="gp">In [96]: </span><span class="n">td</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">seconds</span>
 <span class="gh">Out[96]: </span><span class="go"></span>

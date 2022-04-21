@@ -37,6 +37,7 @@
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -563,12 +564,10 @@ not, the <code class="docutils literal notranslate"><span class="pre">mean</span
 columns:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">titanic</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Sex&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="gh">Out[9]: </span><span class="go"></span>
-<span class="go">        PassengerId  Survived    Pclass  ...     SibSp     Parch       Fare</span>
-<span class="go">Sex                                      ...                               </span>
-<span class="go">female   431.028662  0.742038  2.159236  ...  0.694268  0.649682  44.479818</span>
-<span class="go">male     454.147314  0.188908  2.389948  ...  0.429809  0.235702  25.523893</span>
-
-<span class="go">[2 rows x 7 columns]</span>
+<span class="go">        PassengerId  Survived    Pclass        Age     SibSp     Parch       Fare</span>
+<span class="go">Sex                                                                              </span>
+<span class="go">female   431.028662  0.742038  2.159236  27.915709  0.694268  0.649682  44.479818</span>
+<span class="go">male     454.147314  0.188908  2.389948  30.726645  0.429809  0.235702  25.523893</span>
 </pre></div>
 </div>
 <p>It does not make much sense to get the average value of the <code class="docutils literal notranslate"><span class="pre">Pclass</span></code>.

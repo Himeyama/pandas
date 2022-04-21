@@ -37,6 +37,7 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -461,8 +462,8 @@ duplicates present. The output can’t be determined, and so pandas raises.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="n">s1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">])</span>
 
 <span class="gp">In [4]: </span><span class="n">s1</span><span class="o">.</span><span class="n">reindex</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">])</span>
-<span class="gt">------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
 <span class="nn">Input In [4],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">s1</span><span class="o">.</span><span class="n">reindex</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">])</span>
 
@@ -635,8 +636,8 @@ processing pipeline (from methods like <a class="reference internal" href="../re
 (the default is to allow them). If there are duplicate labels, an exception
 will be raised.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [19]: </span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">set_flags</span><span class="p">(</span><span class="n">allows_duplicate_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="gt">------------------------------------------------------------------------</span>
-<span class="ne">DuplicateLabelError</span><span class="g g-Whitespace">                    </span>Traceback (most recent call last)
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">DuplicateLabelError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
 <span class="nn">Input In [19],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">set_flags</span><span class="p">(</span><span class="n">allows_duplicate_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
@@ -727,8 +728,8 @@ labels or performing an operation that introduces duplicate labels on a <code cl
 <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> that disallows duplicates will raise an
 <code class="xref py py-class docutils literal notranslate"><span class="pre">errors.DuplicateLabelError</span></code>.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [28]: </span><span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">upper</span><span class="p">)</span>
-<span class="gt">------------------------------------------------------------------------</span>
-<span class="ne">DuplicateLabelError</span><span class="g g-Whitespace">                    </span>Traceback (most recent call last)
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">DuplicateLabelError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
 <span class="nn">Input In [28],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">upper</span><span class="p">)</span>
 
@@ -801,8 +802,8 @@ operations.</p>
 <span class="go">dtype: int64</span>
 
 <span class="gp">In [31]: </span><span class="n">s1</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="s2">&quot;b&quot;</span><span class="p">})</span>
-<span class="gt">------------------------------------------------------------------------</span>
-<span class="ne">DuplicateLabelError</span><span class="g g-Whitespace">                    </span>Traceback (most recent call last)
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">DuplicateLabelError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
 <span class="nn">Input In [31],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">s1</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="s2">&quot;b&quot;</span><span class="p">})</span>
 

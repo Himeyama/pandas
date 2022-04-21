@@ -37,6 +37,7 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -856,7 +857,7 @@ instead of <code class="docutils literal notranslate"><span class="pre">NaN</spa
 <span class="gh">Out[9]: </span><span class="go"></span>
 <span class="go">a    3</span>
 <span class="go">b    0</span>
-<span class="go">dtype: int64</span>
+<span class="go">Length: 2, dtype: int64</span>
 </pre></div>
 </div>
 <p>To restore the 0.21 behavior of returning <code class="docutils literal notranslate"><span class="pre">NaN</span></code> for unobserved groups,
@@ -865,7 +866,7 @@ use <code class="docutils literal notranslate"><span class="pre">min_count&gt;=1
 <span class="gh">Out[10]: </span><span class="go"></span>
 <span class="go">a    3.0</span>
 <span class="go">b    NaN</span>
-<span class="go">dtype: float64</span>
+<span class="go">Length: 2, dtype: float64</span>
 </pre></div>
 </div>
 </section>
@@ -898,7 +899,7 @@ sum and <code class="docutils literal notranslate"><span class="pre">1</span></c
 <span class="gh">Out[12]: </span><span class="go"></span>
 <span class="go">2017-01-01    2.0</span>
 <span class="go">2017-01-03    0.0</span>
-<span class="go">Freq: 2D, dtype: float64</span>
+<span class="go">Freq: 2D, Length: 2, dtype: float64</span>
 </pre></div>
 </div>
 <p>To restore the 0.21 behavior of returning <code class="docutils literal notranslate"><span class="pre">NaN</span></code>, use <code class="docutils literal notranslate"><span class="pre">min_count&gt;=1</span></code>.</p>
@@ -906,7 +907,7 @@ sum and <code class="docutils literal notranslate"><span class="pre">1</span></c
 <span class="gh">Out[13]: </span><span class="go"></span>
 <span class="go">2017-01-01    2.0</span>
 <span class="go">2017-01-03    NaN</span>
-<span class="go">Freq: 2D, dtype: float64</span>
+<span class="go">Freq: 2D, Length: 2, dtype: float64</span>
 </pre></div>
 </div>
 <p>In particular, upsampling and taking the sum or product is affected, as
@@ -931,7 +932,7 @@ entirely valid.</p>
 <span class="go">2017-01-01 00:00:00    1</span>
 <span class="go">2017-01-01 12:00:00    0</span>
 <span class="go">2017-01-02 00:00:00    2</span>
-<span class="go">Freq: 12H, dtype: int64</span>
+<span class="go">Freq: 12H, Length: 3, dtype: int64</span>
 </pre></div>
 </div>
 <p>Once again, the <code class="docutils literal notranslate"><span class="pre">min_count</span></code> keyword is available to restore the 0.21 behavior.</p>
@@ -940,7 +941,7 @@ entirely valid.</p>
 <span class="go">2017-01-01 00:00:00    1.0</span>
 <span class="go">2017-01-01 12:00:00    NaN</span>
 <span class="go">2017-01-02 00:00:00    2.0</span>
-<span class="go">Freq: 12H, dtype: float64</span>
+<span class="go">Freq: 12H, Length: 3, dtype: float64</span>
 </pre></div>
 </div>
 </section>
@@ -968,7 +969,7 @@ returns <code class="docutils literal notranslate"><span class="pre">0</span></c
 <span class="gh">Out[18]: </span><span class="go"></span>
 <span class="go">0    0.0</span>
 <span class="go">1    0.0</span>
-<span class="go">dtype: float64</span>
+<span class="go">Length: 2, dtype: float64</span>
 </pre></div>
 </div>
 <p>The default behavior of <code class="docutils literal notranslate"><span class="pre">min_periods=None</span></code>, implying that <code class="docutils literal notranslate"><span class="pre">min_periods</span></code>

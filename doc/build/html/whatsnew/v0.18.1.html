@@ -37,6 +37,7 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1065,6 +1066,8 @@ see <a class="reference internal" href="../user_guide/timeseries.html#timeseries
 <span class="go">2016-01-10      1    6</span>
 <span class="go">2016-01-17      2    7</span>
 <span class="go">2016-01-24      2    8</span>
+
+<span class="go">[4 rows x 2 columns]</span>
 </pre></div>
 </div>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [14]: </span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;group&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">&quot;1D&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">ffill</span><span class="p">())</span>
@@ -1129,6 +1132,8 @@ arguments.</p>
 <span class="go">0  11  14  7</span>
 <span class="go">1  12   5  8</span>
 <span class="go">2  13   6  9</span>
+
+<span class="go">[3 rows x 3 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -1143,12 +1148,16 @@ can return a valid boolean indexer or anything which is valid for these indexerâ
 <span class="go">1  5  8</span>
 <span class="go">2  6  9</span>
 
+<span class="go">[2 rows x 2 columns]</span>
+
 <span class="go"># callable returns list of labels</span>
 <span class="gp">In [19]: </span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">]]</span>
 <span class="gh">Out[19]: </span><span class="go"></span>
 <span class="go">   A  B</span>
 <span class="go">1  2  5</span>
 <span class="go">2  3  6</span>
+
+<span class="go">[2 rows x 2 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -1162,7 +1171,7 @@ class and index type.</p>
 <span class="go">0    1</span>
 <span class="go">1    2</span>
 <span class="go">2    3</span>
-<span class="go">Name: A, dtype: int64</span>
+<span class="go">Name: A, Length: 3, dtype: int64</span>
 </pre></div>
 </div>
 <p>Using these methods / indexers, you can chain data selection operations
@@ -1171,16 +1180,16 @@ without using temporary variable.</p>
 
 <span class="gp">In [22]: </span><span class="p">(</span><span class="n">bb</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;team&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">r</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">])</span>
 <span class="gh">Out[22]: </span><span class="go"></span>
-<span class="go">           stint    g    ab    r    h  ...   ibb   hbp    sh    sf  gidp</span>
-<span class="go">year team                              ...                              </span>
-<span class="go">2007 CIN       6  379   745  101  203  ...  14.0   1.0   1.0  15.0  18.0</span>
-<span class="go">     DET       5  301  1062  162  283  ...   3.0  10.0   4.0   8.0  28.0</span>
-<span class="go">     HOU       4  311   926  109  218  ...   3.0   9.0  16.0   6.0  17.0</span>
-<span class="go">     LAN      11  413  1021  153  293  ...   8.0   9.0   3.0   8.0  29.0</span>
-<span class="go">     NYN      13  622  1854  240  509  ...  24.0  23.0  18.0  15.0  48.0</span>
-<span class="go">     SFN       5  482  1305  198  337  ...  51.0   8.0  16.0   6.0  41.0</span>
-<span class="go">     TEX       2  198   729  115  200  ...   4.0   5.0   2.0   8.0  16.0</span>
-<span class="go">     TOR       4  459  1408  187  378  ...  16.0  12.0   4.0  16.0  38.0</span>
+<span class="go">           stint    g    ab    r    h  X2b  X3b  hr  ...   cs   bb     so   ibb   hbp    sh    sf  gidp</span>
+<span class="go">year team                                            ...                                               </span>
+<span class="go">2007 CIN       6  379   745  101  203   35    2  36  ...  1.0  105  127.0  14.0   1.0   1.0  15.0  18.0</span>
+<span class="go">     DET       5  301  1062  162  283   54    4  37  ...  7.0   97  176.0   3.0  10.0   4.0   8.0  28.0</span>
+<span class="go">     HOU       4  311   926  109  218   47    6  14  ...  4.0   60  212.0   3.0   9.0  16.0   6.0  17.0</span>
+<span class="go">     LAN      11  413  1021  153  293   61    3  36  ...  5.0  114  141.0   8.0   9.0   3.0   8.0  29.0</span>
+<span class="go">     NYN      13  622  1854  240  509  101    3  61  ...  4.0  174  310.0  24.0  23.0  18.0  15.0  48.0</span>
+<span class="go">     SFN       5  482  1305  198  337   67    6  40  ...  7.0  235  188.0  51.0   8.0  16.0   6.0  41.0</span>
+<span class="go">     TEX       2  198   729  115  200   40    4  28  ...  4.0   73  140.0   4.0   5.0   2.0   8.0  16.0</span>
+<span class="go">     TOR       4  459  1408  187  378   96    2  58  ...  2.0  190  265.0  16.0  12.0   4.0  16.0  38.0</span>
 
 <span class="go">[8 rows x 18 columns]</span>
 </pre></div>
@@ -1223,6 +1232,8 @@ without using temporary variable.</p>
 <span class="go">                    b  0.567020</span>
 <span class="go">2013-01-05 12:00:00 a  0.276232</span>
 <span class="go">                    b -1.087401</span>
+
+<span class="go">[4 rows x 1 columns]</span>
 </pre></div>
 </div>
 <p>On other levels</p>
@@ -1254,6 +1265,8 @@ without using temporary variable.</p>
 <span class="go">  2013-01-05 12:00:00  0.276232</span>
 <span class="go">b 2013-01-05 00:00:00  0.567020</span>
 <span class="go">  2013-01-05 12:00:00 -1.087401</span>
+
+<span class="go">[4 rows x 1 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -1270,6 +1283,8 @@ without using temporary variable.</p>
 <span class="go">   year  month  day  hour</span>
 <span class="go">0  2015      2    4     2</span>
 <span class="go">1  2016      3    5     3</span>
+
+<span class="go">[2 rows x 4 columns]</span>
 </pre></div>
 </div>
 <p>Assembling using the passed frame.</p>
@@ -1277,7 +1292,7 @@ without using temporary variable.</p>
 <span class="gh">Out[32]: </span><span class="go"></span>
 <span class="go">0   2015-02-04 02:00:00</span>
 <span class="go">1   2016-03-05 03:00:00</span>
-<span class="go">dtype: datetime64[ns]</span>
+<span class="go">Length: 2, dtype: datetime64[ns]</span>
 </pre></div>
 </div>
 <p>You can pass only the columns that you need to assemble.</p>
@@ -1285,7 +1300,7 @@ without using temporary variable.</p>
 <span class="gh">Out[33]: </span><span class="go"></span>
 <span class="go">0   2015-02-04</span>
 <span class="go">1   2016-03-05</span>
-<span class="go">dtype: datetime64[ns]</span>
+<span class="go">Length: 2, dtype: datetime64[ns]</span>
 </pre></div>
 </div>
 </section>
@@ -1378,6 +1393,8 @@ without using temporary variable.</p>
 <span class="go">0  a  1</span>
 <span class="go">1  b  2</span>
 <span class="go">2  a  3</span>
+
+<span class="go">[3 rows x 2 columns]</span>
 </pre></div>
 </div>
 <p>Previous behavior:</p>
@@ -1400,13 +1417,13 @@ without using temporary variable.</p>
 <span class="go">A</span>
 <span class="go">a    1</span>
 <span class="go">b    2</span>
-<span class="go">Name: B, dtype: int64</span>
+<span class="go">Name: B, Length: 2, dtype: int64</span>
 
 <span class="gp">In [42]: </span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="s2">&quot;B&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nth</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="gh">Out[42]: </span><span class="go"></span>
 <span class="go">0    1</span>
 <span class="go">1    2</span>
-<span class="go">Name: B, dtype: int64</span>
+<span class="go">Name: B, Length: 2, dtype: int64</span>
 </pre></div>
 </div>
 <p>Furthermore, previously, a <code class="docutils literal notranslate"><span class="pre">.groupby</span></code> would always sort, regardless if <code class="docutils literal notranslate"><span class="pre">sort=False</span></code> was passed with <code class="docutils literal notranslate"><span class="pre">.nth()</span></code>.</p>
@@ -1447,6 +1464,8 @@ without using temporary variable.</p>
 <span class="go">2 -0.720589  0.887163</span>
 <span class="go">3  0.859588 -0.636524</span>
 
+<span class="go">[4 rows x 2 columns]</span>
+
 <span class="gp">In [47]: </span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">nth</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="gh">Out[47]: </span><span class="go"></span>
 <span class="go">          a         b</span>
@@ -1455,6 +1474,8 @@ without using temporary variable.</p>
 <span class="go">3  0.859588 -0.636524</span>
 <span class="go">0 -0.334077  0.002118</span>
 <span class="go">1  0.036142 -2.074978</span>
+
+<span class="go">[4 rows x 2 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -1497,6 +1518,8 @@ used in the <code class="docutils literal notranslate"><span class="pre">pandas<
 <span class="go">        date  value</span>
 <span class="go">0 2000-10-10     10</span>
 <span class="go">1 2000-11-10     13</span>
+
+<span class="go">[2 rows x 2 columns]</span>
 </pre></div>
 </div>
 <p>Previous behavior:</p>
