@@ -37,6 +37,7 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1151,7 +1152,7 @@ getting a column from a DataFrame, you can do:</p>
 </div>
 <p>This is mainly syntactic sugar for the alternative and much more verbose:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [62]: </span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">])</span>
-<span class="gh">Out[62]: </span><span class="go">&lt;pandas.core.groupby.generic.SeriesGroupBy object at 0x7f8636a24fa0&gt;</span>
+<span class="gh">Out[62]: </span><span class="go">&lt;pandas.core.groupby.generic.SeriesGroupBy object at 0x7ff52dd16340&gt;</span>
 </pre></div>
 </div>
 <p>Additionally this method avoids recomputing the internal grouping information
@@ -1315,14 +1316,14 @@ index are the group names and whose values are the sizes of each group.</p>
 </div>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [77]: </span><span class="n">grouped</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 <span class="gh">Out[77]: </span><span class="go"></span>
-<span class="go">      C                      ...         D                    </span>
-<span class="go">  count      mean       std  ...       50%       75%       max</span>
-<span class="go">0   1.0  0.254161       NaN  ...  1.511763  1.511763  1.511763</span>
-<span class="go">1   1.0  0.215897       NaN  ... -0.990582 -0.990582 -0.990582</span>
-<span class="go">2   1.0 -0.077118       NaN  ...  1.211526  1.211526  1.211526</span>
-<span class="go">3   2.0 -0.491888  0.117887  ...  0.807291  1.076676  1.346061</span>
-<span class="go">4   1.0 -0.862495       NaN  ...  0.024580  0.024580  0.024580</span>
-<span class="go">5   2.0  0.024925  1.652692  ...  0.592714  1.109898  1.627081</span>
+<span class="go">      C                                          ...         D                                        </span>
+<span class="go">  count      mean       std       min       25%  ...       min       25%       50%       75%       max</span>
+<span class="go">0   1.0  0.254161       NaN  0.254161  0.254161  ...  1.511763  1.511763  1.511763  1.511763  1.511763</span>
+<span class="go">1   1.0  0.215897       NaN  0.215897  0.215897  ... -0.990582 -0.990582 -0.990582 -0.990582 -0.990582</span>
+<span class="go">2   1.0 -0.077118       NaN -0.077118 -0.077118  ...  1.211526  1.211526  1.211526  1.211526  1.211526</span>
+<span class="go">3   2.0 -0.491888  0.117887 -0.575247 -0.533567  ...  0.268520  0.537905  0.807291  1.076676  1.346061</span>
+<span class="go">4   1.0 -0.862495       NaN -0.862495 -0.862495  ...  0.024580  0.024580  0.024580  0.024580  0.024580</span>
+<span class="go">5   2.0  0.024925  1.652692 -1.143704 -0.559389  ... -0.441652  0.075531  0.592714  1.109898  1.627081</span>
 
 <span class="go">[6 rows x 16 columns]</span>
 </pre></div>

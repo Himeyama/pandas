@@ -37,6 +37,7 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1040,12 +1041,14 @@ number rows. See the <a class="reference internal" href="../user_guide/timeserie
 <span class="go">1 2013-01-02 2013-01-02 00:00:00-05:00 2013-01-02 00:00:00+01:00</span>
 <span class="go">2 2013-01-03 2013-01-03 00:00:00-05:00 2013-01-03 00:00:00+01:00</span>
 
+<span class="go">[3 rows x 3 columns]</span>
+
 <span class="gp">In [3]: </span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
 <span class="gh">Out[3]: </span><span class="go"></span>
 <span class="go">A                datetime64[ns]</span>
 <span class="go">B    datetime64[ns, US/Eastern]</span>
 <span class="go">C           datetime64[ns, CET]</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 3, dtype: object</span>
 </pre></div>
 </div>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">df</span><span class="o">.</span><span class="n">B</span>
@@ -1053,14 +1056,14 @@ number rows. See the <a class="reference internal" href="../user_guide/timeserie
 <span class="go">0   2013-01-01 00:00:00-05:00</span>
 <span class="go">1   2013-01-02 00:00:00-05:00</span>
 <span class="go">2   2013-01-03 00:00:00-05:00</span>
-<span class="go">Name: B, dtype: datetime64[ns, US/Eastern]</span>
+<span class="go">Name: B, Length: 3, dtype: datetime64[ns, US/Eastern]</span>
 
 <span class="gp">In [5]: </span><span class="n">df</span><span class="o">.</span><span class="n">B</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
 <span class="gh">Out[5]: </span><span class="go"></span>
 <span class="go">0   2013-01-01</span>
 <span class="go">1   2013-01-02</span>
 <span class="go">2   2013-01-03</span>
-<span class="go">Name: B, dtype: datetime64[ns]</span>
+<span class="go">Name: B, Length: 3, dtype: datetime64[ns]</span>
 </pre></div>
 </div>
 <p>This uses a new-dtype representation as well, that is very similar in look-and-feel to its numpy cousin <code class="docutils literal notranslate"><span class="pre">datetime64[ns]</span></code></p>
@@ -1147,7 +1150,7 @@ as well as the <code class="docutils literal notranslate"><span class="pre">.sum
 <span class="go">1   2013-01-02</span>
 <span class="go">2   2013-01-03</span>
 <span class="go">3   2013-01-04</span>
-<span class="go">dtype: datetime64[ns]</span>
+<span class="go">Length: 4, dtype: datetime64[ns]</span>
 
 <span class="gp">In [15]: </span><span class="n">s</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y/%m/</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="gh">Out[15]: </span><span class="go"></span>
@@ -1155,7 +1158,7 @@ as well as the <code class="docutils literal notranslate"><span class="pre">.sum
 <span class="go">1    2013/01/02</span>
 <span class="go">2    2013/01/03</span>
 <span class="go">3    2013/01/04</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 4, dtype: object</span>
 </pre></div>
 </div>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="go"># PeriodIndex</span>
@@ -1167,7 +1170,7 @@ as well as the <code class="docutils literal notranslate"><span class="pre">.sum
 <span class="go">1    2013-01-02</span>
 <span class="go">2    2013-01-03</span>
 <span class="go">3    2013-01-04</span>
-<span class="go">dtype: period[D]</span>
+<span class="go">Length: 4, dtype: period[D]</span>
 
 <span class="gp">In [18]: </span><span class="n">s</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y/%m/</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="gh">Out[18]: </span><span class="go"></span>
@@ -1175,7 +1178,7 @@ as well as the <code class="docutils literal notranslate"><span class="pre">.sum
 <span class="go">1    2013/01/02</span>
 <span class="go">2    2013/01/03</span>
 <span class="go">3    2013/01/04</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 4, dtype: object</span>
 </pre></div>
 </div>
 <p>The string format is as the python standard library and details can be found <a class="reference external" href="https://docs.python.org/2/library/datetime.html#strftime-and-strptime-behavior">here</a></p>
@@ -1192,7 +1195,7 @@ as well as the <code class="docutils literal notranslate"><span class="pre">.sum
 <span class="go">1   1 days 00:01:00</span>
 <span class="go">2   2 days 00:01:00</span>
 <span class="go">3   3 days 00:01:00</span>
-<span class="go">dtype: timedelta64[ns]</span>
+<span class="go">Length: 4, dtype: timedelta64[ns]</span>
 
 <span class="gp">In [21]: </span><span class="n">s</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
 <span class="gh">Out[21]: </span><span class="go"></span>
@@ -1200,7 +1203,7 @@ as well as the <code class="docutils literal notranslate"><span class="pre">.sum
 <span class="go">1     86460.0</span>
 <span class="go">2    172860.0</span>
 <span class="go">3    259260.0</span>
-<span class="go">dtype: float64</span>
+<span class="go">Length: 4, dtype: float64</span>
 </pre></div>
 </div>
 </section>
@@ -1289,6 +1292,8 @@ in the <code class="docutils literal notranslate"><span class="pre">header</span
 <span class="go">j  l    1  2   3  4</span>
 <span class="go">   k    5  6   7  8</span>
 
+<span class="go">[2 rows x 4 columns]</span>
+
 <span class="gp">In [33]: </span><span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s2">&quot;test.xlsx&quot;</span><span class="p">)</span>
 
 <span class="gp">In [34]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;test.xlsx&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">index_col</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
@@ -1300,6 +1305,8 @@ in the <code class="docutils literal notranslate"><span class="pre">header</span
 <span class="go">i1 i2              </span>
 <span class="go">j  l    1  2   3  4</span>
 <span class="go">   k    5  6   7  8</span>
+
+<span class="go">[2 rows x 4 columns]</span>
 </pre></div>
 </div>
 <p>Previously, it was necessary to specify the <code class="docutils literal notranslate"><span class="pre">has_index_names</span></code> argument in <code class="docutils literal notranslate"><span class="pre">read_excel</span></code>,
@@ -1344,6 +1351,8 @@ Use only when it is actually required.</p>
 <span class="go">   国籍     名前</span>
 <span class="go">0  UK  Alice</span>
 <span class="go">1  日本    しのぶ</span>
+
+<span class="go">[2 rows x 2 columns]</span>
 </pre></div>
 </div>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [38]: </span><span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s2">&quot;display.unicode.east_asian_width&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
@@ -1353,6 +1362,8 @@ Use only when it is actually required.</p>
 <span class="go">   国籍    名前</span>
 <span class="go">0    UK   Alice</span>
 <span class="go">1  日本  しのぶ</span>
+
+<span class="go">[2 rows x 2 columns]</span>
 </pre></div>
 </div>
 <p>For further details, see <a class="reference internal" href="../user_guide/options.html#options-east-asian-width"><span class="std std-ref">here</span></a></p>
@@ -1395,6 +1406,8 @@ Use only when it is actually required.</p>
 <span class="go">1     1        b        2.0        both</span>
 <span class="go">2     2      NaN        2.0  right_only</span>
 <span class="go">3     2      NaN        2.0  right_only</span>
+
+<span class="go">[4 rows x 4 columns]</span>
 </pre></div>
 </div>
 <p>For more, see the <a class="reference internal" href="../user_guide/merging.html#merging-indicator"><span class="std std-ref">updated docs</span></a></p>
@@ -1424,6 +1437,8 @@ Use only when it is actually required.</p>
 <span class="go">   foo  0  1</span>
 <span class="go">0    1  1  4</span>
 <span class="go">1    2  2  5</span>
+
+<span class="go">[2 rows x 3 columns]</span>
 </pre></div>
 </div>
 </li>
@@ -1440,7 +1455,7 @@ Use only when it is actually required.</p>
 <span class="go">4     NaN</span>
 <span class="go">5    11.0</span>
 <span class="go">6    13.0</span>
-<span class="go">dtype: float64</span>
+<span class="go">Length: 7, dtype: float64</span>
 </pre></div>
 </div>
 </li>
@@ -1459,6 +1474,8 @@ Use only when it is actually required.</p>
 <span class="go">second  0.897237  0.376750  0.336222</span>
 <span class="go">third   0.451376  0.840255  0.123102</span>
 
+<span class="go">[3 rows x 3 columns]</span>
+
 <span class="gp">In [51]: </span><span class="n">df</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="gh">Out[51]: </span><span class="go"></span>
 <span class="go">           A     B     C</span>
@@ -1466,12 +1483,16 @@ Use only when it is actually required.</p>
 <span class="go">second  0.90  0.38  0.34</span>
 <span class="go">third   0.45  0.84  0.12</span>
 
+<span class="go">[3 rows x 3 columns]</span>
+
 <span class="gp">In [52]: </span><span class="n">df</span><span class="o">.</span><span class="n">round</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
 <span class="gh">Out[52]: </span><span class="go"></span>
 <span class="go">          A         B     C</span>
 <span class="go">first   0.0  0.966718  0.26</span>
 <span class="go">second  1.0  0.376750  0.34</span>
 <span class="go">third   0.0  0.840255  0.12</span>
+
+<span class="go">[3 rows x 3 columns]</span>
 </pre></div>
 </div>
 </li>
@@ -1484,7 +1505,7 @@ Use only when it is actually required.</p>
 <span class="go">1    B</span>
 <span class="go">2    C</span>
 <span class="go">5    D</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 4, dtype: object</span>
 
 <span class="gp">In [55]: </span><span class="n">s</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="s2">&quot;last&quot;</span><span class="p">)</span>
 <span class="gh">Out[55]: </span><span class="go"></span>
@@ -1492,13 +1513,13 @@ Use only when it is actually required.</p>
 <span class="go">3    A</span>
 <span class="go">4    B</span>
 <span class="go">5    D</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 4, dtype: object</span>
 
 <span class="gp">In [56]: </span><span class="n">s</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="gh">Out[56]: </span><span class="go"></span>
 <span class="go">2    C</span>
 <span class="go">5    D</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 2, dtype: object</span>
 </pre></div>
 </div>
 </li>
@@ -1511,6 +1532,8 @@ Use only when it is actually required.</p>
 <span class="go">0.1  0.0 2000-01-01</span>
 <span class="go">1.9  2.0 2000-01-03</span>
 <span class="go">3.5  NaN        NaT</span>
+
+<span class="go">[3 rows x 2 columns]</span>
 </pre></div>
 </div>
 <p>When used on a <code class="docutils literal notranslate"><span class="pre">DatetimeIndex</span></code>, <code class="docutils literal notranslate"><span class="pre">TimedeltaIndex</span></code> or <code class="docutils literal notranslate"><span class="pre">PeriodIndex</span></code>, <code class="docutils literal notranslate"><span class="pre">tolerance</span></code> will coerced into a <code class="docutils literal notranslate"><span class="pre">Timedelta</span></code> if possible. This allows you to specify tolerance with a string:</p>
@@ -1520,6 +1543,8 @@ Use only when it is actually required.</p>
 <span class="gh">Out[60]: </span><span class="go"></span>
 <span class="go">            x</span>
 <span class="go">1999-12-31  0</span>
+
+<span class="go">[1 rows x 1 columns]</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">tolerance</span></code> is also exposed by the lower level <code class="docutils literal notranslate"><span class="pre">Index.get_indexer</span></code> and <code class="docutils literal notranslate"><span class="pre">Index.get_loc</span></code> methods.</p>
@@ -1717,10 +1742,10 @@ can parse, such as a quarterly string.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [66]: </span><span class="kn">import</span> <span class="nn">pandas.tseries.offsets</span> <span class="k">as</span> <span class="nn">offsets</span>
 
 <span class="gp">In [67]: </span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-<span class="gh">Out[67]: </span><span class="go">Timestamp(&#39;2022-04-20 16:21:33.846113&#39;)</span>
+<span class="gh">Out[67]: </span><span class="go">Timestamp(&#39;2022-04-21 01:34:08.678937&#39;)</span>
 
 <span class="gp">In [68]: </span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">+</span> <span class="n">offsets</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">years</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="gh">Out[68]: </span><span class="go">Timestamp(&#39;2023-04-20 16:21:33.847453&#39;)</span>
+<span class="gh">Out[68]: </span><span class="go">Timestamp(&#39;2023-04-21 01:34:08.679866&#39;)</span>
 </pre></div>
 </div>
 </div>
@@ -1777,7 +1802,7 @@ be broadcast:</p>
 <span class="go">0    0.0</span>
 <span class="go">1    NaN</span>
 <span class="go">2    2.0</span>
-<span class="go">dtype: float64</span>
+<span class="go">Length: 3, dtype: float64</span>
 </pre></div>
 </div>
 <p>Previous behavior:</p>
@@ -1791,7 +1816,7 @@ be broadcast:</p>
 <span class="go">0    False</span>
 <span class="go">1    False</span>
 <span class="go">2    False</span>
-<span class="go">dtype: bool</span>
+<span class="go">Length: 3, dtype: bool</span>
 </pre></div>
 </div>
 <p>Usually you simply want to know which values are null.</p>
@@ -1800,7 +1825,7 @@ be broadcast:</p>
 <span class="go">0    False</span>
 <span class="go">1     True</span>
 <span class="go">2    False</span>
-<span class="go">dtype: bool</span>
+<span class="go">Length: 3, dtype: bool</span>
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -1831,6 +1856,8 @@ mindful that <code class="docutils literal notranslate"><span class="pre">nan's<
 <span class="go">0   0.0   1.0</span>
 <span class="go">1   NaN   NaN</span>
 <span class="go">2   2.0   NaN</span>
+
+<span class="go">[3 rows x 2 columns]</span>
 </pre></div>
 </div>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [27]:</span>
@@ -1856,6 +1883,8 @@ mindful that <code class="docutils literal notranslate"><span class="pre">nan's<
 <span class="go">0   0.0   1.0</span>
 <span class="go">1   NaN   NaN</span>
 <span class="go">2   2.0   NaN</span>
+
+<span class="go">[3 rows x 2 columns]</span>
 </pre></div>
 </div>
 <p>See the <a class="reference internal" href="../user_guide/io.html#io-hdf5"><span class="std std-ref">docs</span></a> for more details.</p>
@@ -1883,6 +1912,8 @@ regular formatting as well as scientific notation, similar to how numpy’s <cod
 <span class="gh">Out[83]: </span><span class="go"></span>
 <span class="go">        x</span>
 <span class="go">0  123.46</span>
+
+<span class="go">[1 rows x 1 columns]</span>
 </pre></div>
 </div>
 <p>To preserve output behavior with prior versions the default value of <code class="docutils literal notranslate"><span class="pre">display.precision</span></code> has been reduced to <code class="docutils literal notranslate"><span class="pre">6</span></code>
@@ -2073,6 +2104,8 @@ can easily be replaced by using the <code class="docutils literal notranslate"><
 <span class="go">2013-01-03 -0.720589  0.887163</span>
 <span class="go">2013-01-04  0.859588 -0.636524</span>
 <span class="go">2013-01-05  0.015696 -2.242685</span>
+
+<span class="go">[5 rows x 2 columns]</span>
 </pre></div>
 </div>
 <p>Previously</p>
@@ -2098,6 +2131,8 @@ can easily be replaced by using the <code class="docutils literal notranslate"><
 <span class="go">2013-01-03 -1.441177  0.166574</span>
 <span class="go">2013-01-04  1.719177  0.223065</span>
 <span class="go">2013-01-05  0.031393 -2.226989</span>
+
+<span class="go">[5 rows x 2 columns]</span>
 </pre></div>
 </div>
 </li>

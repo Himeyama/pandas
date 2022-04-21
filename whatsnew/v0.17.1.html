@@ -37,6 +37,7 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1760,7 +1761,7 @@ objects for the <code class="docutils literal notranslate"><span class="pre">fil
 <span class="go">1    a</span>
 <span class="go">2    b</span>
 <span class="go">3    b</span>
-<span class="go">dtype: category</span>
+<span class="go">Length: 4, dtype: category</span>
 <span class="go">Categories (2, object): [&#39;a&#39;, &#39;b&#39;]</span>
 
 <span class="gp">In [11]: </span><span class="n">s</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
@@ -1769,7 +1770,7 @@ objects for the <code class="docutils literal notranslate"><span class="pre">fil
 <span class="go">1     True</span>
 <span class="go">2    False</span>
 <span class="go">3    False</span>
-<span class="go">dtype: bool</span>
+<span class="go">Length: 4, dtype: bool</span>
 
 <span class="gp">In [12]: </span><span class="n">date</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;1/1/2015&quot;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span>
 
@@ -1780,7 +1781,7 @@ objects for the <code class="docutils literal notranslate"><span class="pre">fil
 <span class="go">2   2015-01-03</span>
 <span class="go">3   2015-01-04</span>
 <span class="go">4   2015-01-05</span>
-<span class="go">dtype: category</span>
+<span class="go">Length: 5, dtype: category</span>
 <span class="go">Categories (5, datetime64[ns]): [2015-01-01, 2015-01-02, 2015-01-03, 2015-01-04, 2015-01-05]</span>
 
 <span class="gp">In [14]: </span><span class="n">date</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">day</span>
@@ -1790,7 +1791,7 @@ objects for the <code class="docutils literal notranslate"><span class="pre">fil
 <span class="go">2    3</span>
 <span class="go">3    4</span>
 <span class="go">4    5</span>
-<span class="go">dtype: int64</span>
+<span class="go">Length: 5, dtype: int64</span>
 </pre></div>
 </div>
 </li>

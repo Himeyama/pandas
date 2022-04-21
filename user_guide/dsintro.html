@@ -37,6 +37,7 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1270,28 +1271,24 @@ derived from existing columns.</p>
 
 <span class="gp">In [84]: </span><span class="n">iris</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">sepal_ratio</span><span class="o">=</span><span class="n">iris</span><span class="p">[</span><span class="s2">&quot;SepalWidth&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">iris</span><span class="p">[</span><span class="s2">&quot;SepalLength&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[84]: </span><span class="go"></span>
-<span class="go">   SepalLength  SepalWidth  ...         Name  sepal_ratio</span>
-<span class="go">0          5.1         3.5  ...  Iris-setosa     0.686275</span>
-<span class="go">1          4.9         3.0  ...  Iris-setosa     0.612245</span>
-<span class="go">2          4.7         3.2  ...  Iris-setosa     0.680851</span>
-<span class="go">3          4.6         3.1  ...  Iris-setosa     0.673913</span>
-<span class="go">4          5.0         3.6  ...  Iris-setosa     0.720000</span>
-
-<span class="go">[5 rows x 6 columns]</span>
+<span class="go">   SepalLength  SepalWidth  PetalLength  PetalWidth         Name  sepal_ratio</span>
+<span class="go">0          5.1         3.5          1.4         0.2  Iris-setosa     0.686275</span>
+<span class="go">1          4.9         3.0          1.4         0.2  Iris-setosa     0.612245</span>
+<span class="go">2          4.7         3.2          1.3         0.2  Iris-setosa     0.680851</span>
+<span class="go">3          4.6         3.1          1.5         0.2  Iris-setosa     0.673913</span>
+<span class="go">4          5.0         3.6          1.4         0.2  Iris-setosa     0.720000</span>
 </pre></div>
 </div>
 <p>In the example above, we inserted a precomputed value. We can also pass in
 a function of one argument to be evaluated on the DataFrame being assigned to.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [85]: </span><span class="n">iris</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">sepal_ratio</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;SepalWidth&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;SepalLength&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[85]: </span><span class="go"></span>
-<span class="go">   SepalLength  SepalWidth  ...         Name  sepal_ratio</span>
-<span class="go">0          5.1         3.5  ...  Iris-setosa     0.686275</span>
-<span class="go">1          4.9         3.0  ...  Iris-setosa     0.612245</span>
-<span class="go">2          4.7         3.2  ...  Iris-setosa     0.680851</span>
-<span class="go">3          4.6         3.1  ...  Iris-setosa     0.673913</span>
-<span class="go">4          5.0         3.6  ...  Iris-setosa     0.720000</span>
-
-<span class="go">[5 rows x 6 columns]</span>
+<span class="go">   SepalLength  SepalWidth  PetalLength  PetalWidth         Name  sepal_ratio</span>
+<span class="go">0          5.1         3.5          1.4         0.2  Iris-setosa     0.686275</span>
+<span class="go">1          4.9         3.0          1.4         0.2  Iris-setosa     0.612245</span>
+<span class="go">2          4.7         3.2          1.3         0.2  Iris-setosa     0.680851</span>
+<span class="go">3          4.6         3.1          1.5         0.2  Iris-setosa     0.673913</span>
+<span class="go">4          5.0         3.6          1.4         0.2  Iris-setosa     0.720000</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">assign</span></code> <strong>always</strong> returns a copy of the data, leaving the original
@@ -1672,12 +1669,12 @@ R package):</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [120]: </span><span class="n">baseball</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/baseball.csv&quot;</span><span class="p">)</span>
 
 <span class="gp">In [121]: </span><span class="nb">print</span><span class="p">(</span><span class="n">baseball</span><span class="p">)</span>
-<span class="go">       id     player  year  stint team  ...  ibb  hbp   sh   sf  gidp</span>
-<span class="go">0   88641  womacto01  2006      2  CHN  ...  0.0  0.0  3.0  0.0   0.0</span>
-<span class="go">1   88643  schilcu01  2006      1  BOS  ...  0.0  0.0  0.0  0.0   0.0</span>
-<span class="go">..    ...        ...   ...    ...  ...  ...  ...  ...  ...  ...   ...</span>
-<span class="go">98  89533   aloumo01  2007      1  NYN  ...  5.0  2.0  0.0  3.0  13.0</span>
-<span class="go">99  89534  alomasa02  2007      1  NYN  ...  0.0  0.0  0.0  0.0   0.0</span>
+<span class="go">       id     player  year  stint team  lg   g   ab  ...   cs  bb    so  ibb  hbp   sh   sf  gidp</span>
+<span class="go">0   88641  womacto01  2006      2  CHN  NL  19   50  ...  1.0   4   4.0  0.0  0.0  3.0  0.0   0.0</span>
+<span class="go">1   88643  schilcu01  2006      1  BOS  AL  31    2  ...  0.0   0   1.0  0.0  0.0  0.0  0.0   0.0</span>
+<span class="go">..    ...        ...   ...    ...  ...  ..  ..  ...  ...  ...  ..   ...  ...  ...  ...  ...   ...</span>
+<span class="go">98  89533   aloumo01  2007      1  NYN  NL  87  328  ...  0.0  27  30.0  5.0  2.0  0.0  3.0  13.0</span>
+<span class="go">99  89534  alomasa02  2007      1  NYN  NL   8   22  ...  0.0   0   3.0  0.0  0.0  0.0  0.0   0.0</span>
 
 <span class="go">[100 rows x 23 columns]</span>
 
@@ -1744,10 +1741,10 @@ DataFrame in tabular form, though it won’t always fit the console width:</p>
 default:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [124]: </span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
 <span class="gh">Out[124]: </span><span class="go"></span>
-<span class="go">         0         1         2   ...        9         10        11</span>
-<span class="go">0 -1.226825  0.769804 -1.281247  ... -1.110336 -0.619976  0.149748</span>
-<span class="go">1 -0.732339  0.687738  0.176444  ...  1.462696 -1.743161 -0.826591</span>
-<span class="go">2 -0.345352  1.314232  0.690579  ...  0.896171 -0.487602 -0.082240</span>
+<span class="go">         0         1         2         3   ...        8         9         10        11</span>
+<span class="go">0 -1.226825  0.769804 -1.281247 -0.727707  ...  0.959726 -1.110336 -0.619976  0.149748</span>
+<span class="go">1 -0.732339  0.687738  0.176444  0.403310  ... -0.954208  1.462696 -1.743161 -0.826591</span>
+<span class="go">2 -0.345352  1.314232  0.690579  0.995761  ... -1.236269  0.896171 -0.487602 -0.082240</span>
 
 <span class="go">[3 rows x 12 columns]</span>
 </pre></div>
@@ -1758,10 +1755,10 @@ option:</p>
 
 <span class="gp">In [126]: </span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
 <span class="gh">Out[126]: </span><span class="go"></span>
-<span class="go">         0         1         2   ...        9         10        11</span>
-<span class="go">0 -2.182937  0.380396  0.084844  ... -0.023688  2.410179  1.450520</span>
-<span class="go">1  0.206053 -0.251905 -2.213588  ... -0.025747 -0.988387  0.094055</span>
-<span class="go">2  1.262731  1.289997  0.082423  ... -0.281461  0.030711  0.109121</span>
+<span class="go">         0         1         2         3   ...        8         9         10        11</span>
+<span class="go">0 -2.182937  0.380396  0.084844  0.432390  ...  0.132885 -0.023688  2.410179  1.450520</span>
+<span class="go">1  0.206053 -0.251905 -2.213588  1.063327  ... -1.048089 -0.025747 -0.988387  0.094055</span>
+<span class="go">2  1.262731  1.289997  0.082423 -0.055758  ... -2.484478 -0.281461  0.030711  0.109121</span>
 
 <span class="go">[3 rows x 12 columns]</span>
 </pre></div>

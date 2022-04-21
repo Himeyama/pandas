@@ -37,6 +37,7 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1297,10 +1298,10 @@ as its already the index</p>
 
 <span class="gp">In [39]: </span><span class="n">g</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 <span class="gh">Out[39]: </span><span class="go"></span>
-<span class="go">      A                           ...         B                         </span>
-<span class="go">  count mean  std  min  25%  50%  ...       std  min  25%  50%  75%  max</span>
-<span class="go">0   2.0  1.0  0.0  1.0  1.0  1.0  ...       NaN  4.0  4.0  4.0  4.0  4.0</span>
-<span class="go">1   2.0  5.0  0.0  5.0  5.0  5.0  ...  1.414214  6.0  6.5  7.0  7.5  8.0</span>
+<span class="go">      A                                        B                                        </span>
+<span class="go">  count mean  std  min  25%  50%  75%  max count mean       std  min  25%  50%  75%  max</span>
+<span class="go">0   2.0  1.0  0.0  1.0  1.0  1.0  1.0  1.0   1.0  4.0       NaN  4.0  4.0  4.0  4.0  4.0</span>
+<span class="go">1   2.0  5.0  0.0  5.0  5.0  5.0  5.0  5.0   2.0  7.0  1.414214  6.0  6.5  7.0  7.5  8.0</span>
 
 <span class="go">[2 rows x 16 columns]</span>
 </pre></div>
@@ -1864,14 +1865,14 @@ and parse accordingly. (<a class="reference external" href="https://github.com/p
 
 <span class="gp">In [71]: </span><span class="n">household</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">portfolio</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
 <span class="gh">Out[71]: </span><span class="go"></span>
-<span class="go">                           male  ...  share</span>
-<span class="go">household_id asset_id            ...       </span>
-<span class="go">1            nl0000301109     0  ...   1.00</span>
-<span class="go">2            nl0000289783     1  ...   0.40</span>
-<span class="go">             gb00b03mlx29     1  ...   0.60</span>
-<span class="go">3            gb00b03mlx29     0  ...   0.15</span>
-<span class="go">             lu0197800237     0  ...   0.60</span>
-<span class="go">             nl0000289965     0  ...   0.25</span>
+<span class="go">                           male    wealth                            name  share</span>
+<span class="go">household_id asset_id                                                           </span>
+<span class="go">1            nl0000301109     0  196087.3                        ABN Amro   1.00</span>
+<span class="go">2            nl0000289783     1  316478.7                          Robeco   0.40</span>
+<span class="go">             gb00b03mlx29     1  316478.7               Royal Dutch Shell   0.60</span>
+<span class="go">3            gb00b03mlx29     0  294750.0               Royal Dutch Shell   0.15</span>
+<span class="go">             lu0197800237     0  294750.0  AAB Eastern Europe Equity Fund   0.60</span>
+<span class="go">             nl0000289965     0  294750.0          Postbank BioTech Fonds   0.25</span>
 
 <span class="go">[6 rows x 4 columns]</span>
 </pre></div>

@@ -37,6 +37,7 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -479,8 +480,8 @@ Option 1 loads in all the data and then filters to what we need.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;id_0&quot;</span><span class="p">,</span> <span class="s2">&quot;name_0&quot;</span><span class="p">,</span> <span class="s2">&quot;x_0&quot;</span><span class="p">,</span> <span class="s2">&quot;y_0&quot;</span><span class="p">]</span>
 
 <span class="gp">In [4]: </span><span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;timeseries_wide.parquet&quot;</span><span class="p">)[</span><span class="n">columns</span><span class="p">]</span>
-<span class="gt">------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                      </span>Traceback (most recent call last)
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
 <span class="nn">Input In [4],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;timeseries_wide.parquet&quot;</span><span class="p">)[</span><span class="n">columns</span><span class="p">]</span>
 
@@ -546,8 +547,8 @@ Option 1 loads in all the data and then filters to what we need.</p>
 </div>
 <p>Option 2 only loads the columns we request.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;timeseries_wide.parquet&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
-<span class="gt">------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                      </span>Traceback (most recent call last)
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
 <span class="nn">Input In [5],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;timeseries_wide.parquet&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
 
@@ -624,8 +625,8 @@ especially true for text data columns with relatively few unique values (commonl
 referred to as “low-cardinality” data). By using more efficient data types, you
 can store larger datasets in memory.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">ts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;timeseries.parquet&quot;</span><span class="p">)</span>
-<span class="gt">------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                      </span>Traceback (most recent call last)
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
 <span class="nn">Input In [6],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;timeseries.parquet&quot;</span><span class="p">)</span>
 
@@ -824,8 +825,8 @@ work for arbitrary-sized datasets.</p>
 <span class="gp">   ....: </span>    <span class="n">counts</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(),</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">   ....: </span><span class="n">counts</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="gp">   ....: </span>
-<span class="go">CPU times: user 474 us, sys: 113 us, total: 587 us</span>
-<span class="go">Wall time: 591 us</span>
+<span class="go">CPU times: user 571 us, sys: 51 us, total: 622 us</span>
+<span class="go">Wall time: 627 us</span>
 <span class="gh">Out[19]: </span><span class="go">Series([], dtype: int64)</span>
 </pre></div>
 </div>
@@ -892,8 +893,8 @@ Rather than executing immediately, doing operations build up a <strong>task grap
 <span class="go">Dask Name: read-parquet, 1 tasks</span>
 
 <span class="gp">In [27]: </span><span class="n">ddf</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
-<span class="gt">------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
 <span class="nn">File /home/pandas/pandas/core/indexes/base.py:3621,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key, method, tolerance)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3620</span> <span class="k">try</span><span class="p">:</span>
 <span class="ne">-&gt; </span><span class="mi">3621</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
@@ -911,7 +912,7 @@ Rather than executing immediately, doing operations build up a <strong>task grap
 
 <span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
 
-<span class="ne">KeyError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
 <span class="nn">Input In [27],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ddf</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
 
@@ -942,8 +943,8 @@ Rather than executing immediately, doing operations build up a <strong>task grap
 <span class="ne">KeyError</span>: &#39;name&#39;
 
 <span class="gp">In [28]: </span><span class="n">ddf</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-<span class="gt">------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
 <span class="nn">File /home/pandas/pandas/core/indexes/base.py:3621,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key, method, tolerance)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3620</span> <span class="k">try</span><span class="p">:</span>
 <span class="ne">-&gt; </span><span class="mi">3621</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
@@ -961,7 +962,7 @@ Rather than executing immediately, doing operations build up a <strong>task grap
 
 <span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
 
-<span class="ne">KeyError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
 <span class="nn">Input In [28],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ddf</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 
@@ -999,8 +1000,8 @@ is a pandas Series with a certain dtype and a certain name. So the Dask version
 returns a Dask Series with the same dtype and the same name.</p>
 <p>To get the actual result you can call <code class="docutils literal notranslate"><span class="pre">.compute()</span></code>.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [29]: </span><span class="o">%</span><span class="k">time</span> ddf[&quot;name&quot;].value_counts().compute()
-<span class="gt">------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
 <span class="nn">File /home/pandas/pandas/core/indexes/base.py:3621,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key, method, tolerance)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3620</span> <span class="k">try</span><span class="p">:</span>
 <span class="ne">-&gt; </span><span class="mi">3621</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
@@ -1018,7 +1019,7 @@ returns a Dask Series with the same dtype and the same name.</p>
 
 <span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
 
-<span class="ne">KeyError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
 <span class="n">File</span> <span class="o">&lt;</span><span class="n">timed</span> <span class="nb">eval</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 
 <span class="nn">File /opt/conda/lib/python3.8/site-packages/dask/dataframe/core.py:4362,</span> in <span class="ni">DataFrame.__getitem__</span><span class="nt">(self, key)</span>
@@ -1072,8 +1073,8 @@ the cluster (which is just processes in this case).</p>
 <p>Dask implements the most used parts of the pandas API. For example, we can do
 a familiar groupby aggregation.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [30]: </span><span class="o">%</span><span class="k">time</span> ddf.groupby(&quot;name&quot;)[[&quot;x&quot;, &quot;y&quot;]].mean().compute().head()
-<span class="gt">------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
 <span class="n">File</span> <span class="o">&lt;</span><span class="n">timed</span> <span class="nb">eval</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 
 <span class="nn">File /opt/conda/lib/python3.8/site-packages/dask/dataframe/core.py:4749,</span> in <span class="ni">DataFrame.groupby</span><span class="nt">(self, by, group_keys, sort, observed, dropna, **kwargs)</span>
@@ -1158,8 +1159,8 @@ we need to supply the divisions manually.</p>
 <span class="gp">In [34]: </span><span class="n">divisions</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">starts</span><span class="p">))</span> <span class="o">+</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">ends</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),)</span>
 
 <span class="gp">In [35]: </span><span class="n">ddf</span><span class="o">.</span><span class="n">divisions</span> <span class="o">=</span> <span class="n">divisions</span>
-<span class="gt">------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
 <span class="nn">Input In [35],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ddf</span><span class="o">.</span><span class="n">divisions</span> <span class="o">=</span> <span class="n">divisions</span>
 
@@ -1204,8 +1205,8 @@ to daily frequency and take the mean. Once we’ve taken the mean, we know the
 results will fit in memory, so we can safely call <code class="docutils literal notranslate"><span class="pre">compute</span></code> without running
 out of memory. At that point it’s just a regular pandas object.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [38]: </span><span class="n">ddf</span><span class="p">[[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">&quot;1D&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-<span class="gt">------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
 <span class="nn">Input In [38],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ddf</span><span class="p">[[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">&quot;1D&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 

@@ -37,6 +37,7 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -2076,13 +2077,11 @@ explicitly imported for newer users.</p>
 <span class="gp">   .....: </span><span class="p">)</span>
 <span class="gp">   .....: </span>
 <span class="gh">Out[185]: </span><span class="go"></span>
-<span class="go">  Area  Bins  Test_0_L  ...  Test_0_R    Data_R  Test_1_R</span>
-<span class="go">0    A   110         0  ...         1 -0.160552         0</span>
-<span class="go">1    A   160         0  ...         1  1.754213         0</span>
-<span class="go">2    A   160         1  ...         2  0.000850         1</span>
-<span class="go">3    C    40         0  ...         1  1.070599         0</span>
-
-<span class="go">[4 rows x 8 columns]</span>
+<span class="go">  Area  Bins  Test_0_L    Data_L  Test_1_L  Test_0_R    Data_R  Test_1_R</span>
+<span class="go">0    A   110         0 -0.433937        -1         1 -0.160552         0</span>
+<span class="go">1    A   160         0  0.744434        -1         1  1.754213         0</span>
+<span class="go">2    A   160         1  1.754213         0         2  0.000850         1</span>
+<span class="go">3    C    40         0  0.342243        -1         1  1.070599         0</span>
 </pre></div>
 </div>
 <p><a class="reference external" href="https://stackoverflow.com/questions/14341805/pandas-merge-pd-merge-how-to-set-the-index-and-join">How to set the index and join</a></p>
@@ -2186,8 +2185,8 @@ of the individual frames into a list, and then combine the frames in the list us
 <span class="gp">   .....: </span><span class="n">ds</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gp">   .....: </span><span class="o">%</span><span class="k">timeit</span> pd.to_datetime(ds)
 <span class="gp">   .....: </span>
-<span class="go">4.32 ms +- 105 us per loop (mean +- std. dev. of 7 runs, 100 loops each)</span>
-<span class="go">1.2 ms +- 15.1 us per loop (mean +- std. dev. of 7 runs, 1,000 loops each)</span>
+<span class="go">4.46 ms +- 35 us per loop (mean +- std. dev. of 7 runs, 100 loops each)</span>
+<span class="go">1.1 ms +- 13.5 us per loop (mean +- std. dev. of 7 runs, 1,000 loops each)</span>
 </pre></div>
 </div>
 </section>

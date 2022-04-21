@@ -37,6 +37,7 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -811,13 +812,13 @@ talking about:</p>
 <span class="go"># deprecated now</span>
 <span class="gp">In [4]: </span><span class="n">df</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gh">Out[4]: </span><span class="go"></span>
-<span class="go">            2000-01-01 00:00:00  2000-01-02 00:00:00  ...   2   3</span>
-<span class="go">2000-01-01                  NaN                  NaN  ... NaN NaN</span>
-<span class="go">2000-01-02                  NaN                  NaN  ... NaN NaN</span>
-<span class="go">2000-01-03                  NaN                  NaN  ... NaN NaN</span>
-<span class="go">2000-01-04                  NaN                  NaN  ... NaN NaN</span>
-<span class="go">2000-01-05                  NaN                  NaN  ... NaN NaN</span>
-<span class="go">2000-01-06                  NaN                  NaN  ... NaN NaN</span>
+<span class="go">            2000-01-01 00:00:00  2000-01-02 00:00:00  2000-01-03 00:00:00  ...   1   2   3</span>
+<span class="go">2000-01-01                  NaN                  NaN                  NaN  ... NaN NaN NaN</span>
+<span class="go">2000-01-02                  NaN                  NaN                  NaN  ... NaN NaN NaN</span>
+<span class="go">2000-01-03                  NaN                  NaN                  NaN  ... NaN NaN NaN</span>
+<span class="go">2000-01-04                  NaN                  NaN                  NaN  ... NaN NaN NaN</span>
+<span class="go">2000-01-05                  NaN                  NaN                  NaN  ... NaN NaN NaN</span>
+<span class="go">2000-01-06                  NaN                  NaN                  NaN  ... NaN NaN NaN</span>
 
 <span class="go">[6 rows x 10 columns]</span>
 
@@ -1099,12 +1100,12 @@ representation across multiple rows by default:</p>
 
 <span class="gp">In [19]: </span><span class="n">wide_frame</span>
 <span class="gh">Out[19]: </span><span class="go"></span>
-<span class="go">         0         1         2   ...        13        14        15</span>
-<span class="go">0 -0.548702  1.467327 -1.015962  ...  1.669052  1.037882 -1.705775</span>
-<span class="go">1 -0.919854 -0.042379  1.247642  ...  1.956030  0.017587 -0.016692</span>
-<span class="go">2 -0.575247  0.254161 -1.143704  ...  1.211526  0.268520  0.024580</span>
-<span class="go">3 -1.577585  0.396823 -0.105381  ...  0.593616  0.884345  1.591431</span>
-<span class="go">4  0.141809  0.220390  0.435589  ... -0.392670  0.007207  1.928123</span>
+<span class="go">         0         1         2         3   ...        12        13        14        15</span>
+<span class="go">0 -0.548702  1.467327 -1.015962 -0.483075  ... -0.709661  1.669052  1.037882 -1.705775</span>
+<span class="go">1 -0.919854 -0.042379  1.247642 -0.009920  ... -0.932132  1.956030  0.017587 -0.016692</span>
+<span class="go">2 -0.575247  0.254161 -1.143704  0.215897  ... -0.441652  1.211526  0.268520  0.024580</span>
+<span class="go">3 -1.577585  0.396823 -0.105381 -0.532532  ... -0.339355  0.593616  0.884345  1.591431</span>
+<span class="go">4  0.141809  0.220390  0.435589  0.192451  ...  1.395433 -0.392670  0.007207  1.928123</span>
 
 <span class="go">[5 rows x 16 columns]</span>
 </pre></div>

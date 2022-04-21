@@ -37,6 +37,7 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1194,6 +1195,8 @@ is <a class="reference internal" href="../user_guide/basics.html#basics-aggregat
 <span class="go">2000-01-08  0.113648 -1.478427  0.524988</span>
 <span class="go">2000-01-09  0.404705  0.577046 -1.715002</span>
 <span class="go">2000-01-10 -1.039268 -0.370647 -1.157892</span>
+
+<span class="go">[10 rows x 3 columns]</span>
 </pre></div>
 </div>
 <p>One can operate using string function names, callables, lists, or dictionaries of these.</p>
@@ -1203,7 +1206,7 @@ is <a class="reference internal" href="../user_guide/basics.html#basics-aggregat
 <span class="go">A   -1.068226</span>
 <span class="go">B   -1.387015</span>
 <span class="go">C   -4.892029</span>
-<span class="go">dtype: float64</span>
+<span class="go">Length: 3, dtype: float64</span>
 </pre></div>
 </div>
 <p>Multiple aggregations with a list of functions.</p>
@@ -1212,6 +1215,8 @@ is <a class="reference internal" href="../user_guide/basics.html#basics-aggregat
 <span class="go">            A         B         C</span>
 <span class="go">sum -1.068226 -1.387015 -4.892029</span>
 <span class="go">min -1.135632 -1.478427 -1.715002</span>
+
+<span class="go">[2 rows x 3 columns]</span>
 </pre></div>
 </div>
 <p>Using a dict provides the ability to apply specific aggregations per column.
@@ -1223,6 +1228,8 @@ per unique function. Those functions applied to a particular column will be <cod
 <span class="go">sum -1.068226       NaN</span>
 <span class="go">min -1.135632 -1.478427</span>
 <span class="go">max       NaN  1.212112</span>
+
+<span class="go">[3 rows x 2 columns]</span>
 </pre></div>
 </div>
 <p>The API also supports a <code class="docutils literal notranslate"><span class="pre">.transform()</span></code> function for broadcasting results.</p>
@@ -1240,6 +1247,8 @@ per unique function. Those functions applied to a particular column will be <cod
 <span class="go">2000-01-08  0.113648  1.249281  1.478427  0.000000  0.524988  2.239990</span>
 <span class="go">2000-01-09  0.404705  1.540338  0.577046  2.055473  1.715002  0.000000</span>
 <span class="go">2000-01-10  1.039268  0.096364  0.370647  1.107780  1.157892  0.557110</span>
+
+<span class="go">[10 rows x 6 columns]</span>
 </pre></div>
 </div>
 <p>When presented with mixed dtypes that cannot be aggregated, <code class="docutils literal notranslate"><span class="pre">.agg()</span></code> will only take the valid
@@ -1256,7 +1265,7 @@ aggregations. This is similar to how groupby <code class="docutils literal notra
 <span class="go">B           float64</span>
 <span class="go">C            object</span>
 <span class="go">D    datetime64[ns]</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 4, dtype: object</span>
 </pre></div>
 </div>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="n">df</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;sum&#39;</span><span class="p">])</span>
@@ -1264,6 +1273,8 @@ aggregations. This is similar to how groupby <code class="docutils literal notra
 <span class="go">     A    B          C          D</span>
 <span class="go">min  1  1.0        bar 2013-01-01</span>
 <span class="go">sum  6  6.0  foobarbaz        NaT</span>
+
+<span class="go">[2 rows x 4 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -1277,13 +1288,13 @@ fixed-width text files and <a class="reference internal" href="../reference/api/
 <span class="gh">Out[12]: </span><span class="go"></span>
 <span class="go">a    int64</span>
 <span class="go">b    int64</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 2, dtype: object</span>
 
 <span class="gp">In [13]: </span><span class="n">pd</span><span class="o">.</span><span class="n">read_fwf</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;float64&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;object&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">dtypes</span>
 <span class="gh">Out[13]: </span><span class="go"></span>
 <span class="go">a    float64</span>
 <span class="go">b     object</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 2, dtype: object</span>
 </pre></div>
 </div>
 </section>
@@ -1330,6 +1341,8 @@ commonly called ‘unix epoch’ or POSIX time. This was the previous default, s
 <span class="go">qux   one     3  6</span>
 <span class="go">      two     3  7</span>
 
+<span class="go">[8 rows x 2 columns]</span>
+
 <span class="gp">In [20]: </span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;second&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="gh">Out[20]: </span><span class="go"></span>
 <span class="go">          B</span>
@@ -1340,6 +1353,8 @@ commonly called ‘unix epoch’ or POSIX time. This was the previous default, s
 <span class="go">two    1  4</span>
 <span class="go">       2  5</span>
 <span class="go">       3  7</span>
+
+<span class="go">[6 rows x 1 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -1368,6 +1383,8 @@ support for bz2 compression in the python 2 C-engine improved (<a class="referen
 <span class="go">       S  X  E  M</span>
 <span class="go">0  13876  1  1  1</span>
 <span class="go">1  11608  1  3  0</span>
+
+<span class="go">[2 rows x 4 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -1396,6 +1413,8 @@ See <a class="reference internal" href="../user_guide/io.html#io-pickle-compress
 <span class="go">2  1.075770  foo 2013-01-01 00:00:02</span>
 <span class="go">3 -0.109050  foo 2013-01-01 00:00:03</span>
 <span class="go">4  1.643563  foo 2013-01-01 00:00:04</span>
+
+<span class="go">[5 rows x 3 columns]</span>
 </pre></div>
 </div>
 <p>The default is to infer the compression type from the extension (<code class="docutils literal notranslate"><span class="pre">compression='infer'</span></code>):</p>
@@ -1412,6 +1431,8 @@ See <a class="reference internal" href="../user_guide/io.html#io-pickle-compress
 <span class="go">3 -0.109050  foo 2013-01-01 00:00:03</span>
 <span class="go">4  1.643563  foo 2013-01-01 00:00:04</span>
 
+<span class="go">[5 rows x 3 columns]</span>
+
 <span class="gp">In [32]: </span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s2">&quot;s1.pkl.bz2&quot;</span><span class="p">)</span>
 
 <span class="gp">In [33]: </span><span class="n">rt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s2">&quot;s1.pkl.bz2&quot;</span><span class="p">)</span>
@@ -1423,7 +1444,7 @@ See <a class="reference internal" href="../user_guide/io.html#io-pickle-compress
 <span class="go">2    1.075770</span>
 <span class="go">3   -0.109050</span>
 <span class="go">4    1.643563</span>
-<span class="go">Name: A, dtype: float64</span>
+<span class="go">Name: A, Length: 5, dtype: float64</span>
 </pre></div>
 </div>
 </section>
@@ -1527,6 +1548,8 @@ the data.</p>
 <span class="go">1    2  b 2016-01-02</span>
 <span class="go">2    3  c 2016-01-03</span>
 
+<span class="go">[3 rows x 3 columns]</span>
+
 <span class="gp">In [41]: </span><span class="n">df</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s1">&#39;table&#39;</span><span class="p">)</span>
 <span class="gh">Out[41]: </span><span class="go">&#39;{&quot;schema&quot;:{&quot;fields&quot;:[{&quot;name&quot;:&quot;idx&quot;,&quot;type&quot;:&quot;integer&quot;},{&quot;name&quot;:&quot;A&quot;,&quot;type&quot;:&quot;integer&quot;},{&quot;name&quot;:&quot;B&quot;,&quot;type&quot;:&quot;string&quot;},{&quot;name&quot;:&quot;C&quot;,&quot;type&quot;:&quot;datetime&quot;}],&quot;primaryKey&quot;:[&quot;idx&quot;],&quot;pandas_version&quot;:&quot;1.4.0&quot;},&quot;data&quot;:[{&quot;idx&quot;:0,&quot;A&quot;:1,&quot;B&quot;:&quot;a&quot;,&quot;C&quot;:&quot;2016-01-01T00:00:00.000Z&quot;},{&quot;idx&quot;:1,&quot;A&quot;:2,&quot;B&quot;:&quot;b&quot;,&quot;C&quot;:&quot;2016-01-02T00:00:00.000Z&quot;},{&quot;idx&quot;:2,&quot;A&quot;:3,&quot;B&quot;:&quot;c&quot;,&quot;C&quot;:&quot;2016-01-03T00:00:00.000Z&quot;}]}&#39;</span>
 </pre></div>
@@ -1588,6 +1611,8 @@ See the <a class="reference internal" href="../user_guide/sparse.html#sparse-sci
 <span class="go">7   8.0  0.354493  1.037528 -0.385684  0.519818</span>
 <span class="go">8   9.0  1.686583 -1.325963  1.428984 -2.089354</span>
 <span class="go">9  10.0 -0.129820  0.631523 -0.586538  0.290720</span>
+
+<span class="go">[10 rows x 5 columns]</span>
 
 <span class="gp">In [47]: </span><span class="n">styled</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">style</span>
 <span class="gp">   ....: </span>          <span class="o">.</span><span class="n">applymap</span><span class="p">(</span><span class="k">lambda</span> <span class="n">val</span><span class="p">:</span> <span class="s1">&#39;color:red;&#39;</span> <span class="k">if</span> <span class="n">val</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s1">&#39;color:black;&#39;</span><span class="p">)</span>
@@ -1656,13 +1681,15 @@ value similar to other dtypes.</p>
 <span class="go">(1.5, 3.0]     1</span>
 <span class="go">(-0.003, 1.5]  2</span>
 <span class="go">(-0.003, 1.5]  3</span>
+
+<span class="go">[4 rows x 1 columns]</span>
 </pre></div>
 </div>
 <p>Selecting via a specific interval:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [55]: </span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">Interval</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)]</span>
 <span class="gh">Out[55]: </span><span class="go"></span>
 <span class="go">A    1</span>
-<span class="go">Name: (1.5, 3.0], dtype: int64</span>
+<span class="go">Name: (1.5, 3.0], Length: 1, dtype: int64</span>
 </pre></div>
 </div>
 <p>Selecting via a scalar value that is contained <em>in</em> the intervals.</p>
@@ -1673,6 +1700,8 @@ value similar to other dtypes.</p>
 <span class="go">(-0.003, 1.5]  0</span>
 <span class="go">(-0.003, 1.5]  2</span>
 <span class="go">(-0.003, 1.5]  3</span>
+
+<span class="go">[3 rows x 1 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -1836,7 +1865,7 @@ then write them out again after applying the procedure below.</p>
 <span class="go">0   2011-01-02 00:00:00+09:00</span>
 <span class="go">1   2011-01-02 01:00:00+09:00</span>
 <span class="go">2   2011-01-02 02:00:00+09:00</span>
-<span class="go">dtype: datetime64[ns, Asia/Tokyo]</span>
+<span class="go">Length: 3, dtype: datetime64[ns, Asia/Tokyo]</span>
 </pre></div>
 </div>
 <p>Previous behavior:</p>
@@ -1854,7 +1883,7 @@ then write them out again after applying the procedure below.</p>
 <span class="go">0    0</span>
 <span class="go">1    1</span>
 <span class="go">2    2</span>
-<span class="go">dtype: int64</span>
+<span class="go">Length: 3, dtype: int64</span>
 </pre></div>
 </div>
 </section>
@@ -2012,14 +2041,14 @@ Now the smallest acceptable dtype will be used (<a class="reference external" hr
 <span class="gp">In [78]: </span><span class="n">df1</span><span class="o">.</span><span class="n">dtypes</span>
 <span class="gh">Out[78]: </span><span class="go"></span>
 <span class="go">0    float32</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 1, dtype: object</span>
 
 <span class="gp">In [79]: </span><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
 
 <span class="gp">In [80]: </span><span class="n">df2</span><span class="o">.</span><span class="n">dtypes</span>
 <span class="gh">Out[80]: </span><span class="go"></span>
 <span class="go">0    float32</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 1, dtype: object</span>
 </pre></div>
 </div>
 <p>Previous behavior:</p>
@@ -2033,7 +2062,7 @@ Now the smallest acceptable dtype will be used (<a class="reference external" hr
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [81]: </span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">])</span><span class="o">.</span><span class="n">dtypes</span>
 <span class="gh">Out[81]: </span><span class="go"></span>
 <span class="go">0    float32</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 1, dtype: object</span>
 </pre></div>
 </div>
 </section>
@@ -2091,6 +2120,8 @@ This would happen with a <code class="docutils literal notranslate"><span class=
 <span class="go">A 0      3</span>
 <span class="go">  1      4</span>
 <span class="go">  2      5</span>
+
+<span class="go">[6 rows x 1 columns]</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">87</span><span class="p">]:</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">is_lexsorted</span><span class="p">()</span>
@@ -2110,6 +2141,8 @@ This would happen with a <code class="docutils literal notranslate"><span class=
 <span class="go">B 0      0</span>
 <span class="go">  1      1</span>
 <span class="go">  2      2</span>
+
+<span class="go">[6 rows x 1 columns]</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">90</span><span class="p">]:</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">is_lexsorted</span><span class="p">()</span>
@@ -2133,6 +2166,8 @@ doesn’t behave as desired.</p>
 <span class="go">  aa      2</span>
 <span class="go">b bb      3</span>
 <span class="go">  aa      4</span>
+
+<span class="go">[4 rows x 1 columns]</span>
 </pre></div>
 </div>
 <p>Previous behavior:</p>
@@ -2218,6 +2253,8 @@ This format is consistent with <code class="docutils literal notranslate"><span 
 <span class="go">1   2.0  1.5  0.707107  1.0  1.25  1.5  1.75  2.0</span>
 <span class="go">2   2.0  3.5  0.707107  3.0  3.25  3.5  3.75  4.0</span>
 
+<span class="go">[2 rows x 8 columns]</span>
+
 <span class="gp">In [89]: </span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">])</span>
 <span class="gh">Out[89]: </span><span class="go"></span>
 <span class="go">     B                    </span>
@@ -2225,6 +2262,8 @@ This format is consistent with <code class="docutils literal notranslate"><span 
 <span class="go">A                         </span>
 <span class="go">1  1.5  0.707107    1    2</span>
 <span class="go">2  3.5  0.707107    3    4</span>
+
+<span class="go">[2 rows x 4 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -2252,6 +2291,8 @@ See the section on <a class="reference internal" href="../user_guide/window.html
 <span class="go">2016-04-07  0.127029  0.369650</span>
 <span class="go">2016-04-08  0.604334  0.103104</span>
 <span class="go">2016-04-09  0.802374  0.945553</span>
+
+<span class="go">[5 rows x 2 columns]</span>
 </pre></div>
 </div>
 <p>Previous behavior:</p>
@@ -2276,6 +2317,8 @@ See the section on <a class="reference internal" href="../user_guide/window.html
 <span class="go">           B   -0.145775  1.000000</span>
 <span class="go">2016-04-09 A    1.000000  0.119645</span>
 <span class="go">           B    0.119645  1.000000</span>
+
+<span class="go">[5 rows x 2 columns]</span>
 </pre></div>
 </div>
 <p>Retrieving a correlation matrix for a cross-section</p>
@@ -2285,6 +2328,8 @@ See the section on <a class="reference internal" href="../user_guide/window.html
 <span class="go">bar                  </span>
 <span class="go">A    1.00000 -0.13209</span>
 <span class="go">B   -0.13209  1.00000</span>
+
+<span class="go">[2 rows x 2 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -2300,7 +2345,7 @@ usually resulting in an invalid comparison, returning an empty result frame. The
 <span class="gp">In [98]: </span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
 <span class="gh">Out[98]: </span><span class="go"></span>
 <span class="go">unparsed_date    object</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 1, dtype: object</span>
 </pre></div>
 </div>
 <p>Previous behavior:</p>
@@ -2359,6 +2404,8 @@ joins, <a class="reference internal" href="../reference/api/pandas.DataFrame.joi
 <span class="go">1  10</span>
 <span class="go">0   0</span>
 
+<span class="go">[3 rows x 1 columns]</span>
+
 <span class="gp">In [106]: </span><span class="n">right</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">]},</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 
 <span class="gp">In [107]: </span><span class="n">right</span>
@@ -2367,6 +2414,8 @@ joins, <a class="reference internal" href="../reference/api/pandas.DataFrame.joi
 <span class="go">1  100</span>
 <span class="go">2  200</span>
 <span class="go">3  300</span>
+
+<span class="go">[3 rows x 1 columns]</span>
 </pre></div>
 </div>
 <p>Previous behavior:</p>
@@ -2383,6 +2432,8 @@ joins, <a class="reference internal" href="../reference/api/pandas.DataFrame.joi
 <span class="go">    a    b</span>
 <span class="go">2  20  200</span>
 <span class="go">1  10  100</span>
+
+<span class="go">[2 rows x 2 columns]</span>
 </pre></div>
 </div>
 </li>
@@ -2403,6 +2454,8 @@ is fixed that allowed this to return a <code class="docutils literal notranslate
 <span class="go">0     3    C     1</span>
 <span class="go">1     4    D     3</span>
 <span class="go">2     5    E     9</span>
+
+<span class="go">[3 rows x 3 columns]</span>
 </pre></div>
 </div>
 <p>Previous behavior:</p>
@@ -2423,6 +2476,8 @@ is fixed that allowed this to return a <code class="docutils literal notranslate
 <span class="go">1    C        3</span>
 <span class="go">3    D        4</span>
 <span class="go">9    E        5</span>
+
+<span class="go">[3 rows x 1 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -2642,6 +2697,8 @@ will be removed from the <code class="docutils literal notranslate"><span class=
 <span class="go">a  1  4</span>
 <span class="go">b  2  5</span>
 <span class="go">c  3  6</span>
+
+<span class="go">[3 rows x 2 columns]</span>
 </pre></div>
 </div>
 <p>Previous behavior, where you wish to get the 0th and the 2nd elements from the index in the ‘A’ column.</p>
@@ -2657,7 +2714,7 @@ will be removed from the <code class="docutils literal notranslate"><span class=
 <span class="gh">Out[114]: </span><span class="go"></span>
 <span class="go">a    1</span>
 <span class="go">c    3</span>
-<span class="go">Name: A, dtype: int64</span>
+<span class="go">Name: A, Length: 2, dtype: int64</span>
 </pre></div>
 </div>
 <p>Using <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>. Here we will get the location of the ‘A’ column, then use <em>positional</em> indexing to select things.</p>
@@ -2665,7 +2722,7 @@ will be removed from the <code class="docutils literal notranslate"><span class=
 <span class="gh">Out[115]: </span><span class="go"></span>
 <span class="go">a    1</span>
 <span class="go">c    3</span>
-<span class="go">Name: A, dtype: int64</span>
+<span class="go">Name: A, Length: 2, dtype: int64</span>
 </pre></div>
 </div>
 </section>
@@ -2757,6 +2814,8 @@ meaning than passing a dictionary to a grouped <code class="docutils literal not
 <span class="go">2  1  2  2</span>
 <span class="go">3  2  3  3</span>
 <span class="go">4  2  4  4</span>
+
+<span class="go">[5 rows x 3 columns]</span>
 </pre></div>
 </div>
 <p>Here is a typical useful syntax for computing different aggregations for different columns. This
@@ -2768,6 +2827,8 @@ columns and applying the list of functions. This returns a <code class="docutils
 <span class="go">A      </span>
 <span class="go">1  3  0</span>
 <span class="go">2  7  3</span>
+
+<span class="go">[2 rows x 2 columns]</span>
 </pre></div>
 </div>
 <p>Here’s an example of the first deprecation, passing a dict to a grouped <code class="docutils literal notranslate"><span class="pre">Series</span></code>. This
@@ -2790,6 +2851,8 @@ is a combination aggregation &amp; renaming:</p>
 <span class="go">A     </span>
 <span class="go">1    3</span>
 <span class="go">2    2</span>
+
+<span class="go">[2 rows x 1 columns]</span>
 </pre></div>
 </div>
 <p>Here’s an example of the second deprecation, passing a dict-of-dict to a grouped <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>:</p>
@@ -2818,6 +2881,8 @@ is a combination aggregation &amp; renaming:</p>
 <span class="go">A          </span>
 <span class="go">1    3    0</span>
 <span class="go">2    7    3</span>
+
+<span class="go">[2 rows x 2 columns]</span>
 </pre></div>
 </div>
 </section>

@@ -37,6 +37,7 @@
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
@@ -517,15 +518,13 @@ format</a>.</p>
 
 <span class="gp">In [5]: </span><span class="n">air_quality</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[5]: </span><span class="go"></span>
-<span class="go">                                city country  ... value   unit</span>
-<span class="go">date.utc                                      ...             </span>
-<span class="go">2019-06-18 06:00:00+00:00  Antwerpen      BE  ...  18.0  µg/m³</span>
-<span class="go">2019-06-17 08:00:00+00:00  Antwerpen      BE  ...   6.5  µg/m³</span>
-<span class="go">2019-06-17 07:00:00+00:00  Antwerpen      BE  ...  18.5  µg/m³</span>
-<span class="go">2019-06-17 06:00:00+00:00  Antwerpen      BE  ...  16.0  µg/m³</span>
-<span class="go">2019-06-17 05:00:00+00:00  Antwerpen      BE  ...   7.5  µg/m³</span>
-
-<span class="go">[5 rows x 6 columns]</span>
+<span class="go">                                city country location parameter  value   unit</span>
+<span class="go">date.utc                                                                     </span>
+<span class="go">2019-06-18 06:00:00+00:00  Antwerpen      BE  BETR801      pm25   18.0  µg/m³</span>
+<span class="go">2019-06-17 08:00:00+00:00  Antwerpen      BE  BETR801      pm25    6.5  µg/m³</span>
+<span class="go">2019-06-17 07:00:00+00:00  Antwerpen      BE  BETR801      pm25   18.5  µg/m³</span>
+<span class="go">2019-06-17 06:00:00+00:00  Antwerpen      BE  BETR801      pm25   16.0  µg/m³</span>
+<span class="go">2019-06-17 05:00:00+00:00  Antwerpen      BE  BETR801      pm25    7.5  µg/m³</span>
 </pre></div>
 </div>
         </li>
@@ -538,12 +537,12 @@ format</a>.</p>
     <li><p>I want to sort the Titanic data according to the age of the passengers.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">titanic</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;Age&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[6]: </span><span class="go"></span>
-<span class="go">     PassengerId  Survived  Pclass  ...     Fare Cabin  Embarked</span>
-<span class="go">803          804         1       3  ...   8.5167   NaN         C</span>
-<span class="go">755          756         1       2  ...  14.5000   NaN         S</span>
-<span class="go">644          645         1       3  ...  19.2583   NaN         C</span>
-<span class="go">469          470         1       3  ...  19.2583   NaN         C</span>
-<span class="go">78            79         1       2  ...  29.0000   NaN         S</span>
+<span class="go">     PassengerId  Survived  Pclass                             Name  ...  Ticket     Fare  Cabin  Embarked</span>
+<span class="go">803          804         1       3  Thomas, Master. Assad Alexander  ...    2625   8.5167    NaN         C</span>
+<span class="go">755          756         1       2        Hamalainen, Master. Viljo  ...  250649  14.5000    NaN         S</span>
+<span class="go">644          645         1       3           Baclini, Miss. Eugenie  ...    2666  19.2583    NaN         C</span>
+<span class="go">469          470         1       3    Baclini, Miss. Helene Barbara  ...    2666  19.2583    NaN         C</span>
+<span class="go">78            79         1       2    Caldwell, Master. Alden Gates  ...  248738  29.0000    NaN         S</span>
 
 <span class="go">[5 rows x 12 columns]</span>
 </pre></div>
@@ -553,12 +552,12 @@ format</a>.</p>
     <li><p>I want to sort the Titanic data according to the cabin class and age in descending order.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">titanic</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Pclass&#39;</span><span class="p">,</span> <span class="s1">&#39;Age&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[7]: </span><span class="go"></span>
-<span class="go">     PassengerId  Survived  Pclass  ...    Fare Cabin  Embarked</span>
-<span class="go">851          852         0       3  ...  7.7750   NaN         S</span>
-<span class="go">116          117         0       3  ...  7.7500   NaN         Q</span>
-<span class="go">280          281         0       3  ...  7.7500   NaN         Q</span>
-<span class="go">483          484         1       3  ...  9.5875   NaN         S</span>
-<span class="go">326          327         0       3  ...  6.2375   NaN         S</span>
+<span class="go">     PassengerId  Survived  Pclass                       Name  ...  Ticket    Fare  Cabin  Embarked</span>
+<span class="go">851          852         0       3        Svensson, Mr. Johan  ...  347060  7.7750    NaN         S</span>
+<span class="go">116          117         0       3       Connors, Mr. Patrick  ...  370369  7.7500    NaN         Q</span>
+<span class="go">280          281         0       3           Duane, Mr. Frank  ...  336439  7.7500    NaN         Q</span>
+<span class="go">483          484         1       3     Turkula, Mrs. (Hedwig)  ...    4134  9.5875    NaN         S</span>
+<span class="go">326          327         0       3  Nysveen, Mr. Johan Hansen  ...  345364  6.2375    NaN         S</span>
 
 <span class="go">[5 rows x 12 columns]</span>
 </pre></div>
@@ -584,16 +583,14 @@ called <code class="docutils literal notranslate"><span class="pre">no2_subset</
 
 <span class="gp">In [10]: </span><span class="n">no2_subset</span>
 <span class="gh">Out[10]: </span><span class="go"></span>
-<span class="go">                                city country  ... value   unit</span>
-<span class="go">date.utc                                      ...             </span>
-<span class="go">2019-04-09 01:00:00+00:00  Antwerpen      BE  ...  22.5  µg/m³</span>
-<span class="go">2019-04-09 01:00:00+00:00      Paris      FR  ...  24.4  µg/m³</span>
-<span class="go">2019-04-09 02:00:00+00:00     London      GB  ...  67.0  µg/m³</span>
-<span class="go">2019-04-09 02:00:00+00:00  Antwerpen      BE  ...  53.5  µg/m³</span>
-<span class="go">2019-04-09 02:00:00+00:00      Paris      FR  ...  27.4  µg/m³</span>
-<span class="go">2019-04-09 03:00:00+00:00     London      GB  ...  67.0  µg/m³</span>
-
-<span class="go">[6 rows x 6 columns]</span>
+<span class="go">                                city country            location parameter  value   unit</span>
+<span class="go">date.utc                                                                                </span>
+<span class="go">2019-04-09 01:00:00+00:00  Antwerpen      BE             BETR801       no2   22.5  µg/m³</span>
+<span class="go">2019-04-09 01:00:00+00:00      Paris      FR             FR04014       no2   24.4  µg/m³</span>
+<span class="go">2019-04-09 02:00:00+00:00     London      GB  London Westminster       no2   67.0  µg/m³</span>
+<span class="go">2019-04-09 02:00:00+00:00  Antwerpen      BE             BETR801       no2   53.5  µg/m³</span>
+<span class="go">2019-04-09 02:00:00+00:00      Paris      FR             FR04014       no2   27.4  µg/m³</span>
+<span class="go">2019-04-09 03:00:00+00:00     London      GB  London Westminster       no2   67.0  µg/m³</span>
 </pre></div>
 </div>
 <img alt="../../_images/07_pivot.svg" class="align-center" src="../../_images/07_pivot.svg" /><ul class="task-bullet">
@@ -615,15 +612,13 @@ for each index/column combination is required.</p>
 series at the same time:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [12]: </span><span class="n">no2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[12]: </span><span class="go"></span>
-<span class="go">                            city country  ... value   unit</span>
-<span class="go">date.utc                                  ...             </span>
-<span class="go">2019-06-21 00:00:00+00:00  Paris      FR  ...  20.0  µg/m³</span>
-<span class="go">2019-06-20 23:00:00+00:00  Paris      FR  ...  21.8  µg/m³</span>
-<span class="go">2019-06-20 22:00:00+00:00  Paris      FR  ...  26.5  µg/m³</span>
-<span class="go">2019-06-20 21:00:00+00:00  Paris      FR  ...  24.9  µg/m³</span>
-<span class="go">2019-06-20 20:00:00+00:00  Paris      FR  ...  21.4  µg/m³</span>
-
-<span class="go">[5 rows x 6 columns]</span>
+<span class="go">                            city country location parameter  value   unit</span>
+<span class="go">date.utc                                                                 </span>
+<span class="go">2019-06-21 00:00:00+00:00  Paris      FR  FR04014       no2   20.0  µg/m³</span>
+<span class="go">2019-06-20 23:00:00+00:00  Paris      FR  FR04014       no2   21.8  µg/m³</span>
+<span class="go">2019-06-20 22:00:00+00:00  Paris      FR  FR04014       no2   26.5  µg/m³</span>
+<span class="go">2019-06-20 21:00:00+00:00  Paris      FR  FR04014       no2   24.9  µg/m³</span>
+<span class="go">2019-06-20 20:00:00+00:00  Paris      FR  FR04014       no2   21.4  µg/m³</span>
 </pre></div>
 </div>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [13]: </span><span class="n">no2</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s2">&quot;location&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
@@ -702,14 +697,12 @@ section:</p>
 
 <span class="gp">In [17]: </span><span class="n">no2_pivoted</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[17]: </span><span class="go"></span>
-<span class="go">location                  date.utc  ...  London Westminster</span>
-<span class="go">0        2019-04-09 01:00:00+00:00  ...                 NaN</span>
-<span class="go">1        2019-04-09 02:00:00+00:00  ...                67.0</span>
-<span class="go">2        2019-04-09 03:00:00+00:00  ...                67.0</span>
-<span class="go">3        2019-04-09 04:00:00+00:00  ...                41.0</span>
-<span class="go">4        2019-04-09 05:00:00+00:00  ...                41.0</span>
-
-<span class="go">[5 rows x 4 columns]</span>
+<span class="go">location                  date.utc  BETR801  FR04014  London Westminster</span>
+<span class="go">0        2019-04-09 01:00:00+00:00     22.5     24.4                 NaN</span>
+<span class="go">1        2019-04-09 02:00:00+00:00     53.5     27.4                67.0</span>
+<span class="go">2        2019-04-09 03:00:00+00:00     54.5     34.2                67.0</span>
+<span class="go">3        2019-04-09 04:00:00+00:00     34.5     48.5                41.0</span>
+<span class="go">4        2019-04-09 05:00:00+00:00     46.5     59.5                41.0</span>
 </pre></div>
 </div>
 <img alt="../../_images/07_melt.svg" class="align-center" src="../../_images/07_melt.svg" /><ul class="task-bullet">

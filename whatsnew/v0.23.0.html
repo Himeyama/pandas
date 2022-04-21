@@ -37,6 +37,7 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1199,13 +1200,15 @@ See <a class="reference external" href="https://pandas.pydata.org/pandas-docs/ve
 <span class="go">2      3   c 2018-01-03   c</span>
 <span class="go">3      4   d 2018-01-04   c</span>
 
+<span class="go">[4 rows x 4 columns]</span>
+
 <span class="gp">In [3]: </span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
 <span class="gh">Out[3]: </span><span class="go"></span>
 <span class="go">foo             int64</span>
 <span class="go">bar            object</span>
 <span class="go">baz    datetime64[ns]</span>
 <span class="go">qux          category</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 4, dtype: object</span>
 
 <span class="gp">In [4]: </span><span class="n">df</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="s1">&#39;test.json&#39;</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;table&#39;</span><span class="p">)</span>
 
@@ -1220,13 +1223,15 @@ See <a class="reference external" href="https://pandas.pydata.org/pandas-docs/ve
 <span class="go">2      3   c 2018-01-03   c</span>
 <span class="go">3      4   d 2018-01-04   c</span>
 
+<span class="go">[4 rows x 4 columns]</span>
+
 <span class="gp">In [7]: </span><span class="n">new_df</span><span class="o">.</span><span class="n">dtypes</span>
 <span class="gh">Out[7]: </span><span class="go"></span>
 <span class="go">foo             int64</span>
 <span class="go">bar            object</span>
 <span class="go">baz    datetime64[ns]</span>
 <span class="go">qux          category</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 4, dtype: object</span>
 </pre></div>
 </div>
 <p>Please note that the string <code class="docutils literal notranslate"><span class="pre">index</span></code> is not supported with the round trip format, as it is used by default in <code class="docutils literal notranslate"><span class="pre">write_json</span></code> to indicate a missing index name.</p>
@@ -1244,13 +1249,15 @@ See <a class="reference external" href="https://pandas.pydata.org/pandas-docs/ve
 <span class="go">2    3   c 2018-01-03   c</span>
 <span class="go">3    4   d 2018-01-04   c</span>
 
+<span class="go">[4 rows x 4 columns]</span>
+
 <span class="gp">In [12]: </span><span class="n">new_df</span><span class="o">.</span><span class="n">dtypes</span>
 <span class="gh">Out[12]: </span><span class="go"></span>
 <span class="go">foo             int64</span>
 <span class="go">bar            object</span>
 <span class="go">baz    datetime64[ns]</span>
 <span class="go">qux          category</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 4, dtype: object</span>
 </pre></div>
 </div>
 </section>
@@ -1267,12 +1274,16 @@ See <a class="reference external" href="https://pandas.pydata.org/pandas-docs/ve
 <span class="go">1  2</span>
 <span class="go">2  3</span>
 
+<span class="go">[3 rows x 1 columns]</span>
+
 <span class="gp">In [15]: </span><span class="n">df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">B</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">A</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">])</span>
 <span class="gh">Out[15]: </span><span class="go"></span>
 <span class="go">   A  B  C</span>
 <span class="go">0  1  1  2</span>
 <span class="go">1  2  2  4</span>
 <span class="go">2  3  3  6</span>
+
+<span class="go">[3 rows x 3 columns]</span>
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -1298,6 +1309,8 @@ referring to other variables being updated would get the “old” values</p>
 <span class="go">0  2 -2</span>
 <span class="go">1  3 -3</span>
 <span class="go">2  4 -4</span>
+
+<span class="go">[3 rows x 2 columns]</span>
 </pre></div>
 </div>
 </div>
@@ -1333,6 +1346,8 @@ levels</span></a> documentation section.
 <span class="go">K0    A0  B0   K0  C0  D0</span>
 <span class="go">K1    A2  B2   K0  C1  D1</span>
 <span class="go">K2    A3  B3   K1  C3  D3</span>
+
+<span class="go">[3 rows x 5 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -1366,6 +1381,8 @@ resetting indexes. See the <a class="reference internal" href="../user_guide/bas
 <span class="go">      1       2</span>
 <span class="go">      1       1</span>
 
+<span class="go">[6 rows x 1 columns]</span>
+
 <span class="go"># Sort by &#39;second&#39; (index) and &#39;A&#39; (column)</span>
 <span class="gp">In [26]: </span><span class="n">df_multi</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;second&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">])</span>
 <span class="gh">Out[26]: </span><span class="go"></span>
@@ -1377,6 +1394,8 @@ resetting indexes. See the <a class="reference internal" href="../user_guide/bas
 <span class="go">b     2       3</span>
 <span class="go">a     2       4</span>
 <span class="go">      2       5</span>
+
+<span class="go">[6 rows x 1 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -1451,6 +1470,8 @@ number of groups. We have added a keyword <code class="docutils literal notransl
 <span class="go">1  a  d       2  bar</span>
 <span class="go">2  b  c       3  foo</span>
 <span class="go">3  b  d       4  bar</span>
+
+<span class="go">[4 rows x 4 columns]</span>
 </pre></div>
 </div>
 <p>To show all values, the previous behavior:</p>
@@ -1482,6 +1503,8 @@ number of groups. We have added a keyword <code class="docutils literal notransl
 <span class="go">  d bar       1</span>
 <span class="go">b c foo       1</span>
 <span class="go">  d bar       1</span>
+
+<span class="go">[4 rows x 1 columns]</span>
 </pre></div>
 </div>
 <p>For pivoting operations, this behavior is <em>already</em> controlled by the <code class="docutils literal notranslate"><span class="pre">dropna</span></code> keyword:</p>
@@ -1502,6 +1525,8 @@ number of groups. We have added a keyword <code class="docutils literal notransl
 <span class="go">1  a  d       2</span>
 <span class="go">2  b  c       3</span>
 <span class="go">3  b  d       4</span>
+
+<span class="go">[4 rows x 3 columns]</span>
 </pre></div>
 </div>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [38]: </span><span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;values&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">],</span>
@@ -1514,6 +1539,8 @@ number of groups. We have added a keyword <code class="docutils literal notransl
 <span class="go">  d       2</span>
 <span class="go">b c       3</span>
 <span class="go">  d       4</span>
+
+<span class="go">[4 rows x 1 columns]</span>
 
 <span class="gp">In [39]: </span><span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;values&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">],</span>
 <span class="gp">   ....: </span>               <span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -1530,6 +1557,8 @@ number of groups. We have added a keyword <code class="docutils literal notransl
 <span class="go">z c     NaN</span>
 <span class="go">  d     NaN</span>
 <span class="go">  y     NaN</span>
+
+<span class="go">[9 rows x 1 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -1549,7 +1578,7 @@ In a future version the default will be changed to <code class="docutils literal
 <span class="go">3    2</span>
 <span class="go">4    3</span>
 <span class="go">5    4</span>
-<span class="go">dtype: int64</span>
+<span class="go">Length: 5, dtype: int64</span>
 </pre></div>
 </div>
 <p>Pass a <code class="docutils literal notranslate"><span class="pre">Series</span></code>:</p>
@@ -1560,7 +1589,7 @@ In a future version the default will be changed to <code class="docutils literal
 <span class="go">3    2.0</span>
 <span class="go">4    3.0</span>
 <span class="go">5    4.0</span>
-<span class="go">dtype: float64</span>
+<span class="go">Length: 5, dtype: float64</span>
 </pre></div>
 </div>
 <p>Mimic the original behavior of passing a ndarray:</p>
@@ -1571,7 +1600,7 @@ In a future version the default will be changed to <code class="docutils literal
 <span class="go">3    2.0</span>
 <span class="go">4    3.0</span>
 <span class="go">5    4.0</span>
-<span class="go">dtype: float64</span>
+<span class="go">Length: 5, dtype: float64</span>
 </pre></div>
 </div>
 </section>
@@ -1595,7 +1624,7 @@ outside the existing valid values while preserving those inside.  (<a class="ref
 <span class="go">6    13.0</span>
 <span class="go">7     NaN</span>
 <span class="go">8     NaN</span>
-<span class="go">dtype: float64</span>
+<span class="go">Length: 9, dtype: float64</span>
 </pre></div>
 </div>
 <p>Fill one consecutive inside value in both directions</p>
@@ -1610,7 +1639,7 @@ outside the existing valid values while preserving those inside.  (<a class="ref
 <span class="go">6    13.0</span>
 <span class="go">7     NaN</span>
 <span class="go">8     NaN</span>
-<span class="go">dtype: float64</span>
+<span class="go">Length: 9, dtype: float64</span>
 </pre></div>
 </div>
 <p>Fill all consecutive outside values backward</p>
@@ -1625,7 +1654,7 @@ outside the existing valid values while preserving those inside.  (<a class="ref
 <span class="go">6    13.0</span>
 <span class="go">7     NaN</span>
 <span class="go">8     NaN</span>
-<span class="go">dtype: float64</span>
+<span class="go">Length: 9, dtype: float64</span>
 </pre></div>
 </div>
 <p>Fill all consecutive outside values in both directions</p>
@@ -1640,7 +1669,7 @@ outside the existing valid values while preserving those inside.  (<a class="ref
 <span class="go">6    13.0</span>
 <span class="go">7    13.0</span>
 <span class="go">8    13.0</span>
-<span class="go">dtype: float64</span>
+<span class="go">Length: 9, dtype: float64</span>
 </pre></div>
 </div>
 </section>
@@ -1655,7 +1684,7 @@ outside the existing valid values while preserving those inside.  (<a class="ref
 <span class="go">b      int64</span>
 <span class="go">c_5    uint8</span>
 <span class="go">c_6    uint8</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 4, dtype: object</span>
 
 <span class="gp">In [51]: </span><span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span><span class="o">.</span><span class="n">dtypes</span>
 <span class="gh">Out[51]: </span><span class="go"></span>
@@ -1663,7 +1692,7 @@ outside the existing valid values while preserving those inside.  (<a class="ref
 <span class="go">b      int64</span>
 <span class="go">c_5     bool</span>
 <span class="go">c_6     bool</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 4, dtype: object</span>
 </pre></div>
 </div>
 </section>
@@ -1691,7 +1720,7 @@ See the <a class="reference internal" href="../user_guide/timedeltas.html#timede
 <span class="go">2    1.0</span>
 <span class="go">3    NaN</span>
 <span class="go">4    inf</span>
-<span class="go">dtype: float64</span>
+<span class="go">Length: 5, dtype: float64</span>
 </pre></div>
 </div>
 <p>Previous behavior:</p>
@@ -1713,7 +1742,7 @@ See the <a class="reference internal" href="../user_guide/timedeltas.html#timede
 <span class="go">2    3.0</span>
 <span class="go">3    NaN</span>
 <span class="go">4    4.0</span>
-<span class="go">dtype: float64</span>
+<span class="go">Length: 5, dtype: float64</span>
 </pre></div>
 </div>
 <p>Furthermore, previously if you rank <code class="docutils literal notranslate"><span class="pre">inf</span></code> or <code class="docutils literal notranslate"><span class="pre">-inf</span></code> values together with <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values, the calculation won’t distinguish <code class="docutils literal notranslate"><span class="pre">NaN</span></code> from infinity when using ‘top’ or ‘bottom’ argument.</p>
@@ -1725,7 +1754,7 @@ See the <a class="reference internal" href="../user_guide/timedeltas.html#timede
 <span class="go">1    NaN</span>
 <span class="go">2   -inf</span>
 <span class="go">3   -inf</span>
-<span class="go">dtype: float64</span>
+<span class="go">Length: 4, dtype: float64</span>
 </pre></div>
 </div>
 <p>Previous behavior:</p>
@@ -1745,7 +1774,7 @@ See the <a class="reference internal" href="../user_guide/timedeltas.html#timede
 <span class="go">1    1.5</span>
 <span class="go">2    3.5</span>
 <span class="go">3    3.5</span>
-<span class="go">dtype: float64</span>
+<span class="go">Length: 4, dtype: float64</span>
 </pre></div>
 </div>
 <p>These bugs were squashed:</p>
@@ -1770,7 +1799,7 @@ The method has now gained a keyword <code class="docutils literal notranslate"><
 <span class="go">1     bb</span>
 <span class="go">2     cc</span>
 <span class="go">3     dd</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 4, dtype: object</span>
 
 <span class="gp">In [63]: </span><span class="n">s</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">na_rep</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
 <span class="gh">Out[63]: </span><span class="go"></span>
@@ -1778,7 +1807,7 @@ The method has now gained a keyword <code class="docutils literal notranslate"><
 <span class="go">1    bb</span>
 <span class="go">2    cc</span>
 <span class="go">3    dd</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 4, dtype: object</span>
 </pre></div>
 </div>
 <p>Furthermore, <a class="reference internal" href="../reference/api/pandas.Series.str.cat.html#pandas.Series.str.cat" title="pandas.Series.str.cat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Series.str.cat()</span></code></a> now works for <code class="docutils literal notranslate"><span class="pre">CategoricalIndex</span></code> as well (previously raised a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>; see <a class="reference external" href="https://github.com/pandas-dev/pandas/issues/20842">GH20842</a>).</p>
@@ -1953,7 +1982,7 @@ higher. (<a class="reference external" href="https://github.com/pandas-dev/panda
 <span class="go">Expenses     -1500</span>
 <span class="go">Taxes         -200</span>
 <span class="go">Net result     300</span>
-<span class="go">dtype: int64</span>
+<span class="go">Length: 4, dtype: int64</span>
 </pre></div>
 </div>
 <p>Notice that the Series is now ordered by insertion order. This new behavior is
@@ -1971,7 +2000,7 @@ and <code class="docutils literal notranslate"><span class="pre">SparseDataFrame
 <span class="go">Income        2000</span>
 <span class="go">Net result     300</span>
 <span class="go">Taxes         -200</span>
-<span class="go">dtype: int64</span>
+<span class="go">Length: 4, dtype: int64</span>
 </pre></div>
 </div>
 </section>
@@ -2066,6 +2095,8 @@ where a list-like (e.g. <code class="docutils literal notranslate"><span class="
 <span class="go">3  1  2  3</span>
 <span class="go">4  1  2  3</span>
 <span class="go">5  1  2  3</span>
+
+<span class="go">[6 rows x 3 columns]</span>
 </pre></div>
 </div>
 <p>Previous behavior: if the returned shape happened to match the length of original columns, this would return a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.
@@ -2100,7 +2131,7 @@ If the return shape did not match, a <code class="docutils literal notranslate">
 <span class="go">3    [1, 2, 3]</span>
 <span class="go">4    [1, 2, 3]</span>
 <span class="go">5    [1, 2, 3]</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 6, dtype: object</span>
 
 <span class="gp">In [79]: </span><span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gh">Out[79]: </span><span class="go"></span>
@@ -2110,7 +2141,7 @@ If the return shape did not match, a <code class="docutils literal notranslate">
 <span class="go">3    [1, 2]</span>
 <span class="go">4    [1, 2]</span>
 <span class="go">5    [1, 2]</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 6, dtype: object</span>
 </pre></div>
 </div>
 <p>To have expanded columns, you can use <code class="docutils literal notranslate"><span class="pre">result_type='expand'</span></code></p>
@@ -2123,6 +2154,8 @@ If the return shape did not match, a <code class="docutils literal notranslate">
 <span class="go">3  1  2  3</span>
 <span class="go">4  1  2  3</span>
 <span class="go">5  1  2  3</span>
+
+<span class="go">[6 rows x 3 columns]</span>
 </pre></div>
 </div>
 <p>To broadcast the result across the original columns (the old behaviour for
@@ -2137,6 +2170,8 @@ The shape must match the original columns.</p>
 <span class="go">3  1  2  3</span>
 <span class="go">4  1  2  3</span>
 <span class="go">5  1  2  3</span>
+
+<span class="go">[6 rows x 3 columns]</span>
 </pre></div>
 </div>
 <p>Returning a <code class="docutils literal notranslate"><span class="pre">Series</span></code> allows one to control the exact return structure and column names:</p>
@@ -2149,6 +2184,8 @@ The shape must match the original columns.</p>
 <span class="go">3  1  2  3</span>
 <span class="go">4  1  2  3</span>
 <span class="go">5  1  2  3</span>
+
+<span class="go">[6 rows x 3 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -2167,6 +2204,8 @@ The current behavior is the same as the previous (sorting), but now a warning is
 <span class="go">1  2.0  2</span>
 <span class="go">0  NaN  4</span>
 <span class="go">1  NaN  5</span>
+
+<span class="go">[4 rows x 2 columns]</span>
 </pre></div>
 </div>
 <p>To keep the previous behavior (sorting) and silence the warning, pass <code class="docutils literal notranslate"><span class="pre">sort=True</span></code></p>
@@ -2177,6 +2216,8 @@ The current behavior is the same as the previous (sorting), but now a warning is
 <span class="go">1  2  2.0</span>
 <span class="go">0  4  NaN</span>
 <span class="go">1  5  NaN</span>
+
+<span class="go">[4 rows x 2 columns]</span>
 </pre></div>
 </div>
 <p>To accept the future behavior (no sorting), pass <code class="docutils literal notranslate"><span class="pre">sort=False</span></code></p>
@@ -2263,6 +2304,8 @@ the <code class="docutils literal notranslate"><span class="pre">expand</span></
 <span class="go">0  10</span>
 <span class="go">1  12</span>
 
+<span class="go">[2 rows x 1 columns]</span>
+
 <span class="gp">In [90]: </span><span class="nb">type</span><span class="p">(</span><span class="n">extracted</span><span class="p">)</span>
 <span class="gh">Out[90]: </span><span class="go">pandas.core.frame.DataFrame</span>
 </pre></div>
@@ -2276,7 +2319,7 @@ the <code class="docutils literal notranslate"><span class="pre">expand</span></
 <span class="gh">Out[93]: </span><span class="go"></span>
 <span class="go">0    10</span>
 <span class="go">1    12</span>
-<span class="go">dtype: object</span>
+<span class="go">Length: 2, dtype: object</span>
 
 <span class="gp">In [94]: </span><span class="nb">type</span><span class="p">(</span><span class="n">extracted</span><span class="p">)</span>
 <span class="gh">Out[94]: </span><span class="go">pandas.core.series.Series</span>

@@ -37,6 +37,7 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1668,16 +1669,16 @@ without using a temporary variable.</p>
 <span class="gp">   ....: </span>   <span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">])</span>
 <span class="gp">   ....: </span>
 <span class="gh">Out[97]: </span><span class="go"></span>
-<span class="go">           stint    g    ab    r    h  ...   ibb   hbp    sh    sf  gidp</span>
-<span class="go">year team                              ...                              </span>
-<span class="go">2007 CIN       6  379   745  101  203  ...  14.0   1.0   1.0  15.0  18.0</span>
-<span class="go">     DET       5  301  1062  162  283  ...   3.0  10.0   4.0   8.0  28.0</span>
-<span class="go">     HOU       4  311   926  109  218  ...   3.0   9.0  16.0   6.0  17.0</span>
-<span class="go">     LAN      11  413  1021  153  293  ...   8.0   9.0   3.0   8.0  29.0</span>
-<span class="go">     NYN      13  622  1854  240  509  ...  24.0  23.0  18.0  15.0  48.0</span>
-<span class="go">     SFN       5  482  1305  198  337  ...  51.0   8.0  16.0   6.0  41.0</span>
-<span class="go">     TEX       2  198   729  115  200  ...   4.0   5.0   2.0   8.0  16.0</span>
-<span class="go">     TOR       4  459  1408  187  378  ...  16.0  12.0   4.0  16.0  38.0</span>
+<span class="go">           stint    g    ab    r    h  X2b  X3b  hr  ...   cs   bb     so   ibb   hbp    sh    sf  gidp</span>
+<span class="go">year team                                            ...                                               </span>
+<span class="go">2007 CIN       6  379   745  101  203   35    2  36  ...  1.0  105  127.0  14.0   1.0   1.0  15.0  18.0</span>
+<span class="go">     DET       5  301  1062  162  283   54    4  37  ...  7.0   97  176.0   3.0  10.0   4.0   8.0  28.0</span>
+<span class="go">     HOU       4  311   926  109  218   47    6  14  ...  4.0   60  212.0   3.0   9.0  16.0   6.0  17.0</span>
+<span class="go">     LAN      11  413  1021  153  293   61    3  36  ...  5.0  114  141.0   8.0   9.0   3.0   8.0  29.0</span>
+<span class="go">     NYN      13  622  1854  240  509  101    3  61  ...  4.0  174  310.0  24.0  23.0  18.0  15.0  48.0</span>
+<span class="go">     SFN       5  482  1305  198  337   67    6  40  ...  7.0  235  188.0  51.0   8.0  16.0   6.0  41.0</span>
+<span class="go">     TEX       2  198   729  115  200   40    4  28  ...  4.0   73  140.0   4.0   5.0   2.0   8.0  16.0</span>
+<span class="go">     TOR       4  459  1408  187  378   96    2  58  ...  2.0  190  265.0  16.0  12.0   4.0  16.0  38.0</span>
 
 <span class="go">[8 rows x 18 columns]</span>
 </pre></div>
@@ -2837,7 +2838,7 @@ having to specify which frame you’re interested in querying</p>
 <span class="gp">In [249]: </span><span class="n">expr</span> <span class="o">=</span> <span class="s1">&#39;0.0 &lt;= a &lt;= c &lt;= 0.5&#39;</span>
 
 <span class="gp">In [250]: </span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">frame</span><span class="p">:</span> <span class="n">frame</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">expr</span><span class="p">),</span> <span class="p">[</span><span class="n">df</span><span class="p">,</span> <span class="n">df2</span><span class="p">])</span>
-<span class="gh">Out[250]: </span><span class="go">&lt;map at 0x7f869ecf3f40&gt;</span>
+<span class="gh">Out[250]: </span><span class="go">&lt;map at 0x7ff52e46f5e0&gt;</span>
 </pre></div>
 </div>
 </section>

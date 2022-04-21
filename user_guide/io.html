@@ -37,6 +37,7 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -2408,15 +2409,13 @@ to retain them via the <code class="docutils literal notranslate"><span class="p
 
 <span class="gp">In [108]: </span><span class="n">df</span>
 <span class="gh">Out[108]: </span><span class="go"></span>
-<span class="go">                  1_2                 1_3  ...          3     4</span>
-<span class="go">0 1999-01-27 19:00:00 1999-01-27 18:56:00  ...   18:56:00  0.81</span>
-<span class="go">1 1999-01-27 20:00:00 1999-01-27 19:56:00  ...   19:56:00  0.01</span>
-<span class="go">2 1999-01-27 21:00:00 1999-01-27 20:56:00  ...   20:56:00 -0.59</span>
-<span class="go">3 1999-01-27 21:00:00 1999-01-27 21:18:00  ...   21:18:00 -0.99</span>
-<span class="go">4 1999-01-27 22:00:00 1999-01-27 21:56:00  ...   21:56:00 -0.59</span>
-<span class="go">5 1999-01-27 23:00:00 1999-01-27 22:56:00  ...   22:56:00 -0.59</span>
-
-<span class="go">[6 rows x 7 columns]</span>
+<span class="go">                  1_2                 1_3     0         1          2          3     4</span>
+<span class="go">0 1999-01-27 19:00:00 1999-01-27 18:56:00  KORD  19990127   19:00:00   18:56:00  0.81</span>
+<span class="go">1 1999-01-27 20:00:00 1999-01-27 19:56:00  KORD  19990127   20:00:00   19:56:00  0.01</span>
+<span class="go">2 1999-01-27 21:00:00 1999-01-27 20:56:00  KORD  19990127   21:00:00   20:56:00 -0.59</span>
+<span class="go">3 1999-01-27 21:00:00 1999-01-27 21:18:00  KORD  19990127   21:00:00   21:18:00 -0.99</span>
+<span class="go">4 1999-01-27 22:00:00 1999-01-27 21:56:00  KORD  19990127   22:00:00   21:56:00 -0.59</span>
+<span class="go">5 1999-01-27 23:00:00 1999-01-27 22:56:00  KORD  19990127   23:00:00   22:56:00 -0.59</span>
 </pre></div>
 </div>
 <p>Note that if you wish to combine multiple columns into a single date column, a
@@ -2827,8 +2826,8 @@ too many fields will raise an error by default:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [152]: </span><span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;a,b,c</span><span class="se">\n</span><span class="s2">1,2,3</span><span class="se">\n</span><span class="s2">4,5,6,7</span><span class="se">\n</span><span class="s2">8,9,10&quot;</span>
 
 <span class="gp">In [153]: </span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
-<span class="gt">------------------------------------------------------------------------</span>
-<span class="ne">ParserError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ParserError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
 <span class="nn">Input In [153],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
 
@@ -3963,14 +3962,12 @@ preserve string-like numbers (e.g. ‘1’, ‘2’) in an axes.</p>
 
 <span class="gp">In [247]: </span><span class="n">dfju</span>
 <span class="gh">Out[247]: </span><span class="go"></span>
-<span class="go">                            A         B  ...  ints  bools</span>
-<span class="go">1356998400000000000 -1.294524  0.413738  ...     0   True</span>
-<span class="go">1357084800000000000  0.276662 -0.472035  ...     1   True</span>
-<span class="go">1357171200000000000 -0.013960 -0.362543  ...     2   True</span>
-<span class="go">1357257600000000000 -0.006154 -0.923061  ...     3   True</span>
-<span class="go">1357344000000000000  0.895717  0.805244  ...     4   True</span>
-
-<span class="go">[5 rows x 5 columns]</span>
+<span class="go">                            A         B                 date  ints  bools</span>
+<span class="go">1356998400000000000 -1.294524  0.413738  1356998400000000000     0   True</span>
+<span class="go">1357084800000000000  0.276662 -0.472035  1356998400000000000     1   True</span>
+<span class="go">1357171200000000000 -0.013960 -0.362543  1356998400000000000     2   True</span>
+<span class="go">1357257600000000000 -0.006154 -0.923061  1356998400000000000     3   True</span>
+<span class="go">1357344000000000000  0.895717  0.805244  1356998400000000000     4   True</span>
 
 <span class="go"># Let pandas detect the correct precision</span>
 <span class="gp">In [248]: </span><span class="n">dfju</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">json</span><span class="p">)</span>
@@ -4020,11 +4017,11 @@ data:</p>
 </pre></div>
 </div>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [256]: </span><span class="o">%</span><span class="k">timeit</span> pd.read_json(jsonfloats)
-<span class="go">8.28 ms +- 586 us per loop (mean +- std. dev. of 7 runs, 100 loops each)</span>
+<span class="go">7.67 ms +- 212 us per loop (mean +- std. dev. of 7 runs, 100 loops each)</span>
 </pre></div>
 </div>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [257]: </span><span class="o">%</span><span class="k">timeit</span> pd.read_json(jsonfloats, numpy=True)
-<span class="go">5.15 ms +- 207 us per loop (mean +- std. dev. of 7 runs, 100 loops each)</span>
+<span class="go">5.62 ms +- 109 us per loop (mean +- std. dev. of 7 runs, 100 loops each)</span>
 </pre></div>
 </div>
 <p>The speedup is less noticeable for smaller datasets:</p>
@@ -4032,11 +4029,11 @@ data:</p>
 </pre></div>
 </div>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [259]: </span><span class="o">%</span><span class="k">timeit</span> pd.read_json(jsonfloats)
-<span class="go">3.92 ms +- 265 us per loop (mean +- std. dev. of 7 runs, 100 loops each)</span>
+<span class="go">4.94 ms +- 387 us per loop (mean +- std. dev. of 7 runs, 100 loops each)</span>
 </pre></div>
 </div>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [260]: </span><span class="o">%</span><span class="k">timeit</span> pd.read_json(jsonfloats, numpy=True)
-<span class="go">3.47 ms +- 361 us per loop (mean +- std. dev. of 7 runs, 100 loops each)</span>
+<span class="go">4.31 ms +- 85.2 us per loop (mean +- std. dev. of 7 runs, 100 loops each)</span>
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -4126,10 +4123,8 @@ With max_level=1 the following snippet normalizes until 1st nesting level of the
 
 <span class="gp">In [266]: </span><span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">max_level</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gh">Out[266]: </span><span class="go"></span>
-<span class="go">  CreatedBy.Name  ... Image.a</span>
-<span class="go">0        User001  ...       b</span>
-
-<span class="go">[1 rows x 4 columns]</span>
+<span class="go">  CreatedBy.Name Lookup.TextField                    Lookup.UserField Image.a</span>
+<span class="go">0        User001        Some text  {&#39;Id&#39;: &#39;ID001&#39;, &#39;Name&#39;: &#39;Name001&#39;}       b</span>
 </pre></div>
 </div>
 </section>
@@ -4446,23 +4441,224 @@ only a single table contained in the HTML content.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [299]: </span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://www.fdic.gov/resources/resolutions/bank-failures/failed-bank-list&quot;</span>
 
 <span class="gp">In [300]: </span><span class="n">dfs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">OSError</span><span class="g g-Whitespace">                                   </span>Traceback (most recent call last)
+<span class="nn">File /opt/conda/lib/python3.8/urllib/request.py:1354,</span> in <span class="ni">AbstractHTTPHandler.do_open</span><span class="nt">(self, http_class, req, **http_conn_args)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1353</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1354</span>     <span class="n">h</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">get_method</span><span class="p">(),</span> <span class="n">req</span><span class="o">.</span><span class="n">selector</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1355</span>               <span class="n">encode_chunked</span><span class="o">=</span><span class="n">req</span><span class="o">.</span><span class="n">has_header</span><span class="p">(</span><span class="s1">&#39;Transfer-encoding&#39;</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">1356</span> <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span> <span class="c1"># timeout error</span>
+
+<span class="nn">File /opt/conda/lib/python3.8/http/client.py:1256,</span> in <span class="ni">HTTPConnection.request</span><span class="nt">(self, method, url, body, headers, encode_chunked)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1255</span> <span class="sd">&quot;&quot;&quot;Send a complete request to the server.&quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1256</span> <span class="bp">self</span><span class="o">.</span><span class="n">_send_request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">encode_chunked</span><span class="p">)</span>
+
+<span class="nn">File /opt/conda/lib/python3.8/http/client.py:1302,</span> in <span class="ni">HTTPConnection._send_request</span><span class="nt">(self, method, url, body, headers, encode_chunked)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1301</span>     <span class="n">body</span> <span class="o">=</span> <span class="n">_encode</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="s1">&#39;body&#39;</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1302</span> <span class="bp">self</span><span class="o">.</span><span class="n">endheaders</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="n">encode_chunked</span><span class="o">=</span><span class="n">encode_chunked</span><span class="p">)</span>
+
+<span class="nn">File /opt/conda/lib/python3.8/http/client.py:1251,</span> in <span class="ni">HTTPConnection.endheaders</span><span class="nt">(self, message_body, encode_chunked)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1250</span>     <span class="k">raise</span> <span class="n">CannotSendHeader</span><span class="p">()</span>
+<span class="ne">-&gt; </span><span class="mi">1251</span> <span class="bp">self</span><span class="o">.</span><span class="n">_send_output</span><span class="p">(</span><span class="n">message_body</span><span class="p">,</span> <span class="n">encode_chunked</span><span class="o">=</span><span class="n">encode_chunked</span><span class="p">)</span>
+
+<span class="nn">File /opt/conda/lib/python3.8/http/client.py:1011,</span> in <span class="ni">HTTPConnection._send_output</span><span class="nt">(self, message_body, encode_chunked)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1010</span> <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">[:]</span>
+<span class="ne">-&gt; </span><span class="mi">1011</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1013</span> <span class="k">if</span> <span class="n">message_body</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1014</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1015</span>     <span class="c1"># create a consistent interface to message_body</span>
+
+<span class="nn">File /opt/conda/lib/python3.8/http/client.py:951,</span> in <span class="ni">HTTPConnection.send</span><span class="nt">(self, data)</span>
+<span class="g g-Whitespace">    </span><span class="mi">950</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">auto_open</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">951</span>     <span class="bp">self</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">952</span> <span class="k">else</span><span class="p">:</span>
+
+<span class="nn">File /opt/conda/lib/python3.8/http/client.py:922,</span> in <span class="ni">HTTPConnection.connect</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">921</span> <span class="sd">&quot;&quot;&quot;Connect to the host and port specified in __init__.&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">922</span> <span class="bp">self</span><span class="o">.</span><span class="n">sock</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_connection</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">923</span>     <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">source_address</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">924</span> <span class="bp">self</span><span class="o">.</span><span class="n">sock</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">IPPROTO_TCP</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">TCP_NODELAY</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="nn">File /opt/conda/lib/python3.8/socket.py:808,</span> in <span class="ni">create_connection</span><span class="nt">(address, timeout, source_address)</span>
+<span class="g g-Whitespace">    </span><span class="mi">807</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">808</span>     <span class="k">raise</span> <span class="n">err</span>
+<span class="g g-Whitespace">    </span><span class="mi">809</span> <span class="k">finally</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">810</span>     <span class="c1"># Break explicitly a reference cycle</span>
+
+<span class="nn">File /opt/conda/lib/python3.8/socket.py:796,</span> in <span class="ni">create_connection</span><span class="nt">(address, timeout, source_address)</span>
+<span class="g g-Whitespace">    </span><span class="mi">795</span>     <span class="n">sock</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">source_address</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">796</span> <span class="n">sock</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">sa</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">797</span> <span class="c1"># Break explicitly a reference cycle</span>
+
+<span class="ne">OSError</span>: [Errno 99] Cannot assign requested address
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">URLError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">Input In [300],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">dfs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="nn">File /home/pandas/pandas/util/_decorators.py:311,</span> in <span class="ni">deprecate_nonkeyword_arguments.&lt;locals&gt;.decorate.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">305</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">num_allow_args</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">306</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">307</span>         <span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arguments</span><span class="o">=</span><span class="n">arguments</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span>         <span class="ne">FutureWarning</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span>         <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">310</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">311</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /home/pandas/pandas/io/html.py:1113,</span> in <span class="ni">read_html</span><span class="nt">(io, match, flavor, header, index_col, skiprows, attrs, parse_dates, thousands, encoding, decimal, converters, na_values, keep_default_na, displayed_only)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1109</span> <span class="n">validate_header_arg</span><span class="p">(</span><span class="n">header</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1111</span> <span class="n">io</span> <span class="o">=</span> <span class="n">stringify_path</span><span class="p">(</span><span class="n">io</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1113</span> <span class="k">return</span> <span class="n">_parse</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1114</span>     <span class="n">flavor</span><span class="o">=</span><span class="n">flavor</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1115</span>     <span class="n">io</span><span class="o">=</span><span class="n">io</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1116</span>     <span class="n">match</span><span class="o">=</span><span class="n">match</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1117</span>     <span class="n">header</span><span class="o">=</span><span class="n">header</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1118</span>     <span class="n">index_col</span><span class="o">=</span><span class="n">index_col</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1119</span>     <span class="n">skiprows</span><span class="o">=</span><span class="n">skiprows</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1120</span>     <span class="n">parse_dates</span><span class="o">=</span><span class="n">parse_dates</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1121</span>     <span class="n">thousands</span><span class="o">=</span><span class="n">thousands</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1122</span>     <span class="n">attrs</span><span class="o">=</span><span class="n">attrs</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1123</span>     <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1124</span>     <span class="n">decimal</span><span class="o">=</span><span class="n">decimal</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1125</span>     <span class="n">converters</span><span class="o">=</span><span class="n">converters</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1126</span>     <span class="n">na_values</span><span class="o">=</span><span class="n">na_values</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1127</span>     <span class="n">keep_default_na</span><span class="o">=</span><span class="n">keep_default_na</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1128</span>     <span class="n">displayed_only</span><span class="o">=</span><span class="n">displayed_only</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1129</span> <span class="p">)</span>
+
+<span class="nn">File /home/pandas/pandas/io/html.py:919,</span> in <span class="ni">_parse</span><span class="nt">(flavor, io, match, attrs, encoding, displayed_only, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">916</span> <span class="n">p</span> <span class="o">=</span> <span class="n">parser</span><span class="p">(</span><span class="n">io</span><span class="p">,</span> <span class="n">compiled_match</span><span class="p">,</span> <span class="n">attrs</span><span class="p">,</span> <span class="n">encoding</span><span class="p">,</span> <span class="n">displayed_only</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">918</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">919</span>     <span class="n">tables</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">parse_tables</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">920</span> <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">caught</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">921</span>     <span class="c1"># if `io` is an io-like object, check if it&#39;s seekable</span>
+<span class="g g-Whitespace">    </span><span class="mi">922</span>     <span class="c1"># and try to rewind it before trying the next parser</span>
+<span class="g g-Whitespace">    </span><span class="mi">923</span>     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">io</span><span class="p">,</span> <span class="s2">&quot;seekable&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">io</span><span class="o">.</span><span class="n">seekable</span><span class="p">():</span>
+
+<span class="nn">File /home/pandas/pandas/io/html.py:239,</span> in <span class="ni">_HtmlFrameParser.parse_tables</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">231</span> <span class="k">def</span> <span class="nf">parse_tables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">232</span>     <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">233</span><span class="sd">     Parse and return all tables from the DOM.</span>
+<span class="g g-Whitespace">    </span><span class="mi">234</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">237</span><span class="sd">     list of parsed (header, body, footer) tuples from tables.</span>
+<span class="g g-Whitespace">    </span><span class="mi">238</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">239</span>     <span class="n">tables</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_tables</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_build_doc</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">match</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">240</span>     <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parse_thead_tbody_tfoot</span><span class="p">(</span><span class="n">table</span><span class="p">)</span> <span class="k">for</span> <span class="n">table</span> <span class="ow">in</span> <span class="n">tables</span><span class="p">)</span>
+
+<span class="nn">File /home/pandas/pandas/io/html.py:758,</span> in <span class="ni">_LxmlFrameParser._build_doc</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">756</span>             <span class="k">pass</span>
+<span class="g g-Whitespace">    </span><span class="mi">757</span>     <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">758</span>         <span class="k">raise</span> <span class="n">e</span>
+<span class="g g-Whitespace">    </span><span class="mi">759</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">760</span>     <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="s2">&quot;text_content&quot;</span><span class="p">):</span>
+
+<span class="nn">File /home/pandas/pandas/io/html.py:739,</span> in <span class="ni">_LxmlFrameParser._build_doc</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">737</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">738</span>     <span class="k">if</span> <span class="n">is_url</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">io</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">739</span>         <span class="k">with</span> <span class="n">urlopen</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">io</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">740</span>             <span class="n">r</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">parser</span><span class="o">=</span><span class="n">parser</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">741</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">742</span>         <span class="c1"># try to parse the input in the simplest way</span>
+
+<span class="nn">File /home/pandas/pandas/io/common.py:239,</span> in <span class="ni">urlopen</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">233</span> <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">234</span><span class="sd"> Lazy-import wrapper for stdlib urlopen, as that imports a big chunk of</span>
+<span class="g g-Whitespace">    </span><span class="mi">235</span><span class="sd"> the stdlib.</span>
+<span class="g g-Whitespace">    </span><span class="mi">236</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">237</span> <span class="kn">import</span> <span class="nn">urllib.request</span>
+<span class="ne">--&gt; </span><span class="mi">239</span> <span class="k">return</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/conda/lib/python3.8/urllib/request.py:222,</span> in <span class="ni">urlopen</span><span class="nt">(url, data, timeout, cafile, capath, cadefault, context)</span>
+<span class="g g-Whitespace">    </span><span class="mi">220</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span>     <span class="n">opener</span> <span class="o">=</span> <span class="n">_opener</span>
+<span class="ne">--&gt; </span><span class="mi">222</span> <span class="k">return</span> <span class="n">opener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+
+<span class="nn">File /opt/conda/lib/python3.8/urllib/request.py:531,</span> in <span class="ni">OpenerDirector.open</span><span class="nt">(self, fullurl, data, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">529</span> <span class="k">for</span> <span class="n">processor</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">protocol</span><span class="p">,</span> <span class="p">[]):</span>
+<span class="g g-Whitespace">    </span><span class="mi">530</span>     <span class="n">meth</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">processor</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">531</span>     <span class="n">response</span> <span class="o">=</span> <span class="n">meth</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">response</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">533</span> <span class="k">return</span> <span class="n">response</span>
+
+<span class="nn">File /opt/conda/lib/python3.8/urllib/request.py:640,</span> in <span class="ni">HTTPErrorProcessor.http_response</span><span class="nt">(self, request, response)</span>
+<span class="g g-Whitespace">    </span><span class="mi">637</span> <span class="c1"># According to RFC 2616, &quot;2xx&quot; code indicates that the client&#39;s</span>
+<span class="g g-Whitespace">    </span><span class="mi">638</span> <span class="c1"># request was successfully received, understood, and accepted.</span>
+<span class="g g-Whitespace">    </span><span class="mi">639</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">200</span> <span class="o">&lt;=</span> <span class="n">code</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">640</span>     <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">641</span>         <span class="s1">&#39;http&#39;</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">643</span> <span class="k">return</span> <span class="n">response</span>
+
+<span class="nn">File /opt/conda/lib/python3.8/urllib/request.py:563,</span> in <span class="ni">OpenerDirector.error</span><span class="nt">(self, proto, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">561</span>     <span class="n">http_err</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="g g-Whitespace">    </span><span class="mi">562</span> <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="nb">dict</span><span class="p">,</span> <span class="n">proto</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span> <span class="o">+</span> <span class="n">args</span>
+<span class="ne">--&gt; </span><span class="mi">563</span> <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_chain</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">564</span> <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">565</span>     <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">File /opt/conda/lib/python3.8/urllib/request.py:502,</span> in <span class="ni">OpenerDirector._call_chain</span><span class="nt">(self, chain, kind, meth_name, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">500</span> <span class="k">for</span> <span class="n">handler</span> <span class="ow">in</span> <span class="n">handlers</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">501</span>     <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">502</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">503</span>     <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">504</span>         <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">File /opt/conda/lib/python3.8/urllib/request.py:755,</span> in <span class="ni">HTTPRedirectHandler.http_error_302</span><span class="nt">(self, req, fp, code, msg, headers)</span>
+<span class="g g-Whitespace">    </span><span class="mi">752</span> <span class="n">fp</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">753</span> <span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">755</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">new</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">req</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span>
+
+<span class="nn">File /opt/conda/lib/python3.8/urllib/request.py:525,</span> in <span class="ni">OpenerDirector.open</span><span class="nt">(self, fullurl, data, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">522</span>     <span class="n">req</span> <span class="o">=</span> <span class="n">meth</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">524</span> <span class="n">sys</span><span class="o">.</span><span class="n">audit</span><span class="p">(</span><span class="s1">&#39;urllib.Request&#39;</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">full_url</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">get_method</span><span class="p">())</span>
+<span class="ne">--&gt; </span><span class="mi">525</span> <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">527</span> <span class="c1"># post-process response</span>
+<span class="g g-Whitespace">    </span><span class="mi">528</span> <span class="n">meth_name</span> <span class="o">=</span> <span class="n">protocol</span><span class="o">+</span><span class="s2">&quot;_response&quot;</span>
+
+<span class="nn">File /opt/conda/lib/python3.8/urllib/request.py:542,</span> in <span class="ni">OpenerDirector._open</span><span class="nt">(self, req, data)</span>
+<span class="g g-Whitespace">    </span><span class="mi">539</span>     <span class="k">return</span> <span class="n">result</span>
+<span class="g g-Whitespace">    </span><span class="mi">541</span> <span class="n">protocol</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">type</span>
+<span class="ne">--&gt; </span><span class="mi">542</span> <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_chain</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">handle_open</span><span class="p">,</span> <span class="n">protocol</span><span class="p">,</span> <span class="n">protocol</span> <span class="o">+</span>
+<span class="g g-Whitespace">    </span><span class="mi">543</span>                           <span class="s1">&#39;_open&#39;</span><span class="p">,</span> <span class="n">req</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">544</span> <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">545</span>     <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">File /opt/conda/lib/python3.8/urllib/request.py:502,</span> in <span class="ni">OpenerDirector._call_chain</span><span class="nt">(self, chain, kind, meth_name, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">500</span> <span class="k">for</span> <span class="n">handler</span> <span class="ow">in</span> <span class="n">handlers</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">501</span>     <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">502</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">503</span>     <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">504</span>         <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">File /opt/conda/lib/python3.8/urllib/request.py:1383,</span> in <span class="ni">HTTPHandler.http_open</span><span class="nt">(self, req)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1382</span> <span class="k">def</span> <span class="nf">http_open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1383</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">do_open</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">HTTPConnection</span><span class="p">,</span> <span class="n">req</span><span class="p">)</span>
+
+<span class="nn">File /opt/conda/lib/python3.8/urllib/request.py:1357,</span> in <span class="ni">AbstractHTTPHandler.do_open</span><span class="nt">(self, http_class, req, **http_conn_args)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1354</span>         <span class="n">h</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">get_method</span><span class="p">(),</span> <span class="n">req</span><span class="o">.</span><span class="n">selector</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1355</span>                   <span class="n">encode_chunked</span><span class="o">=</span><span class="n">req</span><span class="o">.</span><span class="n">has_header</span><span class="p">(</span><span class="s1">&#39;Transfer-encoding&#39;</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">1356</span>     <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span> <span class="c1"># timeout error</span>
+<span class="ne">-&gt; </span><span class="mi">1357</span>         <span class="k">raise</span> <span class="n">URLError</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1358</span>     <span class="n">r</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1359</span> <span class="k">except</span><span class="p">:</span>
+
+<span class="ne">URLError</span>: &lt;urlopen error [Errno 99] Cannot assign requested address&gt;
 
 <span class="gp">In [301]: </span><span class="n">dfs</span>
 <span class="gh">Out[301]: </span><span class="go"></span>
-<span class="go">[                         Bank NameBank  ... FundFund</span>
-<span class="go"> 0                    Almena State Bank  ...    10538</span>
-<span class="go"> 1           First City Bank of Florida  ...    10537</span>
-<span class="go"> 2                 The First State Bank  ...    10536</span>
-<span class="go"> 3                   Ericson State Bank  ...    10535</span>
-<span class="go"> 4     City National Bank of New Jersey  ...    10534</span>
-<span class="go"> ..                                 ...  ...      ...</span>
-<span class="go"> 558                 Superior Bank, FSB  ...     6004</span>
-<span class="go"> 559                Malta National Bank  ...     4648</span>
-<span class="go"> 560    First Alliance Bank &amp; Trust Co.  ...     4647</span>
-<span class="go"> 561  National State Bank of Metropolis  ...     4646</span>
-<span class="go"> 562                   Bank of Honolulu  ...     4645</span>
-<span class="go"> </span>
-<span class="go"> [563 rows x 7 columns]]</span>
+<span class="go">(  Case      Data</span>
+<span class="go"> 0    A  0.276232</span>
+<span class="go"> 1    A -1.087401</span>
+<span class="go"> 2    A -0.673690</span>
+<span class="go"> 3    B  0.113648,</span>
+<span class="go">   Case      Data</span>
+<span class="go"> 4    A -1.478427</span>
+<span class="go"> 5    A  0.524988</span>
+<span class="go"> 6    B  0.404705,</span>
+<span class="go">   Case      Data</span>
+<span class="go"> 7    A  0.577046</span>
+<span class="go"> 8    A -1.715002)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -4478,18 +4674,18 @@ as a string:</p>
 
 <span class="gp">In [303]: </span><span class="n">dfs</span>
 <span class="gh">Out[303]: </span><span class="go"></span>
-<span class="go">[                                    Bank Name  ...       Updated Date</span>
-<span class="go"> 0    Banks of Wisconsin d/b/a Bank of Kenosha  ...       May 31, 2013</span>
-<span class="go"> 1                        Central Arizona Bank  ...       May 20, 2013</span>
-<span class="go"> 2                                Sunrise Bank  ...       May 21, 2013</span>
-<span class="go"> 3                       Pisgah Community Bank  ...       May 14, 2013</span>
-<span class="go"> 4                         Douglas County Bank  ...       May 16, 2013</span>
-<span class="go"> ..                                        ...  ...                ...</span>
-<span class="go"> 501                        Superior Bank, FSB  ...       June 5, 2012</span>
-<span class="go"> 502                       Malta National Bank  ...  November 18, 2002</span>
-<span class="go"> 503           First Alliance Bank &amp; Trust Co.  ...  February 18, 2003</span>
-<span class="go"> 504         National State Bank of Metropolis  ...     March 17, 2005</span>
-<span class="go"> 505                          Bank of Honolulu  ...     March 17, 2005</span>
+<span class="go">[                                    Bank Name          City  ...       Closing Date       Updated Date</span>
+<span class="go"> 0    Banks of Wisconsin d/b/a Bank of Kenosha       Kenosha  ...       May 31, 2013       May 31, 2013</span>
+<span class="go"> 1                        Central Arizona Bank    Scottsdale  ...       May 14, 2013       May 20, 2013</span>
+<span class="go"> 2                                Sunrise Bank      Valdosta  ...       May 10, 2013       May 21, 2013</span>
+<span class="go"> 3                       Pisgah Community Bank     Asheville  ...       May 10, 2013       May 14, 2013</span>
+<span class="go"> 4                         Douglas County Bank  Douglasville  ...     April 26, 2013       May 16, 2013</span>
+<span class="go"> ..                                        ...           ...  ...                ...                ...</span>
+<span class="go"> 501                        Superior Bank, FSB      Hinsdale  ...      July 27, 2001       June 5, 2012</span>
+<span class="go"> 502                       Malta National Bank         Malta  ...        May 3, 2001  November 18, 2002</span>
+<span class="go"> 503           First Alliance Bank &amp; Trust Co.    Manchester  ...   February 2, 2001  February 18, 2003</span>
+<span class="go"> 504         National State Bank of Metropolis    Metropolis  ...  December 14, 2000     March 17, 2005</span>
+<span class="go"> 505                          Bank of Honolulu      Honolulu  ...   October 13, 2000     March 17, 2005</span>
 <span class="go"> </span>
 <span class="go"> [506 rows x 7 columns]]</span>
 </pre></div>
@@ -4503,18 +4699,18 @@ as a string:</p>
 
 <span class="gp">In [306]: </span><span class="n">dfs</span>
 <span class="gh">Out[306]: </span><span class="go"></span>
-<span class="go">[                                    Bank Name  ...       Updated Date</span>
-<span class="go"> 0    Banks of Wisconsin d/b/a Bank of Kenosha  ...       May 31, 2013</span>
-<span class="go"> 1                        Central Arizona Bank  ...       May 20, 2013</span>
-<span class="go"> 2                                Sunrise Bank  ...       May 21, 2013</span>
-<span class="go"> 3                       Pisgah Community Bank  ...       May 14, 2013</span>
-<span class="go"> 4                         Douglas County Bank  ...       May 16, 2013</span>
-<span class="go"> ..                                        ...  ...                ...</span>
-<span class="go"> 501                        Superior Bank, FSB  ...       June 5, 2012</span>
-<span class="go"> 502                       Malta National Bank  ...  November 18, 2002</span>
-<span class="go"> 503           First Alliance Bank &amp; Trust Co.  ...  February 18, 2003</span>
-<span class="go"> 504         National State Bank of Metropolis  ...     March 17, 2005</span>
-<span class="go"> 505                          Bank of Honolulu  ...     March 17, 2005</span>
+<span class="go">[                                    Bank Name          City  ...       Closing Date       Updated Date</span>
+<span class="go"> 0    Banks of Wisconsin d/b/a Bank of Kenosha       Kenosha  ...       May 31, 2013       May 31, 2013</span>
+<span class="go"> 1                        Central Arizona Bank    Scottsdale  ...       May 14, 2013       May 20, 2013</span>
+<span class="go"> 2                                Sunrise Bank      Valdosta  ...       May 10, 2013       May 21, 2013</span>
+<span class="go"> 3                       Pisgah Community Bank     Asheville  ...       May 10, 2013       May 14, 2013</span>
+<span class="go"> 4                         Douglas County Bank  Douglasville  ...     April 26, 2013       May 16, 2013</span>
+<span class="go"> ..                                        ...           ...  ...                ...                ...</span>
+<span class="go"> 501                        Superior Bank, FSB      Hinsdale  ...      July 27, 2001       June 5, 2012</span>
+<span class="go"> 502                       Malta National Bank         Malta  ...        May 3, 2001  November 18, 2002</span>
+<span class="go"> 503           First Alliance Bank &amp; Trust Co.    Manchester  ...   February 2, 2001  February 18, 2003</span>
+<span class="go"> 504         National State Bank of Metropolis    Metropolis  ...  December 14, 2000     March 17, 2005</span>
+<span class="go"> 505                          Bank of Honolulu      Honolulu  ...   October 13, 2000     March 17, 2005</span>
 <span class="go"> </span>
 <span class="go"> [506 rows x 7 columns]]</span>
 </pre></div>
@@ -5171,13 +5367,11 @@ transform XML into a flatter version.</p>
 
 <span class="gp">In [326]: </span><span class="n">df</span>
 <span class="gh">Out[326]: </span><span class="go"></span>
-<span class="go">   category              title  ...  price      cover</span>
-<span class="go">0   cooking   Everyday Italian  ...  30.00       None</span>
-<span class="go">1  children       Harry Potter  ...  29.99       None</span>
-<span class="go">2       web  XQuery Kick Start  ...  49.99       None</span>
-<span class="go">3       web       Learning XML  ...  39.95  paperback</span>
-
-<span class="go">[4 rows x 6 columns]</span>
+<span class="go">   category              title                  author  year  price      cover</span>
+<span class="go">0   cooking   Everyday Italian     Giada De Laurentiis  2005  30.00       None</span>
+<span class="go">1  children       Harry Potter            J K. Rowling  2005  29.99       None</span>
+<span class="go">2       web  XQuery Kick Start  Vaidyanathan Nagarajan  2003  49.99       None</span>
+<span class="go">3       web       Learning XML             Erik T. Ray  2003  39.95  paperback</span>
 </pre></div>
 </div>
 <p>Read in the content of the “books.xml” file and pass it to <code class="docutils literal notranslate"><span class="pre">read_xml</span></code>
@@ -5452,10 +5646,10 @@ output (as shown below for demonstration) for easier parse into <code class="doc
 
 <span class="gp">In [353]: </span><span class="n">df</span>
 <span class="gh">Out[353]: </span><span class="go"></span>
-<span class="go">   station_id  ... avg_sunday_holiday_rides</span>
-<span class="go">0       40850  ...                    417.2</span>
-<span class="go">1       41700  ...                   1438.6</span>
-<span class="go">2       40380  ...                   1453.8</span>
+<span class="go">   station_id       station_name  ... avg_saturday_rides  avg_sunday_holiday_rides</span>
+<span class="go">0       40850            Library  ...              534.0                     417.2</span>
+<span class="go">1       41700  Washington/Wabash  ...             1909.8                    1438.6</span>
+<span class="go">2       40380         Clark/Lake  ...             1657.0                    1453.8</span>
 
 <span class="go">[3 rows x 6 columns]</span>
 </pre></div>
@@ -7538,11 +7732,9 @@ results.</p>
 <span class="gp">   .....: </span><span class="p">)</span>
 <span class="gp">   .....: </span>
 <span class="gh">Out[525]: </span><span class="go"></span>
-<span class="go">                   A         B         C  ...         E         F  foo</span>
-<span class="go">2000-01-05  1.043605  1.798494 -1.954845  ... -0.204377 -1.608953  bar</span>
-<span class="go">2000-01-07  0.150568  0.754820 -1.935461  ...  0.079529 -1.459471  bar</span>
-
-<span class="go">[2 rows x 7 columns]</span>
+<span class="go">                   A         B         C         D         E         F  foo</span>
+<span class="go">2000-01-05  1.043605  1.798494 -1.954845 -1.712882 -0.204377 -1.608953  bar</span>
+<span class="go">2000-01-07  0.150568  0.754820 -1.935461  1.007668  0.079529 -1.459471  bar</span>
 </pre></div>
 </div>
 </section>
@@ -8045,12 +8237,10 @@ raise a helpful error message on an attempt at serialization.</p></li>
 
 <span class="gp">In [552]: </span><span class="n">df</span>
 <span class="gh">Out[552]: </span><span class="go"></span>
-<span class="go">   a  b  ...                         h                             i</span>
-<span class="go">0  a  1  ... 2013-01-01 00:00:00-05:00 2013-01-01 00:00:00.000000000</span>
-<span class="go">1  b  2  ... 2013-01-02 00:00:00-05:00 2013-01-01 00:00:00.000000001</span>
-<span class="go">2  c  3  ... 2013-01-03 00:00:00-05:00 2013-01-01 00:00:00.000000002</span>
-
-<span class="go">[3 rows x 9 columns]</span>
+<span class="go">   a  b  c    d      e  f          g                         h                             i</span>
+<span class="go">0  a  1  3  4.0   True  a 2013-01-01 2013-01-01 00:00:00-05:00 2013-01-01 00:00:00.000000000</span>
+<span class="go">1  b  2  4  5.0  False  b 2013-01-02 2013-01-02 00:00:00-05:00 2013-01-01 00:00:00.000000001</span>
+<span class="go">2  c  3  5  6.0   True  c 2013-01-03 2013-01-03 00:00:00-05:00 2013-01-01 00:00:00.000000002</span>
 
 <span class="gp">In [553]: </span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
 <span class="gh">Out[553]: </span><span class="go"></span>
@@ -8068,8 +8258,8 @@ raise a helpful error message on an attempt at serialization.</p></li>
 </div>
 <p>Write to a feather file.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [554]: </span><span class="n">df</span><span class="o">.</span><span class="n">to_feather</span><span class="p">(</span><span class="s2">&quot;example.feather&quot;</span><span class="p">)</span>
-<span class="gt">------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
 <span class="nn">Input In [554],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span><span class="o">.</span><span class="n">to_feather</span><span class="p">(</span><span class="s2">&quot;example.feather&quot;</span><span class="p">)</span>
 
@@ -8111,8 +8301,8 @@ raise a helpful error message on an attempt at serialization.</p></li>
 </div>
 <p>Read from a feather file.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [555]: </span><span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_feather</span><span class="p">(</span><span class="s2">&quot;example.feather&quot;</span><span class="p">)</span>
-<span class="gt">------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
 <span class="nn">Input In [555],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_feather</span><span class="p">(</span><span class="s2">&quot;example.feather&quot;</span><span class="p">)</span>
 
@@ -8239,8 +8429,8 @@ These libraries differ by having different underlying dependencies (<code class=
 </div>
 <p>Write to a parquet file.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [561]: </span><span class="n">df</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;example_pa.parquet&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;pyarrow&quot;</span><span class="p">)</span>
-<span class="gt">------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
 <span class="nn">Input In [561],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;example_pa.parquet&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;pyarrow&quot;</span><span class="p">)</span>
 
@@ -8336,8 +8526,8 @@ These libraries differ by having different underlying dependencies (<code class=
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [563]: </span><span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;example_fp.parquet&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;fastparquet&quot;</span><span class="p">)</span>
 
 <span class="gp">In [564]: </span><span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;example_pa.parquet&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;pyarrow&quot;</span><span class="p">)</span>
-<span class="gt">------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                      </span>Traceback (most recent call last)
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
 <span class="nn">Input In [564],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;example_pa.parquet&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;pyarrow&quot;</span><span class="p">)</span>
 
@@ -8428,8 +8618,8 @@ These libraries differ by having different underlying dependencies (<code class=
 <span class="gp">   .....: </span>    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">],</span>
 <span class="gp">   .....: </span><span class="p">)</span>
 <span class="gp">   .....: </span>
-<span class="gt">------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                      </span>Traceback (most recent call last)
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
 <span class="nn">Input In [567],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="s2">&quot;example_pa.parquet&quot;</span><span class="p">,</span>
@@ -8510,8 +8700,8 @@ more columns in the output file. Thus, this code:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [569]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]})</span>
 
 <span class="gp">In [570]: </span><span class="n">df</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;test.parquet&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;pyarrow&quot;</span><span class="p">)</span>
-<span class="gt">------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
 <span class="nn">Input In [570],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;test.parquet&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;pyarrow&quot;</span><span class="p">)</span>
 
@@ -8610,8 +8800,8 @@ the file, because that column doesn’t exist in the target table.</p>
 <p>If you want to omit a dataframe’s indexes when writing, pass <code class="docutils literal notranslate"><span class="pre">index=False</span></code> to
 <a class="reference internal" href="../reference/api/pandas.DataFrame.to_parquet.html#pandas.DataFrame.to_parquet" title="pandas.DataFrame.to_parquet"><code class="xref py py-func docutils literal notranslate"><span class="pre">to_parquet()</span></code></a>:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [571]: </span><span class="n">df</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;test.parquet&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="gt">------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
 <span class="nn">Input In [571],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;test.parquet&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
@@ -8715,8 +8905,8 @@ underlying engine’s default behavior.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [572]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]})</span>
 
 <span class="gp">In [573]: </span><span class="n">df</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;pyarrow&quot;</span><span class="p">,</span> <span class="n">partition_cols</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">],</span> <span class="n">compression</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="gt">------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
 <span class="nn">Input In [573],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;pyarrow&quot;</span><span class="p">,</span> <span class="n">partition_cols</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">],</span> <span class="n">compression</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 
