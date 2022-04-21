@@ -91,31 +91,19 @@
         <ul id="navbar-main-elements" class="navbar-nav">
     <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../getting_started/index.html">
-  Getting started
+  入門
  </a>
 </li>
 
 <li class="toctree-l1 current active nav-item">
  <a class="reference internal nav-link" href="index.html">
-  User Guide
+  ユーザーガイド
  </a>
 </li>
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../reference/index.html">
-  API reference
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../development/index.html">
-  Development
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../whatsnew/index.html">
-  Release notes
+  API リファレンス
  </a>
 </li>
 
@@ -3108,7 +3096,7 @@ or calendars with additional rules.</p>
 <span class="gp">In [275]: </span><span class="n">cal</span><span class="o">.</span><span class="n">rules</span>
 <span class="gh">Out[275]: </span><span class="go"></span>
 <span class="go">[Holiday: Memorial Day (month=5, day=31, offset=&lt;DateOffset: weekday=MO(-1)&gt;),</span>
-<span class="go"> Holiday: July 4th (month=7, day=4, observance=&lt;function nearest_workday at 0x7ff4d8c88e50&gt;),</span>
+<span class="go"> Holiday: July 4th (month=7, day=4, observance=&lt;function nearest_workday at 0x7fdaf01c3820&gt;),</span>
 <span class="go"> Holiday: Columbus Day (month=10, day=1, offset=&lt;DateOffset: weekday=MO(+2)&gt;)]</span>
 
 <span class="gp">In [276]: </span><span class="n">new_cal</span> <span class="o">=</span> <span class="n">HolidayCalendarFactory</span><span class="p">(</span><span class="s2">&quot;NewExampleCalendar&quot;</span><span class="p">,</span> <span class="n">cal</span><span class="p">,</span> <span class="n">USLaborDay</span><span class="p">)</span>
@@ -3117,7 +3105,7 @@ or calendars with additional rules.</p>
 <span class="gh">Out[277]: </span><span class="go"></span>
 <span class="go">[Holiday: Labor Day (month=9, day=1, offset=&lt;DateOffset: weekday=MO(+1)&gt;),</span>
 <span class="go"> Holiday: Memorial Day (month=5, day=31, offset=&lt;DateOffset: weekday=MO(-1)&gt;),</span>
-<span class="go"> Holiday: July 4th (month=7, day=4, observance=&lt;function nearest_workday at 0x7ff4d8c88e50&gt;),</span>
+<span class="go"> Holiday: July 4th (month=7, day=4, observance=&lt;function nearest_workday at 0x7fdaf01c3820&gt;),</span>
 <span class="go"> Holiday: Columbus Day (month=10, day=1, offset=&lt;DateOffset: weekday=MO(+2)&gt;)]</span>
 </pre></div>
 </div>
@@ -3506,14 +3494,16 @@ a <code class="docutils literal notranslate"><span class="pre">Resampler</span><
 column, which produces an aggregated result with a hierarchical index:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [320]: </span><span class="n">r</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">])</span>
 <span class="gh">Out[320]: </span><span class="go"></span>
-<span class="go">                             A                    B                    C          </span>
-<span class="go">                           sum      mean        sum      mean        sum      mean</span>
-<span class="go">2012-01-01 00:00:00  -6.088060 -0.033823 -21.872530 -0.121514 -14.660515 -0.081447</span>
-<span class="go">2012-01-01 00:03:00  10.243678  0.056909  26.411633  0.146731  -4.377642 -0.024320</span>
-<span class="go">2012-01-01 00:06:00 -10.590584 -0.058837   8.468289  0.047046  -9.363825 -0.052021</span>
-<span class="go">2012-01-01 00:09:00  11.362228  0.063123  -4.708526 -0.026158 -11.975895 -0.066533</span>
-<span class="go">2012-01-01 00:12:00  33.541257  0.186340  -0.565895 -0.003144  13.455299  0.074752</span>
-<span class="go">2012-01-01 00:15:00  -8.595393 -0.085954  -1.628689 -0.016287  -5.004580 -0.050046</span>
+<span class="go">                             A            ...          C          </span>
+<span class="go">                           sum      mean  ...        sum      mean</span>
+<span class="go">2012-01-01 00:00:00  -6.088060 -0.033823  ... -14.660515 -0.081447</span>
+<span class="go">2012-01-01 00:03:00  10.243678  0.056909  ...  -4.377642 -0.024320</span>
+<span class="go">2012-01-01 00:06:00 -10.590584 -0.058837  ...  -9.363825 -0.052021</span>
+<span class="go">2012-01-01 00:09:00  11.362228  0.063123  ... -11.975895 -0.066533</span>
+<span class="go">2012-01-01 00:12:00  33.541257  0.186340  ...  13.455299  0.074752</span>
+<span class="go">2012-01-01 00:15:00  -8.595393 -0.085954  ...  -5.004580 -0.050046</span>
+
+<span class="go">[6 rows x 6 columns]</span>
 </pre></div>
 </div>
 <p>By passing a dict to <code class="docutils literal notranslate"><span class="pre">aggregate</span></code> you can apply a different aggregation to the

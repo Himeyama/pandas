@@ -93,31 +93,19 @@
         <ul id="navbar-main-elements" class="navbar-nav">
     <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../getting_started/index.html">
-  Getting started
+  入門
  </a>
 </li>
 
 <li class="toctree-l1 current active nav-item">
  <a class="reference internal nav-link" href="index.html">
-  User Guide
+  ユーザーガイド
  </a>
 </li>
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../reference/index.html">
-  API reference
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../development/index.html">
-  Development
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../whatsnew/index.html">
-  Release notes
+  API リファレンス
  </a>
 </li>
 
@@ -901,7 +889,7 @@ to these in old code bases and online. Going forward, we recommend avoiding
 <code class="docutils literal notranslate"><span class="pre">.values</span></code> and using <code class="docutils literal notranslate"><span class="pre">.array</span></code> or <code class="docutils literal notranslate"><span class="pre">.to_numpy()</span></code>. <code class="docutils literal notranslate"><span class="pre">.values</span></code> has the following
 drawbacks:</p>
 <ol class="arabic simple">
-<li><p>When your Series contains an <a class="reference internal" href="../development/extending.html#extending-extension-types"><span class="std std-ref">extension type</span></a>, it’s
+<li><p>When your Series contains an <span class="xref std std-ref">extension type</span>, it’s
 unclear whether <a class="reference internal" href="../reference/api/pandas.Series.values.html#pandas.Series.values" title="pandas.Series.values"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Series.values</span></code></a> returns a NumPy array or the extension array.
 <a class="reference internal" href="../reference/api/pandas.Series.array.html#pandas.Series.array" title="pandas.Series.array"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Series.array</span></code></a> will always return an <a class="reference internal" href="../reference/api/pandas.api.extensions.ExtensionArray.html#pandas.api.extensions.ExtensionArray" title="pandas.api.extensions.ExtensionArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExtensionArray</span></code></a>, and will never
 copy data. <a class="reference internal" href="../reference/api/pandas.Series.to_numpy.html#pandas.Series.to_numpy" title="pandas.Series.to_numpy"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Series.to_numpy()</span></code></a> will always return a NumPy array,
@@ -2074,7 +2062,7 @@ In this case, provide <code class="docutils literal notranslate"><span class="pr
 <span class="go">Model:                            OLS   Adj. R-squared:                  0.665</span>
 <span class="go">Method:                 Least Squares   F-statistic:                     34.28</span>
 <span class="go">Date:                Thu, 21 Apr 2022   Prob (F-statistic):           3.48e-15</span>
-<span class="go">Time:                        01:34:42   Log-Likelihood:                -205.92</span>
+<span class="go">Time:                        02:29:02   Log-Likelihood:                -205.92</span>
 <span class="go">No. Observations:                  68   AIC:                             421.8</span>
 <span class="go">Df Residuals:                      63   BIC:                             432.9</span>
 <span class="go">Df Model:                           4                                         </span>
@@ -4111,7 +4099,7 @@ columns of a DataFrame. NumPy provides support for <code class="docutils literal
 does not support timezone-aware datetimes).</p>
 <p>pandas and third-party libraries <em>extend</em> NumPy’s type system in a few places.
 This section describes the extensions pandas has made internally.
-See <a class="reference internal" href="../development/extending.html#extending-extension-types"><span class="std std-ref">Extension types</span></a> for how to write your own extension that
+See <span class="xref std std-ref">extending.extension-types</span> for how to write your own extension that
 works with pandas. See <a class="reference internal" href="../ecosystem.html#ecosystem-extensions"><span class="std std-ref">Extension data types</span></a> for a list of third-party
 libraries that have implemented an extension.</p>
 <p>The following table lists all of pandas extension types. For methods requiring <code class="docutils literal notranslate"><span class="pre">dtype</span></code>

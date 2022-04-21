@@ -91,31 +91,19 @@
         <ul id="navbar-main-elements" class="navbar-nav">
     <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../getting_started/index.html">
-  Getting started
+  入門
  </a>
 </li>
 
 <li class="toctree-l1 current active nav-item">
  <a class="reference internal nav-link" href="index.html">
-  User Guide
+  ユーザーガイド
  </a>
 </li>
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../reference/index.html">
-  API reference
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../development/index.html">
-  Development
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../whatsnew/index.html">
-  Release notes
+  API リファレンス
  </a>
 </li>
 
@@ -785,23 +773,27 @@ of the index is up to you:</p>
 
 <span class="gp">In [19]: </span><span class="n">df</span>
 <span class="gh">Out[19]: </span><span class="go"></span>
-<span class="go">first        bar                 baz                 foo                 qux          </span>
-<span class="go">second       one       two       one       two       one       two       one       two</span>
-<span class="go">A       0.895717  0.805244 -1.206412  2.565646  1.431256  1.340309 -1.170299 -0.226169</span>
-<span class="go">B       0.410835  0.813850  0.132003 -0.827317 -0.076467 -1.187678  1.130127 -1.436737</span>
-<span class="go">C      -1.413681  1.607920  1.024180  0.569605  0.875906 -2.211372  0.974466 -2.006747</span>
+<span class="go">first        bar                 baz  ...       foo       qux          </span>
+<span class="go">second       one       two       one  ...       two       one       two</span>
+<span class="go">A       0.895717  0.805244 -1.206412  ...  1.340309 -1.170299 -0.226169</span>
+<span class="go">B       0.410835  0.813850  0.132003  ... -1.187678  1.130127 -1.436737</span>
+<span class="go">C      -1.413681  1.607920  1.024180  ... -2.211372  0.974466 -2.006747</span>
+
+<span class="go">[3 rows x 8 columns]</span>
 
 <span class="gp">In [20]: </span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">[:</span><span class="mi">6</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="n">index</span><span class="p">[:</span><span class="mi">6</span><span class="p">])</span>
 <span class="gh">Out[20]: </span><span class="go"></span>
-<span class="go">first              bar                 baz                 foo          </span>
-<span class="go">second             one       two       one       two       one       two</span>
-<span class="go">first second                                                            </span>
-<span class="go">bar   one    -0.410001 -0.078638  0.545952 -1.219217 -1.226825  0.769804</span>
-<span class="go">      two    -1.281247 -0.727707 -0.121306 -0.097883  0.695775  0.341734</span>
-<span class="go">baz   one     0.959726 -1.110336 -0.619976  0.149748 -0.732339  0.687738</span>
-<span class="go">      two     0.176444  0.403310 -0.154951  0.301624 -2.179861 -1.369849</span>
-<span class="go">foo   one    -0.954208  1.462696 -1.743161 -0.826591 -0.345352  1.314232</span>
-<span class="go">      two     0.690579  0.995761  2.396780  0.014871  3.357427 -0.317441</span>
+<span class="go">first              bar            ...       foo          </span>
+<span class="go">second             one       two  ...       one       two</span>
+<span class="go">first second                      ...                    </span>
+<span class="go">bar   one    -0.410001 -0.078638  ... -1.226825  0.769804</span>
+<span class="go">      two    -1.281247 -0.727707  ...  0.695775  0.341734</span>
+<span class="go">baz   one     0.959726 -1.110336  ... -0.732339  0.687738</span>
+<span class="go">      two     0.176444  0.403310  ... -2.179861 -1.369849</span>
+<span class="go">foo   one    -0.954208  1.462696  ... -0.345352  1.314232</span>
+<span class="go">      two     0.690579  0.995761  ...  3.357427 -0.317441</span>
+
+<span class="go">[6 rows x 6 columns]</span>
 </pre></div>
 </div>
 <p>We’ve “sparsified” the higher levels of the indexes to make the console output a
@@ -1584,7 +1576,7 @@ index.</p>
 <p>You cannot set the names of the MultiIndex via a level.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [100]: </span><span class="n">mi</span><span class="o">.</span><span class="n">levels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;name via level&quot;</span>
 <span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
+<span class="ne">RuntimeError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
 <span class="nn">Input In [100],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">mi</span><span class="o">.</span><span class="n">levels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;name via level&quot;</span>
 
@@ -1618,50 +1610,50 @@ they need to be sorted. As with any index, you can use <a class="reference inter
 
 <span class="gp">In [104]: </span><span class="n">s</span>
 <span class="gh">Out[104]: </span><span class="go"></span>
-<span class="go">foo  two    0.206053</span>
-<span class="go">bar  one   -0.251905</span>
-<span class="go">baz  two   -2.213588</span>
-<span class="go">qux  two    1.063327</span>
-<span class="go">bar  two    1.266143</span>
+<span class="go">baz  one    0.206053</span>
+<span class="go">foo  one   -0.251905</span>
+<span class="go">     two   -2.213588</span>
+<span class="go">bar  two    1.063327</span>
+<span class="go">     one    1.266143</span>
 <span class="go">qux  one    0.299368</span>
-<span class="go">foo  one   -0.863838</span>
-<span class="go">baz  one    0.408204</span>
+<span class="go">baz  two   -0.863838</span>
+<span class="go">qux  two    0.408204</span>
 <span class="go">dtype: float64</span>
 
 <span class="gp">In [105]: </span><span class="n">s</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
 <span class="gh">Out[105]: </span><span class="go"></span>
-<span class="go">bar  one   -0.251905</span>
-<span class="go">     two    1.266143</span>
-<span class="go">baz  one    0.408204</span>
-<span class="go">     two   -2.213588</span>
-<span class="go">foo  one   -0.863838</span>
-<span class="go">     two    0.206053</span>
-<span class="go">qux  one    0.299368</span>
+<span class="go">bar  one    1.266143</span>
 <span class="go">     two    1.063327</span>
+<span class="go">baz  one    0.206053</span>
+<span class="go">     two   -0.863838</span>
+<span class="go">foo  one   -0.251905</span>
+<span class="go">     two   -2.213588</span>
+<span class="go">qux  one    0.299368</span>
+<span class="go">     two    0.408204</span>
 <span class="go">dtype: float64</span>
 
 <span class="gp">In [106]: </span><span class="n">s</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="gh">Out[106]: </span><span class="go"></span>
-<span class="go">bar  one   -0.251905</span>
-<span class="go">     two    1.266143</span>
-<span class="go">baz  one    0.408204</span>
-<span class="go">     two   -2.213588</span>
-<span class="go">foo  one   -0.863838</span>
-<span class="go">     two    0.206053</span>
-<span class="go">qux  one    0.299368</span>
+<span class="go">bar  one    1.266143</span>
 <span class="go">     two    1.063327</span>
+<span class="go">baz  one    0.206053</span>
+<span class="go">     two   -0.863838</span>
+<span class="go">foo  one   -0.251905</span>
+<span class="go">     two   -2.213588</span>
+<span class="go">qux  one    0.299368</span>
+<span class="go">     two    0.408204</span>
 <span class="go">dtype: float64</span>
 
 <span class="gp">In [107]: </span><span class="n">s</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gh">Out[107]: </span><span class="go"></span>
-<span class="go">bar  one   -0.251905</span>
-<span class="go">baz  one    0.408204</span>
-<span class="go">foo  one   -0.863838</span>
+<span class="go">bar  one    1.266143</span>
+<span class="go">baz  one    0.206053</span>
+<span class="go">foo  one   -0.251905</span>
 <span class="go">qux  one    0.299368</span>
-<span class="go">bar  two    1.266143</span>
-<span class="go">baz  two   -2.213588</span>
-<span class="go">foo  two    0.206053</span>
-<span class="go">qux  two    1.063327</span>
+<span class="go">bar  two    1.063327</span>
+<span class="go">baz  two   -0.863838</span>
+<span class="go">foo  two   -2.213588</span>
+<span class="go">qux  two    0.408204</span>
 <span class="go">dtype: float64</span>
 </pre></div>
 </div>
@@ -1672,27 +1664,27 @@ are named.</p>
 <span class="gp">In [109]: </span><span class="n">s</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s2">&quot;L1&quot;</span><span class="p">)</span>
 <span class="gh">Out[109]: </span><span class="go"></span>
 <span class="go">L1   L2 </span>
-<span class="go">bar  one   -0.251905</span>
-<span class="go">     two    1.266143</span>
-<span class="go">baz  one    0.408204</span>
-<span class="go">     two   -2.213588</span>
-<span class="go">foo  one   -0.863838</span>
-<span class="go">     two    0.206053</span>
-<span class="go">qux  one    0.299368</span>
+<span class="go">bar  one    1.266143</span>
 <span class="go">     two    1.063327</span>
+<span class="go">baz  one    0.206053</span>
+<span class="go">     two   -0.863838</span>
+<span class="go">foo  one   -0.251905</span>
+<span class="go">     two   -2.213588</span>
+<span class="go">qux  one    0.299368</span>
+<span class="go">     two    0.408204</span>
 <span class="go">dtype: float64</span>
 
 <span class="gp">In [110]: </span><span class="n">s</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s2">&quot;L2&quot;</span><span class="p">)</span>
 <span class="gh">Out[110]: </span><span class="go"></span>
 <span class="go">L1   L2 </span>
-<span class="go">bar  one   -0.251905</span>
-<span class="go">baz  one    0.408204</span>
-<span class="go">foo  one   -0.863838</span>
+<span class="go">bar  one    1.266143</span>
+<span class="go">baz  one    0.206053</span>
+<span class="go">foo  one   -0.251905</span>
 <span class="go">qux  one    0.299368</span>
-<span class="go">bar  two    1.266143</span>
-<span class="go">baz  two   -2.213588</span>
-<span class="go">foo  two    0.206053</span>
-<span class="go">qux  two    1.063327</span>
+<span class="go">bar  two    1.063327</span>
+<span class="go">baz  two   -0.863838</span>
+<span class="go">foo  two   -2.213588</span>
+<span class="go">qux  two    0.408204</span>
 <span class="go">dtype: float64</span>
 </pre></div>
 </div>
@@ -1867,8 +1859,8 @@ faster than fancy indexing.</p>
 <span class="gp">In [140]: </span><span class="o">%</span><span class="k">timeit</span> arr[indexer]
 <span class="gp">   .....: </span><span class="o">%</span><span class="k">timeit</span> arr.take(indexer, axis=0)
 <span class="gp">   .....: </span>
-<span class="go">160 us +- 6.63 us per loop (mean +- std. dev. of 7 runs, 10,000 loops each)</span>
-<span class="go">47.1 us +- 928 ns per loop (mean +- std. dev. of 7 runs, 10,000 loops each)</span>
+<span class="go">157 us +- 2.44 us per loop (mean +- std. dev. of 7 runs, 10,000 loops each)</span>
+<span class="go">49 us +- 582 ns per loop (mean +- std. dev. of 7 runs, 10,000 loops each)</span>
 </pre></div>
 </div>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [141]: </span><span class="n">ser</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">arr</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
@@ -1876,8 +1868,8 @@ faster than fancy indexing.</p>
 <span class="gp">In [142]: </span><span class="o">%</span><span class="k">timeit</span> ser.iloc[indexer]
 <span class="gp">   .....: </span><span class="o">%</span><span class="k">timeit</span> ser.take(indexer)
 <span class="gp">   .....: </span>
-<span class="go">66.7 us +- 1.55 us per loop (mean +- std. dev. of 7 runs, 10,000 loops each)</span>
-<span class="go">56.3 us +- 725 ns per loop (mean +- std. dev. of 7 runs, 10,000 loops each)</span>
+<span class="go">66.5 us +- 2.06 us per loop (mean +- std. dev. of 7 runs, 10,000 loops each)</span>
+<span class="go">58.2 us +- 1.08 us per loop (mean +- std. dev. of 7 runs, 10,000 loops each)</span>
 </pre></div>
 </div>
 </section>
