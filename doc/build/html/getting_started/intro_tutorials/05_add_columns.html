@@ -93,31 +93,19 @@
         <ul id="navbar-main-elements" class="navbar-nav">
     <li class="toctree-l1 current active nav-item">
  <a class="reference internal nav-link" href="../index.html">
-  Getting started
+  入門
  </a>
 </li>
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../user_guide/index.html">
-  User Guide
+  ユーザーガイド
  </a>
 </li>
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../../reference/index.html">
-  API reference
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../development/index.html">
-  Development
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../whatsnew/index.html">
-  Release notes
+  API リファレンス
  </a>
 </li>
 
@@ -448,13 +436,15 @@ hPa, the conversion factor is 1.882</em>)</p>
 
 <span class="gp">In [5]: </span><span class="n">air_quality</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[5]: </span><span class="go"></span>
-<span class="go">                     station_antwerp  station_paris  station_london  london_mg_per_cubic</span>
-<span class="go">datetime                                                                                </span>
-<span class="go">2019-05-07 02:00:00              NaN            NaN            23.0               43.286</span>
-<span class="go">2019-05-07 03:00:00             50.5           25.0            19.0               35.758</span>
-<span class="go">2019-05-07 04:00:00             45.0           27.7            19.0               35.758</span>
-<span class="go">2019-05-07 05:00:00              NaN           50.4            16.0               30.112</span>
-<span class="go">2019-05-07 06:00:00              NaN           61.9             NaN                  NaN</span>
+<span class="go">                     station_antwerp  ...  london_mg_per_cubic</span>
+<span class="go">datetime                              ...                     </span>
+<span class="go">2019-05-07 02:00:00              NaN  ...               43.286</span>
+<span class="go">2019-05-07 03:00:00             50.5  ...               35.758</span>
+<span class="go">2019-05-07 04:00:00             45.0  ...               35.758</span>
+<span class="go">2019-05-07 05:00:00              NaN  ...               30.112</span>
+<span class="go">2019-05-07 06:00:00              NaN  ...                  NaN</span>
+
+<span class="go">[5 rows x 4 columns]</span>
 </pre></div>
 </div>
 <p>To create a new column, use the <code class="docutils literal notranslate"><span class="pre">[]</span></code> brackets with the new column name
@@ -475,13 +465,13 @@ at once. You do not need to use a loop to iterate each of the rows!</p>
 
 <span class="gp">In [7]: </span><span class="n">air_quality</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[7]: </span><span class="go"></span>
-<span class="go">                     station_antwerp  station_paris  ...  london_mg_per_cubic  ratio_paris_antwerp</span>
-<span class="go">datetime                                             ...                                          </span>
-<span class="go">2019-05-07 02:00:00              NaN            NaN  ...               43.286                  NaN</span>
-<span class="go">2019-05-07 03:00:00             50.5           25.0  ...               35.758             0.495050</span>
-<span class="go">2019-05-07 04:00:00             45.0           27.7  ...               35.758             0.615556</span>
-<span class="go">2019-05-07 05:00:00              NaN           50.4  ...               30.112                  NaN</span>
-<span class="go">2019-05-07 06:00:00              NaN           61.9  ...                  NaN                  NaN</span>
+<span class="go">                     station_antwerp  ...  ratio_paris_antwerp</span>
+<span class="go">datetime                              ...                     </span>
+<span class="go">2019-05-07 02:00:00              NaN  ...                  NaN</span>
+<span class="go">2019-05-07 03:00:00             50.5  ...             0.495050</span>
+<span class="go">2019-05-07 04:00:00             45.0  ...             0.615556</span>
+<span class="go">2019-05-07 05:00:00              NaN  ...                  NaN</span>
+<span class="go">2019-05-07 06:00:00              NaN  ...                  NaN</span>
 
 <span class="go">[5 rows x 5 columns]</span>
 </pre></div>
@@ -508,13 +498,15 @@ rows of a table using a conditional expression.</p>
 </div>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">air_quality_renamed</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[9]: </span><span class="go"></span>
-<span class="go">                     BETR801  FR04014  London Westminster  london_mg_per_cubic  ratio_paris_antwerp</span>
-<span class="go">datetime                                                                                           </span>
-<span class="go">2019-05-07 02:00:00      NaN      NaN                23.0               43.286                  NaN</span>
-<span class="go">2019-05-07 03:00:00     50.5     25.0                19.0               35.758             0.495050</span>
-<span class="go">2019-05-07 04:00:00     45.0     27.7                19.0               35.758             0.615556</span>
-<span class="go">2019-05-07 05:00:00      NaN     50.4                16.0               30.112                  NaN</span>
-<span class="go">2019-05-07 06:00:00      NaN     61.9                 NaN                  NaN                  NaN</span>
+<span class="go">                     BETR801  ...  ratio_paris_antwerp</span>
+<span class="go">datetime                      ...                     </span>
+<span class="go">2019-05-07 02:00:00      NaN  ...                  NaN</span>
+<span class="go">2019-05-07 03:00:00     50.5  ...             0.495050</span>
+<span class="go">2019-05-07 04:00:00     45.0  ...             0.615556</span>
+<span class="go">2019-05-07 05:00:00      NaN  ...                  NaN</span>
+<span class="go">2019-05-07 06:00:00      NaN  ...                  NaN</span>
+
+<span class="go">[5 rows x 5 columns]</span>
 </pre></div>
 </div>
 <p>The <a class="reference internal" href="../../reference/api/pandas.DataFrame.rename.html#pandas.DataFrame.rename" title="pandas.DataFrame.rename"><code class="xref py py-meth docutils literal notranslate"><span class="pre">rename()</span></code></a> function can be used for both row labels and column
@@ -528,13 +520,15 @@ lowercase letters can be done using a function as well:</p>
 
 <span class="gp">In [11]: </span><span class="n">air_quality_renamed</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[11]: </span><span class="go"></span>
-<span class="go">                     betr801  fr04014  london westminster  london_mg_per_cubic  ratio_paris_antwerp</span>
-<span class="go">datetime                                                                                           </span>
-<span class="go">2019-05-07 02:00:00      NaN      NaN                23.0               43.286                  NaN</span>
-<span class="go">2019-05-07 03:00:00     50.5     25.0                19.0               35.758             0.495050</span>
-<span class="go">2019-05-07 04:00:00     45.0     27.7                19.0               35.758             0.615556</span>
-<span class="go">2019-05-07 05:00:00      NaN     50.4                16.0               30.112                  NaN</span>
-<span class="go">2019-05-07 06:00:00      NaN     61.9                 NaN                  NaN                  NaN</span>
+<span class="go">                     betr801  ...  ratio_paris_antwerp</span>
+<span class="go">datetime                      ...                     </span>
+<span class="go">2019-05-07 02:00:00      NaN  ...                  NaN</span>
+<span class="go">2019-05-07 03:00:00     50.5  ...             0.495050</span>
+<span class="go">2019-05-07 04:00:00     45.0  ...             0.615556</span>
+<span class="go">2019-05-07 05:00:00      NaN  ...                  NaN</span>
+<span class="go">2019-05-07 06:00:00      NaN  ...                  NaN</span>
+
+<span class="go">[5 rows x 5 columns]</span>
 </pre></div>
 </div>
 <div class="d-flex flex-row gs-torefguide">

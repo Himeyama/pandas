@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Getting started &#8212; pandas 0+unknown documentation</title>
+    <title>入門 &#8212; pandas 0+unknown documentation</title>
     
     <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -91,31 +91,19 @@
         <ul id="navbar-main-elements" class="navbar-nav">
     <li class="toctree-l1 current active nav-item">
  <a class="current reference internal nav-link" href="#">
-  Getting started
+  入門
  </a>
 </li>
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../user_guide/index.html">
-  User Guide
+  ユーザーガイド
  </a>
 </li>
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../reference/index.html">
-  API reference
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../development/index.html">
-  Development
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../whatsnew/index.html">
-  Release notes
+  API リファレンス
  </a>
 </li>
 
@@ -382,23 +370,23 @@ function checkPageExistsAndRedirect(event) {
 <nav id="bd-toc-nav">
     <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#installation">
-   Installation
+  <a class="reference internal nav-link" href="#id2">
+   インストール
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#intro-to-pandas">
-   Intro to pandas
+  <a class="reference internal nav-link" href="#pandas">
+   pandas 入門
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#coming-from">
-   Coming from…
+  <a class="reference internal nav-link" href="#comingfrom">
+   他のソフトから…
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tutorials">
-   Tutorials
+  <a class="reference internal nav-link" href="#id4">
+   チュートリアル
   </a>
  </li>
 </ul>
@@ -423,19 +411,19 @@ function checkPageExistsAndRedirect(event) {
               <div>
                 
   <section id="getting-started">
-<span id="id1"></span><h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
-<section id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h1>入門<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<section id="id2">
+<h2>インストール<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="sphinx-bs container pb-4 docutils">
 <div class="row docutils">
 <div class="d-flex col-lg-6 col-md-6 col-sm-12 col-xs-12 p-3 docutils">
 <div class="card w-100 shadow install-card docutils">
 <div class="card-header docutils">
-<p class="card-text">Working with conda?</p>
+<p class="card-text">conda</p>
 </div>
 <div class="card-body docutils">
-<p class="card-text">pandas is part of the <a class="reference external" href="https://docs.continuum.io/anaconda/">Anaconda</a>
-distribution and can be installed with Anaconda or Miniconda:</p>
+<p class="card-text">pandas は <a class="reference external" href="https://docs.continuum.io/anaconda/">Anaconda</a>
+の配布物の一部であり、Anaconda または Miniconda と一緒にインストールすることができます。</p>
 </div>
 <div class="card-footer docutils">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install pandas
@@ -447,10 +435,10 @@ distribution and can be installed with Anaconda or Miniconda:</p>
 <div class="d-flex col-lg-6 col-md-6 col-sm-12 col-xs-12 p-3 docutils">
 <div class="card w-100 shadow install-card docutils">
 <div class="card-header docutils">
-<p class="card-text">Prefer pip?</p>
+<p class="card-text">pip</p>
 </div>
 <div class="card-body docutils">
-<p class="card-text">pandas can be installed via pip from <a class="reference external" href="https://pypi.org/project/pandas">PyPI</a>.</p>
+<p class="card-text">pandasは <a class="reference external" href="https://pypi.org/project/pandas">PyPI</a> から pip を実行してインストールすることができます。</p>
 </div>
 <div class="card-footer docutils">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install pandas
@@ -462,20 +450,19 @@ distribution and can be installed with Anaconda or Miniconda:</p>
 <div class="d-flex col-12 p-3 docutils">
 <div class="card w-100 shadow install-card docutils">
 <div class="card-header docutils">
-<p class="card-text">In-depth instructions?</p>
+<p class="card-text">インストールの詳細について</p>
 </div>
 <div class="card-body docutils">
-<p class="card-text">Installing a specific version? Installing from source? Check the advanced
-installation page.</p>
-<p class="card-text"><a class="sphinx-bs btn text-wrap btn-secondary stretched-link reference external" href="./install.html"><span>Learn more</span></a></p>
+<p class="card-text">特定のバージョンをインストールしたい場合やソースからインストールしたい場合は、詳細ページを確認してください。</p>
+<p class="card-text"><a class="sphinx-bs btn text-wrap btn-secondary stretched-link reference external" href="./install.html"><span>詳細</span></a></p>
 </div>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="intro-to-pandas">
-<span id="gentle-intro"></span><h2>Intro to pandas<a class="headerlink" href="#intro-to-pandas" title="Permalink to this headline">¶</a></h2>
+<section id="pandas">
+<span id="gentle-intro"></span><h2>pandas 入門<a class="headerlink" href="#pandas" title="Permalink to this headline">¶</a></h2>
 <div class="container">
 <div id="accordion" class="shadow tutorial-accordion">
 
@@ -718,10 +705,9 @@ from long to wide format. With aggregations built-in, a pivot table is created w
 
 </div>
 </div></section>
-<section id="coming-from">
-<span id="comingfrom"></span><h2>Coming from…<a class="headerlink" href="#coming-from" title="Permalink to this headline">¶</a></h2>
-<p>Are you familiar with other software for manipulating tablular data? Learn
-the pandas-equivalent operations compared to software you already know:</p>
+<section id="comingfrom">
+<span id="id3"></span><h2>他のソフトから…<a class="headerlink" href="#comingfrom" title="Permalink to this headline">¶</a></h2>
+<p>他のソフトウェアと比較し、pandas と同等の操作を学ぶことができます。</p>
 <div class="sphinx-bs container pb-4 docutils">
 <div class="row docutils">
 <div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 docutils">
@@ -788,13 +774,13 @@ and more have similar functions in pandas.</p>
 </div>
 </div>
 </section>
-<section id="tutorials">
-<h2>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h2>
-<p>For a quick overview of pandas functionality, see <a class="reference internal" href="../user_guide/10min.html#min"><span class="std std-ref">10 Minutes to pandas</span></a>.</p>
-<p>You can also reference the pandas <a class="reference external" href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf">cheat sheet</a>
-for a succinct guide for manipulating data with pandas.</p>
-<p>The community produces a wide variety of tutorials available online. Some of the
-material is enlisted in the community contributed <a class="reference internal" href="tutorials.html#communitytutorials"><span class="std std-ref">Community tutorials</span></a>.</p>
+<section id="id4">
+<h2>チュートリアル<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>pandas の機能の概要については、<a class="reference internal" href="../user_guide/10min.html#min"><span class="std std-ref">10 Minutes to pandas</span></a> を参照してください。</p>
+<p>また、pandas の <a class="reference external" href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf">cheat sheet</a> には、
+pandas を使ったデータ操作の簡潔なガイドが掲載されているため、そちらを参照してください。</p>
+<p>コミュニティーは、オンラインで利用できるさまざまなチュートリアルを制作しています。
+そのうちのいくつかは、コミュニティーから提供された <a class="reference internal" href="tutorials.html#communitytutorials"><span class="std std-ref">Community tutorials</span></a> に登録されています。</p>
 <div class="toctree-wrapper compound">
 </div>
 </section>

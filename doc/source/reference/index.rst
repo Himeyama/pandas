@@ -3,21 +3,20 @@
 .. _api:
 
 =============
-API reference
+API リファレンス
 =============
 
-This page gives an overview of all public pandas objects, functions and
-methods. All classes and functions exposed in ``pandas.*`` namespace are public.
+このページでは、
+すべての public な pandas オブジェクト、関数、メソッドの概要を説明します。
+pandas.* 名前空間で公開されているすべてのクラスと関数はパブリックです。
 
-Some subpackages are public which include ``pandas.errors``,
-``pandas.plotting``, and ``pandas.testing``. Public functions in
-``pandas.io`` and ``pandas.tseries`` submodules are mentioned in
-the documentation. ``pandas.api.types`` subpackage holds some
-public functions related to data types in pandas.
+pandas.errors* 、pandas.plotting* 、pandas.testing* などのサブパッケージは公開されています。
+pandas.io* と pandas.tseries* のサブモジュールのパブリック関数についてはドキュメントに記載されています。
+pandas.api.types* サブパッケージは、pandas のデータ型に関するパブリック関数をいくつか保持しています。
 
-.. warning::
+.. 警告::
 
-    The ``pandas.core``, ``pandas.compat``, and ``pandas.util`` top-level modules are PRIVATE. Stable functionality in such modules is not guaranteed.
+    pandas.core* 、pandas.compat* 、pandas.util* のトップレベルモジュールは、プライベートです。これらのモジュールの安定した機能は保証されていません。
 
 .. If you update this toctree, also update the manual toctree in the
    main index.rst.template

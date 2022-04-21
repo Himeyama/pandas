@@ -91,31 +91,19 @@
         <ul id="navbar-main-elements" class="navbar-nav">
     <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../getting_started/index.html">
-  Getting started
+  入門
  </a>
 </li>
 
 <li class="toctree-l1 current active nav-item">
  <a class="reference internal nav-link" href="index.html">
-  User Guide
+  ユーザーガイド
  </a>
 </li>
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../reference/index.html">
-  API reference
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../development/index.html">
-  Development
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../whatsnew/index.html">
-  Release notes
+  API リファレンス
  </a>
 </li>
 
@@ -1024,11 +1012,13 @@ yields another <code class="docutils literal notranslate"><span class="pre">time
 similarly to the <code class="docutils literal notranslate"><span class="pre">Series</span></code>. These are the <em>displayed</em> values of the <code class="docutils literal notranslate"><span class="pre">Timedelta</span></code>.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [95]: </span><span class="n">td</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">components</span>
 <span class="gh">Out[95]: </span><span class="go"></span>
-<span class="go">   days  hours  minutes  seconds  milliseconds  microseconds  nanoseconds</span>
-<span class="go">0  31.0    0.0      0.0      0.0           0.0           0.0          0.0</span>
-<span class="go">1  31.0    0.0      0.0      0.0           0.0           0.0          0.0</span>
-<span class="go">2  31.0    0.0      5.0      3.0           0.0           0.0          0.0</span>
-<span class="go">3   NaN    NaN      NaN      NaN           NaN           NaN          NaN</span>
+<span class="go">   days  hours  minutes  ...  milliseconds  microseconds  nanoseconds</span>
+<span class="go">0  31.0    0.0      0.0  ...           0.0           0.0          0.0</span>
+<span class="go">1  31.0    0.0      0.0  ...           0.0           0.0          0.0</span>
+<span class="go">2  31.0    0.0      5.0  ...           0.0           0.0          0.0</span>
+<span class="go">3   NaN    NaN      NaN  ...           NaN           NaN          NaN</span>
+
+<span class="go">[4 rows x 7 columns]</span>
 
 <span class="gp">In [96]: </span><span class="n">td</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">seconds</span>
 <span class="gh">Out[96]: </span><span class="go"></span>

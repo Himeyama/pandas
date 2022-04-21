@@ -23,31 +23,31 @@ static:
 navbar:
   - name: "About us"
     target:
-    - name: "About pandas"
+    - name: "pandas について"
       target: /about/
-    - name: "Project roadmap"
+    - name: "プロジェクトロードマップ"
       target: /about/roadmap.html
-    - name: "Team"
+    - name: "チーム"
       target: /about/team.html
-    - name: "Sponsors"
+    - name: "スポンサー"
       target: /about/sponsors.html
-    - name: "Citing and logo"
+    - name: "引用とロゴ"
       target: /about/citing.html
-  - name: "Getting started"
+  - name: "入門"
     target: /getting_started.html
-  - name: "Documentation"
+  - name: "ドキュメント"
     target: /docs/
-  - name: "Community"
+  - name: "コミュニティ"
     target:
-    - name: "Blog"
+    - name: "ブログ"
       target: /community/blog/
-    - name: "Ask a question (StackOverflow)"
+    - name: "質問 (StackOverflow)"
       target: https://stackoverflow.com/questions/tagged/pandas
-    - name: "Code of conduct"
+    - name: "行動規範"
       target: /community/coc.html
-    - name: "Ecosystem"
+    - name: "エコシステム"
       target: /community/ecosystem.html
-  - name: "Contribute"
+  - name: "コントリビュート"
     target: /contribute.html
 blog:
   num_posts: 50

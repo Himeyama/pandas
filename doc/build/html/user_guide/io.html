@@ -91,31 +91,19 @@
         <ul id="navbar-main-elements" class="navbar-nav">
     <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../getting_started/index.html">
-  Getting started
+  入門
  </a>
 </li>
 
 <li class="toctree-l1 current active nav-item">
  <a class="reference internal nav-link" href="index.html">
-  User Guide
+  ユーザーガイド
  </a>
 </li>
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../reference/index.html">
-  API reference
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../development/index.html">
-  Development
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../whatsnew/index.html">
-  Release notes
+  API リファレンス
  </a>
 </li>
 
@@ -4017,11 +4005,11 @@ data:</p>
 </pre></div>
 </div>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [256]: </span><span class="o">%</span><span class="k">timeit</span> pd.read_json(jsonfloats)
-<span class="go">7.67 ms +- 212 us per loop (mean +- std. dev. of 7 runs, 100 loops each)</span>
+<span class="go">7.85 ms +- 356 us per loop (mean +- std. dev. of 7 runs, 100 loops each)</span>
 </pre></div>
 </div>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [257]: </span><span class="o">%</span><span class="k">timeit</span> pd.read_json(jsonfloats, numpy=True)
-<span class="go">5.62 ms +- 109 us per loop (mean +- std. dev. of 7 runs, 100 loops each)</span>
+<span class="go">5.37 ms +- 118 us per loop (mean +- std. dev. of 7 runs, 100 loops each)</span>
 </pre></div>
 </div>
 <p>The speedup is less noticeable for smaller datasets:</p>
@@ -4029,11 +4017,11 @@ data:</p>
 </pre></div>
 </div>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [259]: </span><span class="o">%</span><span class="k">timeit</span> pd.read_json(jsonfloats)
-<span class="go">4.94 ms +- 387 us per loop (mean +- std. dev. of 7 runs, 100 loops each)</span>
+<span class="go">4.65 ms +- 49.9 us per loop (mean +- std. dev. of 7 runs, 100 loops each)</span>
 </pre></div>
 </div>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [260]: </span><span class="o">%</span><span class="k">timeit</span> pd.read_json(jsonfloats, numpy=True)
-<span class="go">4.31 ms +- 85.2 us per loop (mean +- std. dev. of 7 runs, 100 loops each)</span>
+<span class="go">4.1 ms +- 54.9 us per loop (mean +- std. dev. of 7 runs, 100 loops each)</span>
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -4441,8 +4429,8 @@ only a single table contained in the HTML content.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [299]: </span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://www.fdic.gov/resources/resolutions/bank-failures/failed-bank-list&quot;</span>
 
 <span class="gp">In [300]: </span><span class="n">dfs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">OSError</span><span class="g g-Whitespace">                                   </span>Traceback (most recent call last)
+<span class="gt">-----------------------------------------------------------------------</span>
+<span class="ne">OSError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
 <span class="nn">File /opt/conda/lib/python3.8/urllib/request.py:1354,</span> in <span class="ni">AbstractHTTPHandler.do_open</span><span class="nt">(self, http_class, req, **http_conn_args)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1353</span> <span class="k">try</span><span class="p">:</span>
 <span class="ne">-&gt; </span><span class="mi">1354</span>     <span class="n">h</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">get_method</span><span class="p">(),</span> <span class="n">req</span><span class="o">.</span><span class="n">selector</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span>
@@ -4674,18 +4662,18 @@ as a string:</p>
 
 <span class="gp">In [303]: </span><span class="n">dfs</span>
 <span class="gh">Out[303]: </span><span class="go"></span>
-<span class="go">[                                    Bank Name          City  ...       Closing Date       Updated Date</span>
-<span class="go"> 0    Banks of Wisconsin d/b/a Bank of Kenosha       Kenosha  ...       May 31, 2013       May 31, 2013</span>
-<span class="go"> 1                        Central Arizona Bank    Scottsdale  ...       May 14, 2013       May 20, 2013</span>
-<span class="go"> 2                                Sunrise Bank      Valdosta  ...       May 10, 2013       May 21, 2013</span>
-<span class="go"> 3                       Pisgah Community Bank     Asheville  ...       May 10, 2013       May 14, 2013</span>
-<span class="go"> 4                         Douglas County Bank  Douglasville  ...     April 26, 2013       May 16, 2013</span>
-<span class="go"> ..                                        ...           ...  ...                ...                ...</span>
-<span class="go"> 501                        Superior Bank, FSB      Hinsdale  ...      July 27, 2001       June 5, 2012</span>
-<span class="go"> 502                       Malta National Bank         Malta  ...        May 3, 2001  November 18, 2002</span>
-<span class="go"> 503           First Alliance Bank &amp; Trust Co.    Manchester  ...   February 2, 2001  February 18, 2003</span>
-<span class="go"> 504         National State Bank of Metropolis    Metropolis  ...  December 14, 2000     March 17, 2005</span>
-<span class="go"> 505                          Bank of Honolulu      Honolulu  ...   October 13, 2000     March 17, 2005</span>
+<span class="go">[                                    Bank Name  ...       Updated Date</span>
+<span class="go"> 0    Banks of Wisconsin d/b/a Bank of Kenosha  ...       May 31, 2013</span>
+<span class="go"> 1                        Central Arizona Bank  ...       May 20, 2013</span>
+<span class="go"> 2                                Sunrise Bank  ...       May 21, 2013</span>
+<span class="go"> 3                       Pisgah Community Bank  ...       May 14, 2013</span>
+<span class="go"> 4                         Douglas County Bank  ...       May 16, 2013</span>
+<span class="go"> ..                                        ...  ...                ...</span>
+<span class="go"> 501                        Superior Bank, FSB  ...       June 5, 2012</span>
+<span class="go"> 502                       Malta National Bank  ...  November 18, 2002</span>
+<span class="go"> 503           First Alliance Bank &amp; Trust Co.  ...  February 18, 2003</span>
+<span class="go"> 504         National State Bank of Metropolis  ...     March 17, 2005</span>
+<span class="go"> 505                          Bank of Honolulu  ...     March 17, 2005</span>
 <span class="go"> </span>
 <span class="go"> [506 rows x 7 columns]]</span>
 </pre></div>
@@ -4699,18 +4687,18 @@ as a string:</p>
 
 <span class="gp">In [306]: </span><span class="n">dfs</span>
 <span class="gh">Out[306]: </span><span class="go"></span>
-<span class="go">[                                    Bank Name          City  ...       Closing Date       Updated Date</span>
-<span class="go"> 0    Banks of Wisconsin d/b/a Bank of Kenosha       Kenosha  ...       May 31, 2013       May 31, 2013</span>
-<span class="go"> 1                        Central Arizona Bank    Scottsdale  ...       May 14, 2013       May 20, 2013</span>
-<span class="go"> 2                                Sunrise Bank      Valdosta  ...       May 10, 2013       May 21, 2013</span>
-<span class="go"> 3                       Pisgah Community Bank     Asheville  ...       May 10, 2013       May 14, 2013</span>
-<span class="go"> 4                         Douglas County Bank  Douglasville  ...     April 26, 2013       May 16, 2013</span>
-<span class="go"> ..                                        ...           ...  ...                ...                ...</span>
-<span class="go"> 501                        Superior Bank, FSB      Hinsdale  ...      July 27, 2001       June 5, 2012</span>
-<span class="go"> 502                       Malta National Bank         Malta  ...        May 3, 2001  November 18, 2002</span>
-<span class="go"> 503           First Alliance Bank &amp; Trust Co.    Manchester  ...   February 2, 2001  February 18, 2003</span>
-<span class="go"> 504         National State Bank of Metropolis    Metropolis  ...  December 14, 2000     March 17, 2005</span>
-<span class="go"> 505                          Bank of Honolulu      Honolulu  ...   October 13, 2000     March 17, 2005</span>
+<span class="go">[                                    Bank Name  ...       Updated Date</span>
+<span class="go"> 0    Banks of Wisconsin d/b/a Bank of Kenosha  ...       May 31, 2013</span>
+<span class="go"> 1                        Central Arizona Bank  ...       May 20, 2013</span>
+<span class="go"> 2                                Sunrise Bank  ...       May 21, 2013</span>
+<span class="go"> 3                       Pisgah Community Bank  ...       May 14, 2013</span>
+<span class="go"> 4                         Douglas County Bank  ...       May 16, 2013</span>
+<span class="go"> ..                                        ...  ...                ...</span>
+<span class="go"> 501                        Superior Bank, FSB  ...       June 5, 2012</span>
+<span class="go"> 502                       Malta National Bank  ...  November 18, 2002</span>
+<span class="go"> 503           First Alliance Bank &amp; Trust Co.  ...  February 18, 2003</span>
+<span class="go"> 504         National State Bank of Metropolis  ...     March 17, 2005</span>
+<span class="go"> 505                          Bank of Honolulu  ...     March 17, 2005</span>
 <span class="go"> </span>
 <span class="go"> [506 rows x 7 columns]]</span>
 </pre></div>
@@ -5367,11 +5355,13 @@ transform XML into a flatter version.</p>
 
 <span class="gp">In [326]: </span><span class="n">df</span>
 <span class="gh">Out[326]: </span><span class="go"></span>
-<span class="go">   category              title                  author  year  price      cover</span>
-<span class="go">0   cooking   Everyday Italian     Giada De Laurentiis  2005  30.00       None</span>
-<span class="go">1  children       Harry Potter            J K. Rowling  2005  29.99       None</span>
-<span class="go">2       web  XQuery Kick Start  Vaidyanathan Nagarajan  2003  49.99       None</span>
-<span class="go">3       web       Learning XML             Erik T. Ray  2003  39.95  paperback</span>
+<span class="go">   category              title  ...  price      cover</span>
+<span class="go">0   cooking   Everyday Italian  ...  30.00       None</span>
+<span class="go">1  children       Harry Potter  ...  29.99       None</span>
+<span class="go">2       web  XQuery Kick Start  ...  49.99       None</span>
+<span class="go">3       web       Learning XML  ...  39.95  paperback</span>
+
+<span class="go">[4 rows x 6 columns]</span>
 </pre></div>
 </div>
 <p>Read in the content of the “books.xml” file and pass it to <code class="docutils literal notranslate"><span class="pre">read_xml</span></code>
@@ -5646,10 +5636,10 @@ output (as shown below for demonstration) for easier parse into <code class="doc
 
 <span class="gp">In [353]: </span><span class="n">df</span>
 <span class="gh">Out[353]: </span><span class="go"></span>
-<span class="go">   station_id       station_name  ... avg_saturday_rides  avg_sunday_holiday_rides</span>
-<span class="go">0       40850            Library  ...              534.0                     417.2</span>
-<span class="go">1       41700  Washington/Wabash  ...             1909.8                    1438.6</span>
-<span class="go">2       40380         Clark/Lake  ...             1657.0                    1453.8</span>
+<span class="go">   station_id  ... avg_sunday_holiday_rides</span>
+<span class="go">0       40850  ...                    417.2</span>
+<span class="go">1       41700  ...                   1438.6</span>
+<span class="go">2       40380  ...                   1453.8</span>
 
 <span class="go">[3 rows x 6 columns]</span>
 </pre></div>
@@ -7732,9 +7722,11 @@ results.</p>
 <span class="gp">   .....: </span><span class="p">)</span>
 <span class="gp">   .....: </span>
 <span class="gh">Out[525]: </span><span class="go"></span>
-<span class="go">                   A         B         C         D         E         F  foo</span>
-<span class="go">2000-01-05  1.043605  1.798494 -1.954845 -1.712882 -0.204377 -1.608953  bar</span>
-<span class="go">2000-01-07  0.150568  0.754820 -1.935461  1.007668  0.079529 -1.459471  bar</span>
+<span class="go">                   A         B         C  ...         E         F  foo</span>
+<span class="go">2000-01-05  1.043605  1.798494 -1.954845  ... -0.204377 -1.608953  bar</span>
+<span class="go">2000-01-07  0.150568  0.754820 -1.935461  ...  0.079529 -1.459471  bar</span>
+
+<span class="go">[2 rows x 7 columns]</span>
 </pre></div>
 </div>
 </section>
@@ -8237,10 +8229,12 @@ raise a helpful error message on an attempt at serialization.</p></li>
 
 <span class="gp">In [552]: </span><span class="n">df</span>
 <span class="gh">Out[552]: </span><span class="go"></span>
-<span class="go">   a  b  c    d      e  f          g                         h                             i</span>
-<span class="go">0  a  1  3  4.0   True  a 2013-01-01 2013-01-01 00:00:00-05:00 2013-01-01 00:00:00.000000000</span>
-<span class="go">1  b  2  4  5.0  False  b 2013-01-02 2013-01-02 00:00:00-05:00 2013-01-01 00:00:00.000000001</span>
-<span class="go">2  c  3  5  6.0   True  c 2013-01-03 2013-01-03 00:00:00-05:00 2013-01-01 00:00:00.000000002</span>
+<span class="go">   a  b  ...                         h                             i</span>
+<span class="go">0  a  1  ... 2013-01-01 00:00:00-05:00 2013-01-01 00:00:00.000000000</span>
+<span class="go">1  b  2  ... 2013-01-02 00:00:00-05:00 2013-01-01 00:00:00.000000001</span>
+<span class="go">2  c  3  ... 2013-01-03 00:00:00-05:00 2013-01-01 00:00:00.000000002</span>
+
+<span class="go">[3 rows x 9 columns]</span>
 
 <span class="gp">In [553]: </span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
 <span class="gh">Out[553]: </span><span class="go"></span>
@@ -8258,8 +8252,8 @@ raise a helpful error message on an attempt at serialization.</p></li>
 </div>
 <p>Write to a feather file.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [554]: </span><span class="n">df</span><span class="o">.</span><span class="n">to_feather</span><span class="p">(</span><span class="s2">&quot;example.feather&quot;</span><span class="p">)</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="gt">-----------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
 <span class="nn">Input In [554],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span><span class="o">.</span><span class="n">to_feather</span><span class="p">(</span><span class="s2">&quot;example.feather&quot;</span><span class="p">)</span>
 
@@ -8301,8 +8295,8 @@ raise a helpful error message on an attempt at serialization.</p></li>
 </div>
 <p>Read from a feather file.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [555]: </span><span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_feather</span><span class="p">(</span><span class="s2">&quot;example.feather&quot;</span><span class="p">)</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="gt">-----------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
 <span class="nn">Input In [555],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_feather</span><span class="p">(</span><span class="s2">&quot;example.feather&quot;</span><span class="p">)</span>
 
@@ -8379,7 +8373,7 @@ force including or omitting indexes with the <code class="docutils literal notra
 on an attempt at serialization. <code class="docutils literal notranslate"><span class="pre">Period</span></code> type is supported with pyarrow &gt;= 0.16.0.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">pyarrow</span></code> engine preserves extension data types such as the nullable integer and string data
 type (requiring pyarrow &gt;= 0.16.0, and requiring the extension type to implement the needed protocols,
-see the <a class="reference internal" href="../development/extending.html#extending-extension-arrow"><span class="std std-ref">extension types documentation</span></a>).</p></li>
+see the <span class="xref std std-ref">extension types documentation</span>).</p></li>
 </ul>
 <p>You can specify an <code class="docutils literal notranslate"><span class="pre">engine</span></code> to direct the serialization. This can be one of <code class="docutils literal notranslate"><span class="pre">pyarrow</span></code>, or <code class="docutils literal notranslate"><span class="pre">fastparquet</span></code>, or <code class="docutils literal notranslate"><span class="pre">auto</span></code>.
 If the engine is NOT specified, then the <code class="docutils literal notranslate"><span class="pre">pd.options.io.parquet.engine</span></code> option is checked; if this is also <code class="docutils literal notranslate"><span class="pre">auto</span></code>,
@@ -8429,8 +8423,8 @@ These libraries differ by having different underlying dependencies (<code class=
 </div>
 <p>Write to a parquet file.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [561]: </span><span class="n">df</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;example_pa.parquet&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;pyarrow&quot;</span><span class="p">)</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="gt">-----------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
 <span class="nn">Input In [561],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;example_pa.parquet&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;pyarrow&quot;</span><span class="p">)</span>
 
@@ -8526,8 +8520,8 @@ These libraries differ by having different underlying dependencies (<code class=
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [563]: </span><span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;example_fp.parquet&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;fastparquet&quot;</span><span class="p">)</span>
 
 <span class="gp">In [564]: </span><span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;example_pa.parquet&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;pyarrow&quot;</span><span class="p">)</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="gt">-----------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                     </span>Traceback (most recent call last)
 <span class="nn">Input In [564],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;example_pa.parquet&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;pyarrow&quot;</span><span class="p">)</span>
 
@@ -8618,8 +8612,8 @@ These libraries differ by having different underlying dependencies (<code class=
 <span class="gp">   .....: </span>    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">],</span>
 <span class="gp">   .....: </span><span class="p">)</span>
 <span class="gp">   .....: </span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="gt">-----------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                     </span>Traceback (most recent call last)
 <span class="nn">Input In [567],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="s2">&quot;example_pa.parquet&quot;</span><span class="p">,</span>
@@ -8700,8 +8694,8 @@ more columns in the output file. Thus, this code:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [569]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]})</span>
 
 <span class="gp">In [570]: </span><span class="n">df</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;test.parquet&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;pyarrow&quot;</span><span class="p">)</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="gt">-----------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
 <span class="nn">Input In [570],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;test.parquet&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;pyarrow&quot;</span><span class="p">)</span>
 
@@ -8800,8 +8794,8 @@ the file, because that column doesn’t exist in the target table.</p>
 <p>If you want to omit a dataframe’s indexes when writing, pass <code class="docutils literal notranslate"><span class="pre">index=False</span></code> to
 <a class="reference internal" href="../reference/api/pandas.DataFrame.to_parquet.html#pandas.DataFrame.to_parquet" title="pandas.DataFrame.to_parquet"><code class="xref py py-func docutils literal notranslate"><span class="pre">to_parquet()</span></code></a>:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [571]: </span><span class="n">df</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;test.parquet&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="gt">-----------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
 <span class="nn">Input In [571],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;test.parquet&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
@@ -8905,8 +8899,8 @@ underlying engine’s default behavior.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [572]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]})</span>
 
 <span class="gp">In [573]: </span><span class="n">df</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;pyarrow&quot;</span><span class="p">,</span> <span class="n">partition_cols</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">],</span> <span class="n">compression</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="gt">-----------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
 <span class="nn">Input In [573],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;pyarrow&quot;</span><span class="p">,</span> <span class="n">partition_cols</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">],</span> <span class="n">compression</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 

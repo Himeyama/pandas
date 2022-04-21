@@ -3,19 +3,18 @@
 .. _user_guide:
 
 ==========
-User Guide
+ユーザーガイド
 ==========
 
-The User Guide covers all of pandas by topic area. Each of the subsections
-introduces a topic (such as "working with missing data"), and discusses how
-pandas approaches the problem, with many examples throughout.
+ユーザーガイドでは、トピックエリア別に pandas の全てをカバーしています。
+それぞれの項では、トピック (例えば「欠損データの処理」) を紹介し、
+pandas がどのように問題に取り掛かかれば良いかを、全体を通して多くの例を挙げて議論します。
 
-Users brand-new to pandas should start with :ref:`10min`.
+pandas を初めて使う人は :ref:`10min` から始めてみましょう。
 
-For a high level summary of the pandas fundamentals, see :ref:`dsintro` and :ref:`basics`.
+pandas の基礎的な部分を高いレベルでまとめたものは、:ref:`dsintro` 及び :ref:`basics` を参照してください。
 
-Further information on any specific method can be obtained in the
-:ref:`api`.
+特定のメソッドに関する詳細な情報は、:ref:`api` で得ることができます。
 
 .. If you update this toctree, also update the manual toctree in the
    main index.rst.template

@@ -3,21 +3,21 @@
 .. _getting_started:
 
 ===============
-Getting started
+入門
 ===============
 
-Installation
+インストール
 ------------
 
 .. panels::
     :card: + install-card
     :column: col-lg-6 col-md-6 col-sm-12 col-xs-12 p-3
 
-    Working with conda?
+    conda
     ^^^^^^^^^^^^^^^^^^^
 
-    pandas is part of the `Anaconda <https://docs.continuum.io/anaconda/>`__
-    distribution and can be installed with Anaconda or Miniconda:
+    pandas は `Anaconda <https://docs.continuum.io/anaconda/>`__
+    の配布物の一部であり、Anaconda または Miniconda と一緒にインストールすることができます。
 
     ++++++++++++++++++++++
 
@@ -27,10 +27,10 @@ Installation
 
     ---
 
-    Prefer pip?
+    pip
     ^^^^^^^^^^^
 
-    pandas can be installed via pip from `PyPI <https://pypi.org/project/pandas>`__.
+    pandasは `PyPI <https://pypi.org/project/pandas>`__ から pip を実行してインストールすることができます。
 
     ++++
 
@@ -41,21 +41,20 @@ Installation
     ---
     :column: col-12 p-3
 
-    In-depth instructions?
+    インストールの詳細について
     ^^^^^^^^^^^^^^^^^^^^^^
 
-    Installing a specific version? Installing from source? Check the advanced
-    installation page.
+    特定のバージョンをインストールしたい場合やソースからインストールしたい場合は、詳細ページを確認してください。
 
     .. link-button:: ./install.html
         :type: url
-        :text: Learn more
+        :text: 詳細
         :classes: btn-secondary stretched-link
 
 
 .. _gentle_intro:
 
-Intro to pandas
+pandas 入門
 ---------------
 
 .. raw:: html
@@ -530,11 +529,10 @@ Data sets do not only contain numerical data. pandas provides a wide range of fu
 
 .. _comingfrom:
 
-Coming from...
+他のソフトから...
 --------------
 
-Are you familiar with other software for manipulating tablular data? Learn
-the pandas-equivalent operations compared to software you already know:
+他のソフトウェアと比較し、pandas と同等の操作を学ぶことができます。
 
 .. panels::
     :card: + comparison-card text-center shadow
@@ -621,17 +619,16 @@ the pandas-equivalent operations compared to software you already know:
         :classes: btn-secondary stretched-link
 
 
-Tutorials
+チュートリアル
 ---------
 
-For a quick overview of pandas functionality, see :ref:`10 Minutes to pandas<10min>`.
+pandas の機能の概要については、:ref:`10 Minutes to pandas<10min>` を参照してください。
 
-You can also reference the pandas `cheat sheet <https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf>`_
-for a succinct guide for manipulating data with pandas.
+また、pandas の `cheat sheet <https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf>`_ には、
+pandas を使ったデータ操作の簡潔なガイドが掲載されているため、そちらを参照してください。
 
-The community produces a wide variety of tutorials available online. Some of the
-material is enlisted in the community contributed :ref:`communitytutorials`.
-
+コミュニティーは、オンラインで利用できるさまざまなチュートリアルを制作しています。
+そのうちのいくつかは、コミュニティーから提供された :ref:`communitytutorials` に登録されています。
 
 .. If you update this toctree, also update the manual toctree in the
    main index.rst.template
